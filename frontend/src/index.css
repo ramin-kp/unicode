@@ -39,6 +39,13 @@
     font-style: swap;
   }
 }
+@layer components {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+}
 body {
   font-family: "dana";
+  background-color: #f3f4f6;
+  @apply dark:bg-black-500;
 }

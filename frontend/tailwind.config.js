@@ -22,7 +22,15 @@ export default {
           500: "#1c1c28",
         },
         primary: "#2ed573",
-        secondary: "#4e81fb",
+        secondary: {
+          100: "#3A58A7",
+          200: "#30457C",
+          300: "#4e81fb",
+          400: "#3F6CD8",
+        },
+      },
+      spacing: {
+        25: "6.25rem",
       },
     },
   },
