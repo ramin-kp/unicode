@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import SvgIcons from "./../assets/icons/SvgIcons";
 import { useEffect, useState } from "react";
+import HamburgerMenu from "./../HamburgerMenu/HamburgerMenu";
 
 export default function Header() {
   const [theme, setTheme] = useState(localStorage.getItem("theme") === "dark");
+  const [isShowHamburgerMenu, setIsShowHamburgerMenu] = useState(false);
   useEffect(() => {
     const darkModHandler = () => {
       const root = window.document.documentElement;
@@ -180,7 +182,7 @@ export default function Header() {
       {/* mobile header */}
       <header className="flex lg:hidden items-center h-[88px] px-9 bg-gray-50 dark:bg-black-500">
         <div className="flex items-center justify-between w-full">
-          <div>
+          <div onClick={() => setIsShowHamburgerMenu(true)}>
             <svg className="w-9 h-9 dark:text-white">
               <use href="#bars"></use>
             </svg>
@@ -201,6 +203,12 @@ export default function Header() {
           </div>
         </div>
       </header>
+      <HamburgerMenu
+        open={isShowHamburgerMenu}
+        theme={theme}
+        setIsShowHamburgerMenu={setIsShowHamburgerMenu}
+        setTheme={setTheme}
+      />
     </>
   );
 }

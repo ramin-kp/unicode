@@ -43,8 +43,49 @@
   .flex-center {
     @apply flex items-center justify-center;
   }
-  .sub-title{
-    @apply hidden absolute mr-0 top-7 min-w-[256px] py-5 px-6 child:my-4 bg-white text-zinc-700 group-hover:inline-block child-hover:text-green-500 rounded-2xl shadow-xl transition-all delay-75
+  .sub-title {
+    @apply hidden absolute mr-0 top-7 min-w-[256px] py-5 px-6 child:my-4 bg-white text-zinc-700 group-hover:inline-block child-hover:text-green-500 rounded-2xl shadow-xl transition-all delay-75;
+  }
+  .submenu-marker::before {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 4px;
+    top: 10px;
+    right: -15px;
+    background-color: #22c55e;
+    border-radius: 50%;
+  }
+  .submenu-hover {
+    @apply hover:submenu-marker hover:text-green-500 hover:mr-4 transition-all duration-200;
+  }
+  .animation-open-menu {
+    animation: openMenuAnim 0.1s linear  1 reverse backwards;
+  }
+  .animation-close-menu {
+    animation: closenMenuAnim 0.1s linear  1 reverse backwards;
+  }
+  @keyframes openMenuAnim {
+    0% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    100% {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+  }
+  @keyframes closenMenuAnim {
+    0% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    100% {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
   }
 }
 body {
