@@ -5,7 +5,7 @@ import SvgIcons from "../assets/icons/SvgIcons";
 export default function SectionHeader({ title, description, link, color }) {
   return (
     <div className="container">
-      <div className="flex items-center justify-between mt-28 mb-[38px]">
+      <div className="sm:flex items-center justify-between mt-28 mb-[38px]">
         <div>
           <div className="flex items-center">
             <span
@@ -20,7 +20,7 @@ export default function SectionHeader({ title, description, link, color }) {
           </h4>
         </div>
         {link && (
-          <div className="flex items-center py-1.5 pr-1.5 pl-0.5 text-sky-500 dark:text-secondary-300 hover:bg-sky-200 dark:hover:bg-secondary-700 rounded-md transition-all delay-75">
+          <div className="flex items-center w-1/2 sm:w-auto mr-auto sm:mr-0 mt-2.5 sm:mt-0 py-1.5 pr-1.5 pl-0.5 text-sky-500 dark:text-secondary-300 hover:bg-sky-200 dark:hover:bg-secondary-700 rounded-md transition-all delay-75">
             <Link to="#">مشاهده تمام دوره‌ها</Link>
             <svg className="w-6 h-6">
               <use href="#arrow"></use>

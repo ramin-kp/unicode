@@ -6,7 +6,7 @@ import CourseBox from "../CourseBox/CourseBox";
 
 export default function LastCourses() {
   return (
-    <main>
+    <section>
       <div className="container">
         <SectionHeader
           color="bg-purple-600"
@@ -23,13 +23,9 @@ export default function LastCourses() {
           <CourseBox />
           <CourseBox />
           <CourseBox />
-          <CourseBox />
-          <CourseBox />
-          <CourseBox />
-          <CourseBox />
         </div>
       </div>
       <SvgIcons />
-    </main>
+    </section>
   );
 }

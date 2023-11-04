@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function CourseBox() {
   return (
-    <div className="bg-white dark:bg-black-400 rounded-xl overflow-hidden border border-zinc-700">
+    <div className="bg-white dark:bg-black-400 rounded-xl overflow-hidden dark:border border-zinc-700 shadow-md">
       {/* img box */}
       <div>
         <img src="/images/django.png" alt="courses-img" />
@@ -13,7 +13,7 @@ export default function CourseBox() {
         <span className="w-[50px] h-6 px-2.5 py-px bg-sky-100 dark:bg-yellow-500/10 text-sky-500 dark:text-yellow-500 text-xs rounded-md text-center">
           پایتون
         </span>
-        <div className="mt-3">
+        <div className="mt-3 max-w-[250px]">
           <Link
             className="h-[51px] font-danaMedium text-base text-zinc-700 dark:text-white line-clamp-2"
             to="#"
