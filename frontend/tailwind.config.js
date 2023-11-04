@@ -27,8 +27,8 @@ export default {
           200: "#30457C",
           300: "#4e81fb",
           400: "#3F6CD8",
-          500:"#4A507C",
-          600:"#94A3B8"
+          500: "#4A507C",
+          600: "#94A3B8",
         },
       },
       spacing: {
@@ -36,6 +36,9 @@ export default {
       },
       container: {
         center: true,
+        padding: {
+          DEFAULT: "1.25rem",
+        },
       },
     },
   },

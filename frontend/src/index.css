@@ -60,10 +60,10 @@
     @apply hover:submenu-marker hover:text-green-500 hover:mr-4 transition-all duration-200;
   }
   .animation-open-menu {
-    animation: openMenuAnim 0.1s linear  1 reverse backwards;
+    animation: openMenuAnim 0.1s linear 1 reverse backwards;
   }
   .animation-close-menu {
-    animation: closenMenuAnim 0.1s linear  1 reverse backwards;
+    animation: closenMenuAnim 0.1s linear 1 reverse backwards;
   }
   @keyframes openMenuAnim {
     0% {
