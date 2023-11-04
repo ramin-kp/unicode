@@ -6,7 +6,8 @@ export default function Main() {
   return (
     <main>
       <div className="container">
-        <div className="lg:flex items-center justify-center lg:justify-between mt-2.5 lg:mt-[138px]">
+        {/* menu */}
+        <div className="lg:flex items-center justify-center lg:justify-between mt-2.5 lg:mt-25">
           {/* img-menu */}
           <div className="flex justify-center lg:justify-end lg:order-2 w-full lg:mr-12">
             <img
