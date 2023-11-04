@@ -6,6 +6,7 @@ import HamburgerMenu from "./../HamburgerMenu/HamburgerMenu";
 export default function Header() {
   const [theme, setTheme] = useState(localStorage.getItem("theme") === "dark");
   const [isShowHamburgerMenu, setIsShowHamburgerMenu] = useState(false);
+  const [isShowInput, setIsShowInput] = useState(false);
   useEffect(() => {
     const darkModHandler = () => {
       const root = window.document.documentElement;
@@ -24,15 +25,19 @@ export default function Header() {
     <>
       <SvgIcons />
       {/* desktop header */}
-      <header className="hidden  lg:flex items-center max-w-[1920px] h-32 px-9 bg-gray-50 dark:bg-black-500 dark:border-b dark:border-slate-700">
+      <header className="hidden lg:flex items-center max-w-[1920px] h-32 px-5 xl:px-9 bg-gray-50 dark:bg-black-500 dark:border-b dark:border-slate-700">
         <div className="flex items-center justify-between w-full">
           {/* right navbar */}
-          <div className="flex items-center justify-between my-[60px] ">
+          <div className="flex items-center justify-between shrink-0 my-[60px] ">
             <Link to="/">
-              <img className="w-[106px]" src="/images/logo.png" alt="log-img" />
+              <img
+                className="w-[80px] xl:w-[106px]"
+                src="/images/logo.png"
+                alt="log-img"
+              />
             </Link>
-            <span className="inline-block w-px h-[58px] bg-gray-100 dark:bg-slate-700 mr-2.5"></span>
-            <ul className="flex items-center child:mx-2.5 child:text-lg dark:text-white  transition-all delay-75">
+            <span className="inline-block w-px h-[58px] bg-gray-100 dark:bg-slate-700 mx-2.5 xl:mr-2.5"></span>
+            <ul className="flex items-center child:mx-1.5 xl:child:mx-2.5 child:text-lg dark:text-white  transition-all delay-75">
               <li className="relative group">
                 <Link
                   className=" flex items-center group-hover:text-green-500"
@@ -141,18 +146,37 @@ export default function Header() {
           </div>
           {/* left navbar */}
           <div className="flex items-center">
-            <div className="flex items-center h-14 px-2.5 bg-gray-100 dark:bg-black-500 dark:border dark:border-slate-700 text-slate-500 rounded-full">
+            <div className="relative flex items-center justify-center xl:justify-normal  w-14 xl:w-auto h-14 xl:h-14 px-2.5 bg-gray-100 dark:bg-black-500 dark:border dark:border-slate-700 text-slate-500 rounded-full">
               <input
-                className="h-full bg-transparent outline-none placeholder:font-danaLight"
+                className="hidden xl:inline h-full bg-transparent outline-none placeholder:font-danaLight"
                 type="text"
                 placeholder="جستجو"
               />
-              <svg className=" w-6 h-6 ">
+              <svg
+                className=" w-6 h-6 cursor-pointer "
+                onClick={() => setIsShowInput(!isShowInput)}
+              >
                 <use href="#search"></use>
               </svg>
+              <div
+                className={`${
+                  isShowInput ? "inline" : "hidden"
+                } absolute top-16 left-0 xl:hidden flex items-center h-full px-2.5 bg-white dark:bg-black-300 border border-r-slate-300 dark:border-secondary-500  rounded-xl`}
+              >
+                <input
+                  className="h-full bg-transparent outline-none text-zinc-700 dark:text-white text-base placeholder:font-danaLight"
+                  type="text"
+                  placeholder="جستجو"
+                />
+                <svg
+                  className=" w-6 h-6 cursor-pointer "
+                >
+                  <use href="#search"></use>
+                </svg>
+              </div>
             </div>
             <div
-              className="flex-center w-14 h-14 mx-9 bg-gray-100 hover:bg-gray-200 dark:bg-black-500 dark:border dark:border-slate-700 dark:hover:border-slate-400 rounded-full cursor-pointer transition-all delay-75"
+              className="flex-center w-14 h-14 mx-4 xl:mx-9 bg-gray-100 hover:bg-gray-200 dark:bg-black-500 dark:border dark:border-slate-700 dark:hover:border-slate-400 rounded-full cursor-pointer transition-all delay-75"
               onClick={() => setTheme(!theme)}
             >
               <svg className="dark:hidden w-6 h-6 text-slate-500">
