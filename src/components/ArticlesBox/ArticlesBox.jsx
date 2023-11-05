@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function ArticlesBox() {
   return (
-    <div className="dark:border border-zinc-700 overflow-hidden rounded-xl">
+    <div className="dark:border border-zinc-700 overflow-hidden rounded-xl shadow-md">
       <div>
         <img
           className="rounded-xl"
@@ -43,7 +43,9 @@ export default function ArticlesBox() {
         </div>
 
         <Link className="flex items-start justify-center mt-4 py-[18px] child:text-zinc-700 child:hover:text-green-500 dark:child:hover:text-green-500 border-t border-slate-300 dark:border-secondary-600/10 transition-colors">
-          <p className="font-danaMedium text-base dark:text-white">مطالعه مقاله</p>
+          <p className="font-danaMedium text-base dark:text-white">
+            مطالعه مقاله
+          </p>
           <svg className="w-5 h-5 mr-0.5 dark:text-white">
             <use href="#arrow-solid"></use>
           </svg>

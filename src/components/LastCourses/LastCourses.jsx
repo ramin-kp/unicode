@@ -1,6 +1,6 @@
 import React from "react";
 import SectionHeader from "../SectionHeader/SectionHeader";
-import { Link } from "react-router-dom";
+
 import SvgIcons from "../assets/icons/SvgIcons";
 import CourseBox from "../CourseBox/CourseBox";
 

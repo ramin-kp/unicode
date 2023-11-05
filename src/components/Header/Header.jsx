@@ -25,7 +25,7 @@ export default function Header() {
     <>
       <SvgIcons />
       {/* desktop header */}
-      <header className="hidden lg:flex items-center max-w-[1920px] h-32 px-5 xl:px-9 bg-gray-50 dark:bg-black-500 dark:border-b dark:border-slate-700">
+      <header className=" hidden lg:flex-center max-w-[1920px] h-32 mx-auto px-5 xl:px-9 bg-gray-50 dark:bg-black-500 dark:border-b dark:border-slate-700">
         <div className="flex items-center justify-between w-full">
           {/* right navbar */}
           <div className="flex items-center justify-between shrink-0 my-[60px] ">
@@ -37,7 +37,7 @@ export default function Header() {
               />
             </Link>
             <span className="inline-block w-px h-[58px] bg-gray-100 dark:bg-slate-700 mx-2.5 xl:mr-2.5"></span>
-            <ul className="flex items-center child:mx-1.5 xl:child:mx-2.5 child:text-lg dark:text-white  transition-all delay-75">
+            <ul className="flex items-center child:mx-1.5 xl:child:mx-2.5 lg:child:text-base 2xl:child:text-xl dark:text-white  transition-all delay-75 z-10">
               <li className="relative group">
                 <Link
                   className=" flex items-center group-hover:text-green-500"
@@ -146,9 +146,10 @@ export default function Header() {
           </div>
           {/* left navbar */}
           <div className="flex items-center">
-            <div className="relative flex items-center justify-center xl:justify-normal  w-14 xl:w-auto h-14 xl:h-14 px-2.5 bg-gray-100 dark:bg-black-500 dark:border dark:border-slate-700 text-slate-500 rounded-full">
+            <div className="relative  flex items-center justify-center xl:justify-normal  w-14 xl:w-auto h-14 xl:h-14 px-2.5 bg-gray-100 dark:bg-black-500 dark:border dark:border-slate-700 text-slate-500 rounded-full">
               <input
-                className="hidden xl:inline h-full bg-transparent outline-none placeholder:font-danaLight"
+                className="hidden xl:inline
+                lg:w-[150px] 2xl:w-auto h-full bg-transparent outline-none placeholder:font-danaLight"
                 type="text"
                 placeholder="جستجو"
               />
@@ -160,17 +161,17 @@ export default function Header() {
               </svg>
               <div
                 className={`${
-                  isShowInput ? "inline" : "hidden"
-                } absolute top-16 left-0 xl:hidden flex items-center h-full px-2.5 bg-white dark:bg-black-300 border border-r-slate-300 dark:border-secondary-500  rounded-xl`}
+                  isShowInput ? "inline-block" : "hidden"
+                } absolute top-16 left-0 xl:hidden flex items-center
+                h-full px-2.5 bg-white dark:bg-black-300 border border-r-slate-300 dark:border-secondary-500 rounded-xl`}
               >
                 <input
-                  className="h-full bg-transparent outline-none text-zinc-700 dark:text-white text-base placeholder:font-danaLight"
+                  className="h-full
+                  bg-transparent outline-none text-zinc-700 dark:text-white text-base placeholder:font-danaLight"
                   type="text"
                   placeholder="جستجو"
                 />
-                <svg
-                  className=" w-6 h-6 cursor-pointer "
-                >
+                <svg className=" w-6 h-6 cursor-pointer ">
                   <use href="#search"></use>
                 </svg>
               </div>
@@ -188,13 +189,13 @@ export default function Header() {
             </div>
             <div className="relative flex items-center w-[161px] h-14 text-lg child:transition-colors child:delay-75">
               <Link
-                className="absolute w-full h-full bg-sky-300 dark:bg-secondary-200 hover:bg-sky-400 dark:hover:bg-secondary-100 text-white rounded-full"
+                className=" lg:w-[85%] 2xl:w-full h-full bg-sky-300 dark:bg-secondary-200 hover:bg-sky-400 dark:hover:bg-secondary-100 text-white rounded-full"
                 to="ramin"
               >
                 <span className="inline-block mt-4 pr-4">ورود</span>
               </Link>
               <Link
-                className="absolute z-10 left-0 flex-center w-25 h-full bg-sky-500 dark:bg-secondary-300 hover:bg-sky-600 dark:hover:bg-secondary-400 text-white rounded-full"
+                className="absolute z-10 lg:left-6 2xl:left-0 flex-center lg:w-20 2xl:w-25 h-full bg-sky-500 dark:bg-secondary-300 hover:bg-sky-600 dark:hover:bg-secondary-400 text-white rounded-full"
                 to="amin"
               >
                 <span to="/">عضویت</span>
