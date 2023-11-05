@@ -29,9 +29,10 @@ export default {
           400: "#3F6CD8",
           500: "#4A507C",
           600: "#94A3B8",
-          700:"#21263E"
+          700: "#21263E",
         },
       },
+
       spacing: {
         25: "6.25rem",
       },
@@ -39,8 +40,22 @@ export default {
         center: true,
         padding: {
           DEFAULT: "1.25rem",
+          lg: "0.625rem",
         },
       },
+    },
+    screens: {
+      xs: "480px",
+
+      sm: "640px",
+
+      md: "768px",
+
+      lg: "1024px",
+
+      xl: "1280px",
+
+      "2xl": "1536px",
     },
   },
   plugins: [

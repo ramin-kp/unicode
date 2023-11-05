@@ -6,7 +6,11 @@ export default function CourseBox() {
     <div className="bg-white dark:bg-black-400 rounded-xl overflow-hidden dark:border border-zinc-700 shadow-md">
       {/* img box */}
       <div>
-        <img src="/images/django.png" alt="courses-img" />
+        <img
+          className="rounded-xl"
+          src="/images/django.png"
+          alt="courses-img"
+        />
       </div>
       {/* main box */}
       <div className="px-2.5 py-2">
