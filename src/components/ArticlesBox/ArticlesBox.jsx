@@ -14,7 +14,10 @@ export default function ArticlesBox() {
       </div>
       <div className="mx-2.5">
         <div className="mt-7 mb-9">
-          <Link className="mb-1.5 text-zinc-700 font-danaMedium text-xl dark:text-white " to="#">
+          <Link
+            className="mb-1.5 text-zinc-700 font-danaMedium text-xl dark:text-white "
+            to="#"
+          >
             محیط های برنامه نویسی پایتون + راهنمایی انتخاب
           </Link>
           <h4 className="text-slate-500 dark:text-slate-400 font-danaLight text-sm">
@@ -42,14 +45,17 @@ export default function ArticlesBox() {
           </div>
         </div>
 
-        <Link className="flex items-start justify-center mt-4 py-[18px] child:text-zinc-700 child:hover:text-green-500 dark:child:hover:text-green-500 border-t border-slate-300 dark:border-secondary-600/10 transition-colors">
-          <p className="font-danaMedium text-base dark:text-white">
-            مطالعه مقاله
-          </p>
-          <svg className="w-5 h-5 mr-0.5 dark:text-white">
-            <use href="#arrow-solid"></use>
-          </svg>
-        </Link>
+        <div className="flex items-start justify-center mt-4 py-[18px]  border-t border-slate-300 dark:border-secondary-600/10 transition-colors">
+          <Link
+            className="flex items-start justify-center font-danaMedium text-base dark:text-white text-zinc-700 hover:text-green-500 dark:child:hover:text-green-500"
+            to="#"
+          >
+            <span>مطالعه مقاله</span>
+            <svg className="w-5 h-5 mr-1 dark:text-white">
+              <use href="#arrow-solid"></use>
+            </svg>
+          </Link>
+        </div>
       </div>
       <SvgIcons />
     </div>
