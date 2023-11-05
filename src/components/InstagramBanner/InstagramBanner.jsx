@@ -5,7 +5,7 @@ export default function InstagramBanner() {
   return (
     <section>
       <div className="container">
-        <div className="lg:flex items-center justify-between w-full lg:h-[200px] px-[30px] py-5 lg:p-16 mt-5 mb-9 lg:my-28 bg-gradient-to-br lg:bg-gradient-to-r from-purple-700 via-pink-700 to-amber-400 rounded-2xl">
+        <div className="lg:flex items-center justify-between w-full lg:h-[144px] px-[30px] py-5 lg:p-16 mt-5 mb-9 lg:my-28 bg-gradient-to-br lg:bg-gradient-to-r from-purple-700 via-pink-700 to-amber-400 rounded-2xl">
           <div>
             <h1 className="font-morabbaBold text-4xl text-center lg:text-right lg:text-[40px] text-white">
               پیچ اینستاگرامی یونی کٌد

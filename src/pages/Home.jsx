@@ -1,3 +1,4 @@
+import Footer from "../components/Footer/Footer";
 import HamburgerMenu from "../components/HamburgerMenu/HamburgerMenu";
 import Header from "../components/Header/Header";
 import InstagramBanner from "../components/InstagramBanner/InstagramBanner";
@@ -16,6 +17,7 @@ export default function Home() {
       <Services />
       <LastArticles />
       <InstagramBanner />
+      <Footer />
     </div>
   );
 }

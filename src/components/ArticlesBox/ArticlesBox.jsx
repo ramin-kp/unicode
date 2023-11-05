@@ -14,9 +14,9 @@ export default function ArticlesBox() {
       </div>
       <div className="mx-2.5">
         <div className="mt-7 mb-9">
-          <h1 className="mb-1.5 text-zinc-700 font-danaMedium text-xl dark:text-white ">
+          <Link className="mb-1.5 text-zinc-700 font-danaMedium text-xl dark:text-white " to="#">
             محیط های برنامه نویسی پایتون + راهنمایی انتخاب
-          </h1>
+          </Link>
           <h4 className="text-slate-500 dark:text-slate-400 font-danaLight text-sm">
             هوش مصنوعی داره جهان رو در بر میگیره و به سرعت درحال پیشرفته و همین
             پیشرفتش باعث...
