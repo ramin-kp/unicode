@@ -9,7 +9,7 @@ export default function ServicesBox({ title, description, color, svg }) {
           <use href={svg}></use>
         </svg>
       </div>
-      <div className="mr-[30px]">
+      <div className="sm:mr-5 lg:mr-[30px]">
         <h1 className="text-center sm:text-right font-danaDemiBold text-xl text-slate-500 dark:text-white">
           {title}
         </h1>

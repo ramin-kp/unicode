@@ -9,7 +9,7 @@ export default function Services() {
         <SectionHeader
           color="bg-sky-500"
           title="ما چه خدماتی ارئه می‌کنیم؟"
-          description="برترین مقالات برای افزایش دانش برنامه نویسی و سایر مهارت ها"
+          description="از اونجایی که آکادمی آموزشی یونی کٌد یک آکادمی خصوصی هست"
           link={false}
         />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
