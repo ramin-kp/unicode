@@ -1,5 +1,6 @@
 import HamburgerMenu from "../components/HamburgerMenu/HamburgerMenu";
 import Header from "../components/Header/Header";
+import InstagramBanner from "../components/InstagramBanner/InstagramBanner";
 import LastArticles from "../components/LastArticles/LastArticles";
 import LastCourses from "../components/LastCourses/LastCourses";
 import Main from "../components/Main/Main";
@@ -14,6 +15,7 @@ export default function Home() {
       <LastCourses />
       <Services />
       <LastArticles />
+      <InstagramBanner />
     </div>
   );
 }
