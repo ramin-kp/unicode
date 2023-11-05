@@ -67,12 +67,14 @@
     background-color: #64748b;
     border-radius: 100%;
   }
-  .text-direction{
+  .text-direction {
     direction: ltr;
     text-align: left;
   }
+  .selected {
+    @apply bg-gray-100 text-zinc-700;
+  }
 
- 
   .submenu-hover {
     @apply hover:submenu-marker hover:text-green-500 hover:mr-4 transition-all duration-200;
   }
