@@ -12,7 +12,7 @@ export default function LastCourses() {
           color="bg-purple-600"
           title="آخرین دوره‌ها"
           description="بهترین دوره‌های آموزشی برای پیشرفت"
-          link={true}
+          link="/courses"
         />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
           <CourseBox />

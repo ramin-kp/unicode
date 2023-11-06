@@ -21,7 +21,7 @@ export default function SectionHeader({ title, description, link, color }) {
         </div>
         {link && (
           <div className="flex items-center w-1/2 sm:w-auto mr-auto sm:mr-0 mt-2.5 sm:mt-0 py-1.5 pr-1.5 pl-0.5 text-sky-500 dark:text-secondary-300 hover:bg-sky-200 dark:hover:bg-secondary-700 rounded-md transition-all delay-75">
-            <Link to="#">مشاهده تمام دوره‌ها</Link>
+            <Link to={link}>مشاهده تمام دوره‌ها</Link>
             <svg className="w-6 h-6">
               <use href="#arrow"></use>
             </svg>
