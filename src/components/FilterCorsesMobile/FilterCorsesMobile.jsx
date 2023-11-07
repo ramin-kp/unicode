@@ -7,7 +7,7 @@ export default function FilterCorsesMobile({
   setIsShowFilter,
   selected,
 }) {
-  console.log(isShowFilter);
+
   return createPortal(
     <div
       className={` ${

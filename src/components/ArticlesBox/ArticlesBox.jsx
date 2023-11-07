@@ -45,7 +45,7 @@ export default function ArticlesBox() {
           </div>
         </div>
 
-        <div className="flex items-start justify-center mt-4 py-[18px]  border-t border-slate-300 dark:border-secondary-600/10 transition-colors">
+        <div className="flex items-start justify-center mt-4 py-[18px]  border-t border-slate-200 dark:border-secondary-600/10 transition-colors">
           <Link
             className="flex items-start justify-center font-danaMedium text-base dark:text-white text-zinc-700 hover:text-green-500 dark:child:hover:text-green-500"
             to="#"

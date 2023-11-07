@@ -29,7 +29,7 @@ export default function Courses() {
             </h1>
           </div>
           <div className="lg:flex items-start justify-between gap-5">
-            <div className="flex flex-wrap lg:flex-col lg:flex-nowrap space-y-5 mb-5 lg:mb-0">
+            <aside className="lg:sticky top-5 flex flex-wrap lg:flex-col lg:flex-nowrap space-y-5 mb-5 lg:mb-0">
               {/* Courses-Search */}
               <div className="flex items-center justify-between w-full h-[68px] px-10  bg-white  dark:bg-black-400 text-slate-500 dark:text-slate-400 rounded-2xl">
                 <input
@@ -140,7 +140,7 @@ export default function Courses() {
                 setIsShowFilter={setIsShowFilter}
                 selected={true}
               />
-            </div>
+            </aside>
             {/* courses-gridBox */}
             <div className="">
               <div className="hidden sm:flex items-center flex-grow h-[68px] px-6 mb-5 bg-white dark:bg-black-400 dark:text-white rounded-2xl">
@@ -168,7 +168,7 @@ export default function Courses() {
                 <CourseBox />
                 <CourseBox />
               </div>
-              <div className="flex-center mx-auto mb-10">
+              <div className="flex-center mx-auto">
                 <span className="py-4 px-9 bg-gray-200 hover:bg-gray-300 text-base text-center text-zinc-700 rounded-full cursor-pointer transition-colors">
                   مشاهده بیشتر دوره‌ها
                 </span>

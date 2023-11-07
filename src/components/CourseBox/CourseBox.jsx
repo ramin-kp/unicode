@@ -57,7 +57,7 @@ export default function CourseBox() {
           </div>
         </div>
         {/* box footer */}
-        <div className="flex items-center justify-between pt-2.5 mt-4 border-t border-slate-300 dark:border-secondary-600/10">
+        <div className="flex items-center justify-between pt-2.5 mt-4 border-t border-slate-100 dark:border-secondary-600/10">
           <div className="flex items-center child:text-slate-500 dark:text-secondary-600">
             <svg className="w-5 h-5 ml-1.5">
               <use href="#users"></use>

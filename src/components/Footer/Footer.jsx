@@ -4,7 +4,7 @@ import SvgIcons from "../assets/icons/SvgIcons";
 
 export default function Footer() {
   return (
-    <footer className="bg-white px-3 lg:px-0 dark:bg-black-500 dark:border-t dark:border-slate-700">
+    <footer className="bg-white px-3 lg:px-0 mt-20 dark:bg-black-500 dark:border-t dark:border-slate-700">
       <div className="container">
         <div className="flex flex-wrap gap-x-4 lg:gap-x-0 gap-y-5 lg:gap-y-0 items-start justify-between mx-auto mb-2.5 pt-10 border-b border-slate-300 dark:border-slate-700">
           <div className="">
