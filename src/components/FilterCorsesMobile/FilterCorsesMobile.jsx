@@ -170,7 +170,7 @@ export default function FilterCorsesMobile({
           )}
         </div>
         {/* filter-footer */}
-        <div className="flex flex-col justify-end  grow pb-3">
+        <div className="flex flex-col justify-end  grow pb-20">
           <button className="flex-center w-full py-3.5 bg-green-500 dark:bg-primary font-danaDemiBold text-lg text-white rounded-2xl">
             اعمال فیلتر
           </button>
