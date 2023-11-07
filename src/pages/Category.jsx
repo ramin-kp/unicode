@@ -7,12 +7,13 @@ import CourseBox from "../components/CourseBox/CourseBox";
 export default function Category() {
   return (
     <div>
+      {/* <!--------------------------------  Category-Header  --------------------------------> */}
       <Header />
-      {/* <!--------------------------------  Courses-Section  --------------------------------> */}
+      {/* <!--------------------------------  Category-Section  --------------------------------> */}
       <section>
         <div className="container">
           <div className="flex-center w-full mt-14 mb-9">
-            <span className="inline-block w-10 h-2.5 bg-rose-500 rounded"></span>
+            <span className="inline-block w-10 h-2.5 bg-rose-500 rounded-sm"></span>
             <h1 className="mr-2.5 font-morabbaBold dark:text-white  text-4xl sm:text-6xl">
               فرانت اند
             </h1>
@@ -93,7 +94,7 @@ export default function Category() {
           </div>
         </div>
       </section>
-      {/* <!--------------------------------  Courses-Footer  --------------------------------> */}
+      {/* <!--------------------------------  Category-Footer  --------------------------------> */}
 
       <Footer />
     </div>

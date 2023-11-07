@@ -23,7 +23,7 @@ export default function Courses() {
       <section>
         <div className="container">
           <div className="flex-center w-full mt-14 mb-9">
-            <span className="inline-block w-10 h-2.5 bg-rose-500 rounded"></span>
+            <span className="inline-block w-10 h-2.5 bg-rose-500 rounded-sm"></span>
             <h1 className="mr-2.5 font-morabbaBold dark:text-white  text-4xl sm:text-6xl">
               دوره‌ها
             </h1>
