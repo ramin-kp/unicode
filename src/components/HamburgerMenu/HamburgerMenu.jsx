@@ -23,13 +23,13 @@ export default function HamburgerMenu({
           className="flex items-center pb-2.5 justify-between my-5 border-b border-slate-300 dark:border-secondary-500
         "
         >
-          <div>
+          <Link to="/">
             <img
               className="w-[62px]"
               src="/images/logo.png"
               alt="unicode-log"
             />
-          </div>
+          </Link>
           <div className="dark:text-white">
             <h1 className="font-morabbaBold text-xl">یونی کٌد</h1>
             <h3 className="font-danaLight text-sm">unicode.ir</h3>
@@ -55,7 +55,7 @@ export default function HamburgerMenu({
             <li className="w-full">
               <Link
                 className="w-full flex items-center justify-between text-base text-slate-500"
-                to="#"
+                to="/course-cat/:courseName"
               >
                 <span
                   className={`${
@@ -88,100 +88,19 @@ export default function HamburgerMenu({
                 </li>
               </ul>
             </li>
+
             <li className="w-full">
               <Link
                 className="w-full flex items-center justify-between text-base text-slate-500"
-                to="#"
+                to="/blogs"
               >
                 <span
                   className={`${
                     isShowSubmenu && "text-zinc-700"
                   } mb-1.5 transition-all`}
                 >
-                  فرانت‌اند
+                  وبلاگ
                 </span>
-                <svg
-                  className={`w-5 h-5  ${
-                    isShowSubmenu && "text-zinc-700 rotate-180"
-                  } transition-all`}
-                  onClick={() => {
-                    setIsShowSubmenu(!isShowSubmenu);
-                  }}
-                >
-                  <use href="#chevron-down"></use>
-                </svg>
-              </Link>
-              <ul
-                className={`text-slate-500 text-sm child:mr-1 ${
-                  isShowSubmenu ? "inline-block" : "hidden"
-                } mt-3`}
-              >
-                <li className="relative submenu-hover">
-                  <Link to="#">آموزش css</Link>
-                </li>
-                <li className="relative submenu-hover">
-                  <Link to="#">آموزش css</Link>
-                </li>
-              </ul>
-            </li>
-            <li className="w-full">
-              <Link
-                className="w-full flex items-center justify-between text-base text-slate-500"
-                to="#"
-              >
-                <span
-                  className={`${
-                    isShowSubmenu && "text-zinc-700"
-                  } mb-1.5 transition-all`}
-                >
-                  فرانت‌اند
-                </span>
-                <svg
-                  className={`w-5 h-5  ${
-                    isShowSubmenu && "text-zinc-700 rotate-180"
-                  } transition-all`}
-                  onClick={() => {
-                    setIsShowSubmenu(!isShowSubmenu);
-                  }}
-                >
-                  <use href="#chevron-down"></use>
-                </svg>
-              </Link>
-              <ul
-                className={`text-slate-500 text-sm child:mr-1 ${
-                  isShowSubmenu ? "inline-block" : "hidden"
-                } mt-3`}
-              >
-                <li className="relative submenu-hover">
-                  <Link to="#">آموزش css</Link>
-                </li>
-                <li className="relative submenu-hover">
-                  <Link to="#">آموزش css</Link>
-                </li>
-              </ul>
-            </li>
-            <li className="w-full">
-              <Link
-                className="w-full flex items-center justify-between text-base text-slate-500"
-                to="#"
-              >
-                <span
-                  className={`${
-                    isShowSubmenu && "text-zinc-700"
-                  } mb-1.5 transition-all`}
-                >
-                  فرانت‌اند
-                </span>
-                <svg
-                  className={`w-5 h-5  ${
-                    isShowSubmenu && "text-zinc-700 rotate-180"
-                  } transition-all`}
-                  onClick={() => {
-                    setIsShowSubmenu(!isShowSubmenu);
-                  }}
-                >
-                  <use href="#chevron-down"></use>
-                </svg>
               </Link>
               <ul
                 className={`text-slate-500 text-sm child:mr-1 ${

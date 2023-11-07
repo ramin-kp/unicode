@@ -69,7 +69,9 @@ export default function Category() {
                     همه دوره‌ها
                   </span>
                 </div>
-                <SortCourses setIsShowSortCorses={setIsShowSortCorses} />
+                {isShowSortCorses && (
+                  <SortCourses setIsShowSortCorses={setIsShowSortCorses} />
+                )}
 
                 <FilterCorsesMobile
                   isShowFilter={isShowFilter}

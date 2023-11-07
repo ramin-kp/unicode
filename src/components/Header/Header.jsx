@@ -41,7 +41,7 @@ export default function Header() {
               <li className="relative group">
                 <Link
                   className=" flex items-center group-hover:text-green-500"
-                  to="/"
+                  to="/course-cat/:courseName"
                 >
                   فرانت‌اند
                   <svg className="w-5 h-5 mr-2">
@@ -67,7 +67,7 @@ export default function Header() {
                 </ul>
               </li>
               <li className="relative group">
-                <Link className="flex items-center hover:text-green-500" to="/">
+                <Link className="flex items-center hover:text-green-500" to="/course-cat/:courseName">
                   امنیت
                   <svg className="w-5 h-5 mr-2">
                     <use href="#chevron-down"></use>
@@ -92,7 +92,7 @@ export default function Header() {
                 </ul>
               </li>
               <li className="relative group">
-                <Link className="flex items-center hover:text-green-500" to="/">
+                <Link className="flex items-center hover:text-green-500" to="/course-cat/:courseName">
                   پایتون
                   <svg className="w-5 h-5 mr-2">
                     <use href="#chevron-down"></use>
@@ -117,17 +117,17 @@ export default function Header() {
                 </ul>
               </li>
               <li>
-                <Link className="hover:text-green-500" to="/">
+                <Link className="hover:text-green-500" to="/course-cat/:courseName">
                   مهارت نرم
                 </Link>
               </li>
               <li>
-                <Link className="hover:text-green-500" to="/">
+                <Link className="hover:text-green-500" to="/course-cat/:courseName">
                   سفارش پروژه
                 </Link>
               </li>
               <li className="relative group">
-                <Link className="flex items-center hover:text-green-500" to="/">
+                <Link className="flex items-center hover:text-green-500" to="/blogs">
                   مقالات
                   <svg className="w-5 h-5 mr-2">
                     <use href="#chevron-down"></use>
@@ -212,13 +212,13 @@ export default function Header() {
               <use href="#bars"></use>
             </svg>
           </div>
-          <div>
+          <Link to="/">
             <img
               className="w-[81px] h-[51px]"
               src="/images/logo.png"
               alt="unicode-logo"
             />
-          </div>
+          </Link>
           <div className="relative flex-center w-12 h-12 bg-gray-200/70 dark:bg-black-400/70 overflow-hidden rounded-full cursor-pointer">
             <Link to="#">
               <svg className=" w-6 h-6 text-gray-500 dark:text-secondary-600">
