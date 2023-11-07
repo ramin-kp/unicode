@@ -3,23 +3,13 @@ import { createPortal } from "react-dom";
 import SvgIcons from "../assets/icons/SvgIcons";
 
 export default function SortCourses({ isShowSortCorses, setIsShowSortCorses }) {
-  // useEffect(() => {
-  //   document.body.addEventListener("click", closeModal);
-  //   return () => {
-  //     window.removeEventListener("click", closeModal);
-  //   };
-  // }, [isShowSortCorses]);
-  // const closeModal = () => {
-  //   setIsShowSortCorses(false)
-  // };
   return createPortal(
-    <div
-      className={`${
-        isShowSortCorses && "flex"
-      } items-end absolute inset-0 w-screen h-screen bg-zinc-950/50  sort-box-animation`}
-      onClick={() => setIsShowSortCorses(false)}
-    >
-      <div className="w-full">
+    <div className={`absolute inset-0 flex flex-col w-screen h-screen z-20`}>
+      <div
+        className="grow bg-zinc-800/50"
+        onClick={() => setIsShowSortCorses(false)}
+      ></div>
+      <div className="w-screen sort-box-animation">
         <div className="flex items-center p-5 bg-gray-200 dark:bg-black-300 text-zinc-700 dark:text-white child:font-danaDemiBold child:text-lg rounded-ss-2xl rounded-se-2xl">
           <span
             className="cursor-pointer"
@@ -31,7 +21,7 @@ export default function SortCourses({ isShowSortCorses, setIsShowSortCorses }) {
           </span>
           <span>مرتب سازی بر اساس</span>
         </div>
-        <div className="bg-white dark:bg-black-400 child:p-5 text-slate-500 dark:text-slate-400 divide-y divide-slate-700">
+        <div className="bg-white dark:bg-black-400 child:p-5 text-slate-500 dark:text-slate-400 divide-y dark:divide-slate-700">
           <div
             className={`text-selected flex items-center justify-between text-sm`}
           >

@@ -1,6 +1,6 @@
 import React from "react";
 import SvgIcons from "../assets/icons/SvgIcons";
-import FilterCorses from "../FilterCorses/FilterCorses";
+import { createPortal } from "react-dom";
 
 export default function FilterCorsesMobile({
   isShowFilter,
@@ -8,19 +8,24 @@ export default function FilterCorsesMobile({
   selected,
 }) {
   console.log(isShowFilter);
-  return (
+  return createPortal(
     <div
       className={` ${
-        isShowFilter ? "fixed" : "hidden"
-      } inset-0 -top-5 h-screen w-screen bg-white overflow-hidden z-10`}
+        isShowFilter ? "absolute" : "hidden"
+      } inset-0 flex flex-col h-screen z-50`}
     >
       {/* filter-header */}
-      <div className="flex items-center justify-between p-5 bg-gray-100 dark:bg-black-300">
-        <div className="flex-center cursor-pointer " onClick={() => setIsShowFilter(false)}>
+      <div className="flex items-center  justify-between p-5 bg-gray-100 dark:bg-black-300">
+        <div
+          className="flex-center cursor-pointer "
+          onClick={() => setIsShowFilter(false)}
+        >
           <svg className="w-6 h-6 text-zinc-700 dark:text-slate-400 ml-2.5">
             <use href="#x-mark"></use>
           </svg>
-          <span className="text-lg text-zinc-700 dark:text-white font-danaMedium">فیلتر</span>
+          <span className="text-lg text-zinc-700 dark:text-white font-danaMedium">
+            فیلتر
+          </span>
         </div>
         <button className="flex items-start bg-pink-200/50 dark:bg-red-500/10 px-2.5 py-1.5 text-sm text-pink-500 dark:text-red-600 rounded-xl">
           <svg className="w-5 h-5 ml-1">
@@ -29,9 +34,9 @@ export default function FilterCorsesMobile({
           حذف فیلترها
         </button>
       </div>
-      <div className=" gap-y-10 h-full px-5 child:dark:text-white dark:bg-black-400">
+      <div className=" flex flex-col h-full px-5 child:dark:text-white bg-white dark:bg-black-400">
         {/* filter-main */}
-        <div className="flex-col justify-between divide-y dark:divide-slate-700 child:py-5 child:text-sm text-slate-500">
+        <div className="divide-y dark:divide-slate-700 child:py-5 child:text-sm text-slate-500">
           <label
             className="flex items-center justify-between w-full cursor-pointer "
             htmlFor="selected"
@@ -144,7 +149,7 @@ export default function FilterCorsesMobile({
           </div>
         </div>
         {/* filter-footer */}
-        <div className="mt-[220px]">
+        <div className="flex flex-col justify-end  grow pb-3">
           <button className="flex-center w-full py-3.5 bg-green-500 dark:bg-primary font-danaDemiBold text-lg text-white rounded-2xl">
             اعمال فیلتر
           </button>
@@ -152,6 +157,7 @@ export default function FilterCorsesMobile({
       </div>
 
       <SvgIcons />
-    </div>
+    </div>,
+    document.getElementById("modal")
   );
 }

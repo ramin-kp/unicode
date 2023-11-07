@@ -74,10 +74,10 @@
   .selected {
     @apply bg-gray-100 dark:bg-black-300 dark:text-white text-zinc-700;
   }
-  .text-selected{
+  .text-selected {
     @apply font-danaMedium text-zinc-950 dark:text-white;
   }
-    .selected-checkbox {
+  .selected-checkbox {
     @apply bg-sky-500 dark:bg-secondary-300;
   }
   .filter-marker::after {
@@ -133,10 +133,10 @@
       transform: translateX(-50px);
     }
   }
-  
-.sort-box-animation{
-  animation: sort-animation 0.5s forwards;
-}
+
+  .sort-box-animation {
+    animation: sort-animation 0.3s forwards;
+  }
   @keyframes sort-animation {
     0% {
       opacity: 0.1;
