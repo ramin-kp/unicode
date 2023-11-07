@@ -11,7 +11,7 @@ export default function FilterCorsesMobile({
   return createPortal(
     <div
       className={` ${
-        isShowFilter ? "absolute" : "hidden"
+        isShowFilter ? "fixed" : "hidden"
       } inset-0 flex flex-col h-screen z-50`}
     >
       {/* filter-header */}

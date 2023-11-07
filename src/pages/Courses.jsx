@@ -12,10 +12,10 @@ export default function Courses() {
   const [isShowSortCorses, setIsShowSortCorses] = useState(false);
   useEffect(() => {
     window.document.body.classList.toggle("overflow-hidden");
-  }, [isShowFilter,isShowSortCorses]);
-  // useEffect(() => {
-  //   window.document.body.classList.toggle("overflow-hidden");
-  // }, [isShowSortCorses]);
+  }, [isShowFilter]);
+  useEffect(() => {
+    window.document.body.classList.toggle("overflow-hidden");
+  }, [isShowSortCorses]);
   return (
     <div>
       <Header />

@@ -4,7 +4,7 @@ import SvgIcons from "../assets/icons/SvgIcons";
 
 export default function SortCourses({ isShowSortCorses, setIsShowSortCorses }) {
   return createPortal(
-    <div className={`absolute inset-0 flex flex-col w-screen h-screen z-20`}>
+    <div className={`fixed inset-0 flex flex-col w-screen h-screen z-20`}>
       <div
         className="grow bg-zinc-800/50"
         onClick={() => setIsShowSortCorses(false)}
