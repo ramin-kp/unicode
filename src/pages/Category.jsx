@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import FilterCorses from "../components/FilterCorses/FilterCorses";
 import CourseBox from "../components/CourseBox/CourseBox";
+import FilterCorsesMobile from "../components/FilterCorsesMobile/FilterCorsesMobile";
+import SortCourses from "./../components/SortCourses/SortCourses";
 
 export default function Category() {
+  const [isShowFilter, setIsShowFilter] = useState(false);
+  const [isShowSortCorses, setIsShowSortCorses] = useState(false);
+  useEffect(() => {
+    window.document.body.classList.toggle("overflow-hidden");
+  }, [isShowFilter]);
+  useEffect(() => {
+    window.document.body.classList.toggle("overflow-hidden");
+  }, [isShowSortCorses]);
   return (
     <div>
       {/* <!--------------------------------  Category-Header  --------------------------------> */}
@@ -39,7 +49,10 @@ export default function Category() {
                 </div>
               </div>
               <div className="flex items-center justify-between gap-x-5 w-full">
-                <div className="flex-center sm:hidden gap-2 py-2 w-full bg-white dark:bg-black-400 font-danaLight text-slate-500 dark:text-slate-400 text-base rounded-md cursor-pointer">
+                <div
+                  className="flex-center sm:hidden gap-2 py-2 w-full bg-white dark:bg-black-400 font-danaLight text-slate-500 dark:text-slate-400 text-base rounded-md cursor-pointer"
+                  onClick={() => setIsShowFilter(true)}
+                >
                   <svg className="w-5 h-5">
                     <use href="#adjustments-vertical"></use>
                   </svg>
@@ -56,6 +69,14 @@ export default function Category() {
                     همه دوره‌ها
                   </span>
                 </div>
+                <SortCourses setIsShowSortCorses={setIsShowSortCorses} />
+
+                <FilterCorsesMobile
+                  isShowFilter={isShowFilter}
+                  setIsShowFilter={setIsShowFilter}
+                  selected={true}
+                  component="category"
+                />
               </div>
             </aside>
             {/* courses-gridBox */}
