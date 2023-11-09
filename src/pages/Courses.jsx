@@ -122,7 +122,10 @@ export default function Courses() {
                   </svg>
                   <span className="text-zinc-700 dark:text-white">فیلتر</span>
                 </div>
-                <div className="flex-center sm:hidden gap-2 py-2 w-full bg-white dark:bg-black-400 font-danaLight text-slate-500 dark:text-slate-400 text-base rounded-md cursor-pointer" onClick={() => setIsShowSortCorses(true)}>
+                <div
+                  className="flex-center sm:hidden gap-2 py-2 w-full bg-white dark:bg-black-400 font-danaLight text-slate-500 dark:text-slate-400 text-base rounded-md cursor-pointer"
+                  onClick={() => setIsShowSortCorses(true)}
+                >
                   <svg className="w-5 h-5">
                     <use href="#filter"></use>
                   </svg>
@@ -132,7 +135,12 @@ export default function Courses() {
                 </div>
               </div>
               {/* Sort-Courses */}
-              {isShowSortCorses && <SortCourses isShowSortCorses={isShowSortCorses} setIsShowSortCorses={setIsShowSortCorses} />}
+              {isShowSortCorses && (
+                <SortCourses
+                  isShowSortCorses={isShowSortCorses}
+                  setIsShowSortCorses={setIsShowSortCorses}
+                />
+              )}
 
               {/* Courses-Filter-Mobile */}
               <FilterCorsesMobile
@@ -168,8 +176,8 @@ export default function Courses() {
                 <CourseBox />
                 <CourseBox />
               </div>
-              <div className="flex-center mx-auto">
-                <span className="py-4 px-9 bg-gray-200 hover:bg-gray-300 text-base text-center text-zinc-700 rounded-full cursor-pointer transition-colors">
+              <div className="flex-center mx-auto my-5">
+                <span className="py-4 px-9 bg-gray-200 dark:bg-black-300 dark:hover:bg-black-200 hover:bg-gray-300 text-base text-center text-zinc-700 dark:text-white rounded-full cursor-pointer transition-colors">
                   مشاهده بیشتر دوره‌ها
                 </span>
               </div>

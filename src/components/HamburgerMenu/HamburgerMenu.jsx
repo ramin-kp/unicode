@@ -14,8 +14,8 @@ export default function HamburgerMenu({
       <SvgIcons />
       <div
         className={`${
-          open ? "-tran-x-[256px]" : "hidden"
-        } lg:hidden absolute top-0 right-0 w-[256px] h-screen px-5  bg-white dark:bg-black-300   ${
+          open ? "" : "hidden"
+        } lg:hidden absolute top-0 right-0 w-[256px] h-screen px-5  bg-white dark:bg-black-300 z-10   ${
           open && "animation-open-menu"
         }`}
       >
