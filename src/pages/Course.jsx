@@ -316,7 +316,7 @@ export default function Course() {
                     لینک کوتاه:
                   </h3>
                 </div>
-                <div className="flex items-center justify-between m-5 px-3 py-5 bg-gray-100 dark:bg-black-300 border border-dashed border-slate-500 dark:border-slate-400 rounded-xl ">
+                <div className="flex items-start justify-between m-5 px-3 py-5 bg-gray-100 dark:bg-black-300 border border-dashed border-slate-500 dark:border-slate-400 rounded-xl ">
                   <svg className="w-6 h-6 text-slate-500 dark:text-slate-400">
                     <use href="#clipboard"></use>
                   </svg>
