@@ -190,7 +190,7 @@ export default function Header() {
             <div className="relative flex items-center w-[161px] h-14 text-lg child:transition-colors child:delay-75">
               <Link
                 className=" lg:w-[85%] 2xl:w-full h-full bg-sky-300 dark:bg-secondary-200 hover:bg-sky-400 dark:hover:bg-secondary-100 text-white rounded-full"
-                to="ramin"
+                to="/login"
               >
                 <span className="inline-block mt-4 pr-4">ورود</span>
               </Link>
@@ -198,7 +198,7 @@ export default function Header() {
                 className="absolute z-10 lg:left-6 2xl:left-0 flex-center lg:w-20 2xl:w-25 h-full bg-sky-500 dark:bg-secondary-300 hover:bg-sky-600 dark:hover:bg-secondary-400 text-white rounded-full"
                 to="amin"
               >
-                <span to="/">عضویت</span>
+                <span to="/signup">عضویت</span>
               </Link>
             </div>
           </div>

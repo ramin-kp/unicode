@@ -5,6 +5,8 @@ import Blogs from "./pages/Blogs";
 import Course from "./pages/Course";
 import Blog from "./pages/Blog";
 import Lesson from "./pages/Lesson";
+import Login from "./pages/Login";
+import LoginByEmail from "./pages/LoginByEmail";
 import NotFound from "./pages/NotFound";
 
 const routes = [
@@ -15,6 +17,11 @@ const routes = [
   { path: "/course/:courseName", element: <Course /> },
   { path: "/blog/:blogName", element: <Blog /> },
   { path: "/lesson/:lessonName", element: <Lesson /> },
-  { path: "*", element: <NotFound /> },
+  {
+    path: "/login/*",
+    element: <Login />,
+  },
+  { path: "/login/email", element: <LoginByEmail /> },
+  { path: "/*", element: <NotFound /> },
 ];
 export default routes;

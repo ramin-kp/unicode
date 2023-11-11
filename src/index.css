@@ -175,6 +175,11 @@
     background-color: #0ea5e9;
     border-radius: 12px;
   }
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 }
 @layer utilities {
   .flex-center {
