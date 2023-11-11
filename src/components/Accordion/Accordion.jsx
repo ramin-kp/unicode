@@ -4,16 +4,16 @@ import { Link } from "react-router-dom";
 
 export default function Example() {
   return (
-    <div className="w-ful px-4 py-1.5">
+    <div className="pb-1.5">
       <Disclosure>
         {({ open }) => (
           <>
             <Disclosure.Button
-              className={`flex w-full h-[75px] items-center justify-between rounded-lg  bg-gray-200 dark:bg-black-200 px-4 py-2 text-left text-sm font-medium text-purple-900 hover:bg-gray-300 dark:hover:bg-black-100 focus:outline-none focus-visible:ring focus-visible:ring-purple-500/75 ${
+              className={`flex  items-center justify-between rounded-lg  bg-gray-200 dark:bg-black-200 px-4 py-2 text-left text-sm font-medium text-purple-900 hover:bg-gray-300 dark:hover:bg-black-100 focus:outline-none focus-visible:ring focus-visible:ring-purple-500/75 ${
                 open ? "rounded-b-none hover:bg-gray-200 dark:bg-black-200" : ""
               }`}
             >
-              <span className="font-danaMedium text-zinc-700 dark:text-white text-xl text-right line-clamp-2 lg:line-clamp-3">
+              <span className="font-danaMedium text-zinc-700 dark:text-white text-xl text-right line-clamp-2">
               این وضعیت احساس بسیار بدی در دانشجوها ایجاد میکنه و تاثیر منفی بر اعتماد به نفس اونها میذاره چون فکر میکردن بعد از پایان
               </span>
               <ChevronDownIcon
