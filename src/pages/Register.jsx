@@ -21,7 +21,7 @@ export default function Register() {
           <div className="flex justify-center gap-4 mb-4">
             <img className="w-24 h-58" src="/images/logo.png" alt="logo" />
             <div>
-              <h1 className="text-xl dark:text-white font-danaBold">
+              <h1 className="text-xl dark:text-white font-morabbaBold">
                 یونی کٌد
               </h1>
               <p className="dark:text-white tracking-widest">unicode.ir</p>

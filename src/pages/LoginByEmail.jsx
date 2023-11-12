@@ -21,7 +21,7 @@ export default function LoginByEmail() {
           <div className="flex justify-center gap-4 mb-4">
             <img className="w-24 h-[58px]" src="/images/logo.png" alt="logo" />
             <div>
-              <h1 className="text-xl dark:text-white font-danaBold">
+              <h1 className="text-xl dark:text-white font-morabbaBold">
                 یونی کٌد
               </h1>
               <p className="tracking-widest dark:text-white">unicode.ir</p>
