@@ -8,6 +8,7 @@ import Lesson from "./pages/Lesson";
 import Login from "./pages/Login";
 import LoginByEmail from "./pages/LoginByEmail";
 import NotFound from "./pages/NotFound";
+import Register from "./pages/Register";
 
 const routes = [
   { path: "/", element: <Home /> },
@@ -17,11 +18,9 @@ const routes = [
   { path: "/course/:courseName", element: <Course /> },
   { path: "/blog/:blogName", element: <Blog /> },
   { path: "/lesson/:lessonName", element: <Lesson /> },
-  {
-    path: "/login/*",
-    element: <Login />,
-  },
+  { path: "/login/*", element: <Login /> },
   { path: "/login/email", element: <LoginByEmail /> },
+  { path: "/signup", element: <Register /> },
   { path: "/*", element: <NotFound /> },
 ];
 export default routes;

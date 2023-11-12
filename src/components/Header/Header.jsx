@@ -67,7 +67,10 @@ export default function Header() {
                 </ul>
               </li>
               <li className="relative group">
-                <Link className="flex items-center hover:text-green-500" to="/course-cat/:courseName">
+                <Link
+                  className="flex items-center hover:text-green-500"
+                  to="/course-cat/:courseName"
+                >
                   امنیت
                   <svg className="w-5 h-5 mr-2">
                     <use href="#chevron-down"></use>
@@ -92,7 +95,10 @@ export default function Header() {
                 </ul>
               </li>
               <li className="relative group">
-                <Link className="flex items-center hover:text-green-500" to="/course-cat/:courseName">
+                <Link
+                  className="flex items-center hover:text-green-500"
+                  to="/course-cat/:courseName"
+                >
                   پایتون
                   <svg className="w-5 h-5 mr-2">
                     <use href="#chevron-down"></use>
@@ -117,17 +123,26 @@ export default function Header() {
                 </ul>
               </li>
               <li>
-                <Link className="hover:text-green-500" to="/course-cat/:courseName">
+                <Link
+                  className="hover:text-green-500"
+                  to="/course-cat/:courseName"
+                >
                   مهارت نرم
                 </Link>
               </li>
               <li>
-                <Link className="hover:text-green-500" to="/course-cat/:courseName">
+                <Link
+                  className="hover:text-green-500"
+                  to="/course-cat/:courseName"
+                >
                   سفارش پروژه
                 </Link>
               </li>
               <li className="relative group">
-                <Link className="flex items-center hover:text-green-500" to="/blogs">
+                <Link
+                  className="flex items-center hover:text-green-500"
+                  to="/blogs"
+                >
                   مقالات
                   <svg className="w-5 h-5 mr-2">
                     <use href="#chevron-down"></use>
@@ -196,9 +211,9 @@ export default function Header() {
               </Link>
               <Link
                 className="absolute z-10 lg:left-6 2xl:left-0 flex-center lg:w-20 2xl:w-25 h-full bg-sky-500 dark:bg-secondary-300 hover:bg-sky-600 dark:hover:bg-secondary-400 text-white rounded-full"
-                to="amin"
+                to="/signup"
               >
-                <span to="/signup">عضویت</span>
+                <span>عضویت</span>
               </Link>
             </div>
           </div>

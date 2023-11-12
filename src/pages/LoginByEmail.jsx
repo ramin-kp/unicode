@@ -49,7 +49,7 @@ export default function LoginByEmail() {
             <div class="flex justify-between items-center bg-gray-100 dark:bg-black-300 w-full rounded-xl px-4 py-2 mt-3">
               <input
                 class="bg-transparent text-xl border-none outline-none dark:text-secondary-600 focus:ring-transparent"
-                type="text"
+                type="password"
                 placeholder="رمز عبور"
               />
               <svg className="w-5 h-5 text-slate-500 dark:text-slate-400">
