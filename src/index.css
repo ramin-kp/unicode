@@ -43,7 +43,7 @@
   .sub-title {
     @apply hidden absolute mr-0 top-7 min-w-[256px] py-5 px-6 child:my-4 bg-white text-zinc-700 group-hover:inline-block child-hover:text-green-500 rounded-2xl shadow-xl transition-all delay-75;
   }
-  .submenu-marker::before {
+  .submenu-marker::beclassname=e {
     content: "";
     position: absolute;
     width: 12px;
