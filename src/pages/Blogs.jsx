@@ -141,7 +141,7 @@ export default function Blogs() {
               </div>
               <div className="flex-center mx-auto mb-10">
                 <span className="py-4 px-9 bg-gray-200 dark:bg-black-400 hover:bg-gray-300 text-xl text-center text-zinc-700 dark:text-white rounded-full cursor-pointer transition-colors">
-                  مشاهده بیشتر دوره‌ها
+                  مشاهده بیشتر
                 </span>
               </div>
             </div>

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import SvgIcons from "../assets/icons/SvgIcons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function HamburgerMenu({
   open,
@@ -9,13 +9,21 @@ export default function HamburgerMenu({
   theme,
 }) {
   const [isShowSubmenu, setIsShowSubmenu] = useState(false);
+  useEffect(() => {
+    open
+      ? window.document.body.classList.add("overflow-hidden")
+      : window.document.body.classList.remove("overflow-hidden");
+
+    return () => {
+      window.document.body.classList.add("overflow-hidden");
+    };
+  }, [open]);
   return (
     <>
-      <SvgIcons />
       <div
         className={`${
           open ? "" : "hidden"
-        } lg:hidden absolute top-0 right-0 w-[256px] h-screen px-5  bg-white dark:bg-black-300 z-10   ${
+        } lg:hidden fixed top-0 right-0 h-screen px-5 bg-white dark:bg-black-300 z-10   ${
           open && "animation-open-menu"
         }`}
       >
@@ -141,6 +149,13 @@ export default function HamburgerMenu({
           <h3 className="text-base text-secondary-600">تم روشن</h3>
         </div>
       </div>
+      <div
+        className={`${
+          open ? "inline-block" : "hidden"
+        } fixed inset-0 w-screen h-screen bg-zinc-800/50 backdrop-blur-sm`}
+        onClick={() =>setIsShowHamburgerMenu(false)}
+      ></div>
+      <SvgIcons />
     </>
   );
 }

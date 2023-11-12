@@ -235,7 +235,7 @@ export default function Header() {
             />
           </Link>
           <div className="relative flex-center w-12 h-12 bg-gray-200/70 dark:bg-black-400/70 overflow-hidden rounded-full cursor-pointer">
-            <Link to="#">
+            <Link to="/login">
               <svg className=" w-6 h-6 text-gray-500 dark:text-secondary-600">
                 <use href="#user-login"></use>
               </svg>
