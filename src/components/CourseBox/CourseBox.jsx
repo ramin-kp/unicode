@@ -20,7 +20,7 @@ export default function CourseBox() {
         <div className="mt-3 max-w-[250px]">
           <Link
             className="h-[51px] font-danaMedium text-base text-zinc-700 dark:text-white line-clamp-2"
-            to="/course/example"
+            to="/course-info/:courseName"
           >
             دوره کاربردی chatGPT برای برنامه نویس ها دوره کاربردی chatGPT برای
             برنامه نویس ها دوره کاربردی chatGPT برای برنامه نویس ها

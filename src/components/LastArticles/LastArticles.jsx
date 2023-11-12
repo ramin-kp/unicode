@@ -10,7 +10,7 @@ export default function LastArticles() {
         <SectionHeader
           title="آخرین ‌مقاله ها"
           description="برترین مقالات برای افزایش دانش برنامه نویسی و سایر مهارت ها"
-          link="/blogs"
+          link="/articles"
           color="bg-yellow-500"
         />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">

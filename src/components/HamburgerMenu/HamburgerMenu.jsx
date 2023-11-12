@@ -63,7 +63,7 @@ export default function HamburgerMenu({
             <li className="w-full">
               <Link
                 className="w-full flex items-center justify-between text-base text-slate-500"
-                to="/course-cat/:courseName"
+                to="/category-info/:categoryName"
               >
                 <span
                   className={`${
@@ -100,7 +100,7 @@ export default function HamburgerMenu({
             <li className="w-full">
               <Link
                 className="w-full flex items-center justify-between text-base text-slate-500"
-                to="/blogs"
+                to="/articles"
               >
                 <span
                   className={`${

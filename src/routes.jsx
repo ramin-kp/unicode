@@ -14,15 +14,15 @@ import Orders from "./pages/Orders";
 const routes = [
   { path: "/", element: <Home /> },
   { path: "/courses", element: <Courses /> },
-  { path: "/course-cat/:categoryName", element: <Category /> },
-  { path: "/blogs", element: <Blogs /> },
-  { path: "/course/:courseName", element: <Course /> },
-  { path: "/blog/:blogName", element: <Blog /> },
-  { path: "/lesson/:lessonName", element: <Lesson /> },
+  { path: "/category-info/:categoryName", element: <Category /> },
+  { path: "/articles", element: <Blogs /> },
+  { path: "/course-info/:courseName", element: <Course /> },
+  { path: "/article-info/:articleName", element: <Blog /> },
+  { path: "/:courseName/:sessionID", element: <Lesson /> },
   { path: "/orders", element: <Orders /> },
-  { path: "/login/*", element: <Login /> },
+  { path: "/login", element: <Login /> },
   { path: "/login/email", element: <LoginByEmail /> },
-  { path: "/signup", element: <Register /> },
+  { path: "/register", element: <Register /> },
   { path: "/*", element: <NotFound /> },
 ];
 export default routes;

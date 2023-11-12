@@ -41,7 +41,7 @@ export default function Header() {
               <li className="relative group">
                 <Link
                   className=" flex items-center group-hover:text-green-500"
-                  to="/course-cat/:courseName"
+                  to="/category-info/:categoryName"
                 >
                   فرانت‌اند
                   <svg className="w-5 h-5 mr-2">
@@ -69,7 +69,7 @@ export default function Header() {
               <li className="relative group">
                 <Link
                   className="flex items-center hover:text-green-500"
-                  to="/course-cat/:courseName"
+                  to="/category-info/:categoryName"
                 >
                   امنیت
                   <svg className="w-5 h-5 mr-2">
@@ -97,7 +97,7 @@ export default function Header() {
               <li className="relative group">
                 <Link
                   className="flex items-center hover:text-green-500"
-                  to="/course-cat/:courseName"
+                  to="/category-info/:categoryName"
                 >
                   پایتون
                   <svg className="w-5 h-5 mr-2">
@@ -125,7 +125,7 @@ export default function Header() {
               <li>
                 <Link
                   className="hover:text-green-500"
-                  to="/course-cat/:courseName"
+                  to="/category-info/:categoryName"
                 >
                   مهارت نرم
                 </Link>
@@ -141,7 +141,7 @@ export default function Header() {
               <li className="relative group">
                 <Link
                   className="flex items-center hover:text-green-500"
-                  to="/blogs"
+                  to="/articles"
                 >
                   مقالات
                   <svg className="w-5 h-5 mr-2">
@@ -211,7 +211,7 @@ export default function Header() {
               </Link>
               <Link
                 className="absolute z-10 lg:left-6 2xl:left-0 flex-center lg:w-20 2xl:w-25 h-full bg-sky-500 dark:bg-secondary-300 hover:bg-sky-600 dark:hover:bg-secondary-400 text-white rounded-full"
-                to="/signup"
+                to="/register"
               >
                 <span>عضویت</span>
               </Link>

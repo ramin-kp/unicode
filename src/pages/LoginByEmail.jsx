@@ -32,7 +32,7 @@ export default function LoginByEmail() {
             <p className="pt-4 pb-10 text-zinc-700 dark:text-secondary-600">
               حساب کاربری ندارید؟
               <Link
-                to="/signup"
+                to="/register"
                 className="text-green-500 hover:text-green-400 duration-300"
               >
                 ثبت نام

@@ -16,7 +16,7 @@ export default function ArticlesBox() {
         <div className="mt-7 mb-9">
           <Link
             className="mb-1.5 text-zinc-700 font-danaMedium text-xl dark:text-white "
-            to="/blog/example"
+            to="/article-info/:articleName"
           >
             محیط های برنامه نویسی پایتون + راهنمایی انتخاب
           </Link>
@@ -48,7 +48,7 @@ export default function ArticlesBox() {
         <div className="flex items-start justify-center mt-4 py-[18px]  border-t border-slate-200 dark:border-secondary-600/10 transition-colors">
           <Link
             className="flex items-start justify-center font-danaMedium text-base dark:text-white text-zinc-700 hover:text-green-500 dark:child:hover:text-green-500"
-            to="#"
+            to="/article-info/:articleName"
           >
             <span>مطالعه مقاله</span>
             <svg className="w-5 h-5 mr-1 dark:text-white">
