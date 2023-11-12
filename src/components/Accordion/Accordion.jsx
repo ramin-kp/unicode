@@ -27,7 +27,7 @@ export default function Example() {
               <div className="flex flex-col gap-2.5 w-full group ">
                 <Link
                   className="flex items-center gap-2.5 group-hover:text-green-500 transition-all"
-                  to="#"
+                  to="/lesson/example"
                 >
                   <div className="flex items-center justify-center shrink-0 w-7 h-7 bg-white dark:bg-black-500 font-danaBold text-lg text-zinc-700 dark:text-white rounded-md group-hover:bg-green-400 group-hover:text-white transition-all">
                     1

@@ -153,7 +153,7 @@ export default function Lesson() {
                     </span>
                   </div>
                 </div>
-                <div className="w-full h-36 mb-5 bg-gray-100 dark:bg-black-300 rounded-xl "></div>
+                <textarea className="w-full h-36 mb-5 p-5 bg-gray-100 dark:bg-black-300 font-danaMedium text-zinc-700 dark:text-white rounded-xl outline-none"></textarea>
                 <div className="flex items-center justify-between mb-5">
                   <Link
                     className="flex-center gap-x-2.5 py-2 px-4 bg-gray-200 dark:bg-black-300 hover:bg-gray-300 dark:hover:bg-black-100 text-slate-500 dark:text-slate-400 rounded-xl"

@@ -16,7 +16,7 @@ export default function ArticlesBox() {
         <div className="mt-7 mb-9">
           <Link
             className="mb-1.5 text-zinc-700 font-danaMedium text-xl dark:text-white "
-            to="#"
+            to="/blog/example"
           >
             محیط های برنامه نویسی پایتون + راهنمایی انتخاب
           </Link>
