@@ -41,9 +41,9 @@
 }
 @layer components {
   .sub-title {
-    @apply hidden absolute mr-0 top-7 min-w-[256px] py-5 px-6 child:my-4 bg-white text-zinc-700 group-hover:inline-block child-hover:text-green-500 rounded-2xl shadow-xl transition-all delay-75;
+    @apply hidden absolute mr-0 top-7 min-w-[256px] py-5 px-6 child:my-4 bg-white text-base text-zinc-700 group-hover:inline-block child-hover:text-green-500 rounded-2xl shadow-xl transition-all delay-75;
   }
-  .submenu-marker::beclassname=e {
+  .submenu-marker::before {
     content: "";
     position: absolute;
     width: 12px;
@@ -100,7 +100,7 @@
     border-radius: 50%;
   }
   .submenu-hover {
-    @apply hover:submenu-marker hover:text-green-500 hover:mr-4 transition-all duration-200;
+    @apply  hover:submenu-marker hover:text-green-500 hover:mr-4 transition-all duration-200;
   }
   .animation-open-menu {
     animation: openMenuAnim 0.1s linear 1 reverse backwards;

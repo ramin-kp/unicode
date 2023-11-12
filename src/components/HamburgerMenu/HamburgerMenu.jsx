@@ -9,6 +9,7 @@ export default function HamburgerMenu({
   theme,
 }) {
   const [isShowSubmenu, setIsShowSubmenu] = useState(false);
+  const [category, setCategory] = useState([]);
   useEffect(() => {
     open
       ? window.document.body.classList.add("overflow-hidden")
@@ -18,6 +19,15 @@ export default function HamburgerMenu({
       window.document.body.classList.add("overflow-hidden");
     };
   }, [open]);
+
+  useEffect(() => {
+    fetchAllCategory();
+  }, []);
+  const fetchAllCategory = async () => {
+    const categoryData = await fetch("http://localhost:4000/v1/menus");
+    const json = await categoryData.json();
+    setCategory(json);
+  };
   return (
     <>
       <div
@@ -60,44 +70,58 @@ export default function HamburgerMenu({
             </svg>
           </div>
           <ul className="my-5">
-            <li className="w-full">
-              <Link
-                className="w-full flex items-center justify-between text-base text-slate-500"
-                to="/category-info/:categoryName"
-              >
-                <span
-                  className={`${
-                    isShowSubmenu && "text-zinc-700"
-                  } mb-1.5 transition-all`}
-                >
-                  فرانت‌اند
-                </span>
-                <svg
-                  className={`w-5 h-5  ${
-                    isShowSubmenu && "text-zinc-700 rotate-180"
-                  } transition-all`}
-                  onClick={() => {
-                    setIsShowSubmenu(!isShowSubmenu);
-                  }}
-                >
-                  <use href="#chevron-down"></use>
-                </svg>
-              </Link>
-              <ul
-                className={`text-slate-500 text-sm child:mr-1 ${
-                  isShowSubmenu ? "inline-block" : "hidden"
-                } mt-3`}
-              >
-                <li className="relative submenu-hover">
-                  <Link to="#">آموزش css</Link>
-                </li>
-                <li className="relative submenu-hover">
-                  <Link to="#">آموزش css</Link>
-                </li>
-              </ul>
-            </li>
+            {category.length
+              ? category.map((categoryItem) => (
+                  <li key={categoryItem._id} className="w-full py-2">
+                    <span
+                      className="w-full flex items-center justify-between child:text-base child:text-slate-500 cursor-pointer"
+                      onClick={() => {
+                        setIsShowSubmenu(!isShowSubmenu);
+                      }}
+                    >
+                      <span
+                        className={`${
+                          isShowSubmenu && "text-zinc-700"
+                        } mb-1.5 transition-all`}
+                      >
+                        {categoryItem.title}
+                      </span>
+                      {categoryItem.submenus.length ? (
+                        <svg
+                          className={`w-5 h-5  ${
+                            isShowSubmenu && "text-zinc-700 rotate-180"
+                          } transition-all`}
+                        >
+                          <use href="#chevron-down"></use>
+                        </svg>
+                      ) : (
+                        ""
+                      )}
+                    </span>
 
-            <li className="w-full">
+                    {categoryItem.submenus.length ? (
+                      <ul
+                        className={`text-slate-500 text-sm child:mr-1 ${
+                          isShowSubmenu ? "inline-block" : "hidden"
+                        } mt-3`}
+                      >
+                        {categoryItem.submenus.map((submenu) => (
+                          <li
+                            key={submenu._id}
+                            className="relative submenu-hover"
+                          >
+                            <Link to={submenu.href}>{submenu.title}</Link>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      ""
+                    )}
+                  </li>
+                ))
+              : ""}
+
+            {/* <li className="w-full">
               <Link
                 className="w-full flex items-center justify-between text-base text-slate-500"
                 to="/articles"
@@ -122,7 +146,7 @@ export default function HamburgerMenu({
                   <Link to="#">آموزش css</Link>
                 </li>
               </ul>
-            </li>
+            </li> */}
           </ul>
           <span className="inline-block w-full h-px bg-slate-300 dark:bg-secondary-500 "></span>
         </div>
@@ -153,7 +177,7 @@ export default function HamburgerMenu({
         className={`${
           open ? "inline-block" : "hidden"
         } fixed inset-0 w-screen h-screen bg-zinc-800/50 backdrop-blur-sm`}
-        onClick={() =>setIsShowHamburgerMenu(false)}
+        onClick={() => setIsShowHamburgerMenu(false)}
       ></div>
       <SvgIcons />
     </>

@@ -7,6 +7,7 @@ export default function Header() {
   const [theme, setTheme] = useState(localStorage.getItem("theme") === "dark");
   const [isShowHamburgerMenu, setIsShowHamburgerMenu] = useState(false);
   const [isShowInput, setIsShowInput] = useState(false);
+  const [category, setCategory] = useState([]);
   useEffect(() => {
     const darkModHandler = () => {
       const root = window.document.documentElement;
@@ -20,6 +21,15 @@ export default function Header() {
     };
     darkModHandler();
   }, [theme]);
+
+  useEffect(() => {
+    fetchAllCategory();
+  }, []);
+  const fetchAllCategory = async () => {
+    const categoryData = await fetch("http://localhost:4000/v1/menus");
+    const json = await categoryData.json();
+    setCategory(json);
+  };
 
   return (
     <>
@@ -38,124 +48,44 @@ export default function Header() {
             </Link>
             <span className="inline-block w-px h-[58px] bg-gray-100 dark:bg-slate-700 mx-2.5 xl:mr-2.5"></span>
             <ul className="flex items-center child:mx-1.5 xl:child:mx-2.5 lg:child:text-base 2xl:child:text-xl dark:text-white  transition-all delay-75 z-10">
-              <li className="relative group">
-                <Link
-                  className=" flex items-center group-hover:text-green-500"
-                  to="/category-info/:categoryName"
-                >
-                  فرانت‌اند
-                  <svg className="w-5 h-5 mr-2">
-                    <use href="#chevron-down"></use>
-                  </svg>
-                </Link>
-                <ul className="sub-title">
-                  <li>
-                    <Link>آموزش ری اکت</Link>
+              {category.length &&
+                category.map((item) => (
+                  <li key={item._id} className="relative group">
+                    <div className="flex-center">
+                      <Link
+                        className=" flex items-center group-hover:text-green-500"
+                        to="/category-info/:categoryName"
+                      >
+                        {item.title}
+                      </Link>
+                      {item.submenus.length ? (
+                        <svg className="w-5 h-5 mr-2 group-hover:text-green-500 cursor-pointer">
+                          <use href="#chevron-down"></use>
+                        </svg>
+                      ) : (
+                        ""
+                      )}
+                    </div>
+                    {item.submenus.length ? (
+                      <ul className="sub-title">
+                        {item.submenus.length
+                          ? item.submenus.map((submenu) => (
+                              <li key={submenu._id}>
+                                <Link to={submenu.href}>{submenu.title}</Link>
+                              </li>
+                            ))
+                          : ""}
+                      </ul>
+                    ) : (
+                      ""
+                    )}
                   </li>
-                  <li>
-                    <Link>آموزش ری اکت</Link>
-                  </li>
-                  <li>
-                    <Link>آموزش ری اکت</Link>
-                  </li>
-                  <li>
-                    <Link>آموزش ری اکت</Link>
-                  </li>
-                  <li>
-                    <Link>آموزش ری اکت</Link>
-                  </li>
-                </ul>
-              </li>
-              <li className="relative group">
-                <Link
-                  className="flex items-center hover:text-green-500"
-                  to="/category-info/:categoryName"
-                >
-                  امنیت
-                  <svg className="w-5 h-5 mr-2">
-                    <use href="#chevron-down"></use>
-                  </svg>
-                </Link>
-                <ul className="sub-title">
-                  <li>
-                    <Link>آموزش ری اکت</Link>
-                  </li>
-                  <li>
-                    <Link>آموزش ری اکت</Link>
-                  </li>
-                  <li>
-                    <Link>آموزش ری اکت</Link>
-                  </li>
-                  <li>
-                    <Link>آموزش ری اکت</Link>
-                  </li>
-                  <li>
-                    <Link>آموزش ری اکت</Link>
-                  </li>
-                </ul>
-              </li>
-              <li className="relative group">
-                <Link
-                  className="flex items-center hover:text-green-500"
-                  to="/category-info/:categoryName"
-                >
-                  پایتون
-                  <svg className="w-5 h-5 mr-2">
-                    <use href="#chevron-down"></use>
-                  </svg>
-                </Link>
-                <ul className="sub-title">
-                  <li>
-                    <Link>آموزش ری اکت</Link>
-                  </li>
-                  <li>
-                    <Link>آموزش ری اکت</Link>
-                  </li>
-                  <li>
-                    <Link>آموزش ری اکت</Link>
-                  </li>
-                  <li>
-                    <Link>آموزش ری اکت</Link>
-                  </li>
-                  <li>
-                    <Link>آموزش ری اکت</Link>
-                  </li>
-                </ul>
-              </li>
+                ))}
+
               <li>
-                <Link
-                  className="hover:text-green-500"
-                  to="/category-info/:categoryName"
-                >
-                  مهارت نرم
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="hover:text-green-500"
-                  to="/orders"
-                >
+                <Link className="hover:text-green-500" to="/orders">
                   سفارش پروژه
                 </Link>
-              </li>
-              <li className="relative group">
-                <Link
-                  className="flex items-center hover:text-green-500"
-                  to="/articles"
-                >
-                  مقالات
-                  <svg className="w-5 h-5 mr-2">
-                    <use href="#chevron-down"></use>
-                  </svg>
-                </Link>
-                <ul className="sub-title">
-                  <li>
-                    <Link>پایتون vs جاوا اسکریپت</Link>
-                  </li>
-                  <li>
-                    <Link>برنامه نویسی چیست؟</Link>
-                  </li>
-                </ul>
               </li>
             </ul>
           </div>
@@ -248,6 +178,7 @@ export default function Header() {
         theme={theme}
         setIsShowHamburgerMenu={setIsShowHamburgerMenu}
         setTheme={setTheme}
+        category={category}
       />
     </>
   );
