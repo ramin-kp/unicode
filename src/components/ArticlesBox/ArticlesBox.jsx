@@ -8,7 +8,7 @@ export default function ArticlesBox() {
       <div>
         <img
           className="rounded-xl"
-          src="/images/articel-img-1.jpg"
+          src="/images/blog-1.png"
           alt="article-img-"
         />
       </div>

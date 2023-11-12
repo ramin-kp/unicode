@@ -8,7 +8,7 @@ export default function CourseBox() {
       <div>
         <img
           className="rounded-xl"
-          src="/images/django.png"
+          src="/images/react-course.png"
           alt="courses-img"
         />
       </div>

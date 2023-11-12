@@ -133,7 +133,7 @@ export default function Header() {
               <li>
                 <Link
                   className="hover:text-green-500"
-                  to="/course-cat/:courseName"
+                  to="/orders"
                 >
                   سفارش پروژه
                 </Link>
