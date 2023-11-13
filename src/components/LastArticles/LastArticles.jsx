@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SvgIcons from "./../assets/icons/SvgIcons";
 import SectionHeader from "./../SectionHeader/SectionHeader";
 import ArticlesBox from "../ArticlesBox/ArticlesBox";
 
 export default function LastArticles() {
+  const [blogsData, setBlogsData] = useState([]);
+  useEffect(() => {
+    fetchData();
+  }, []);
+  const fetchData = async () => {
+    const data = await fetch("http://localhost:4000/v1/articles");
+    const json = await data.json();
+    setBlogsData(json);
+  };
+  console.log(blogsData);
   return (
     <section>
       <div className="container">
@@ -13,12 +23,15 @@ export default function LastArticles() {
           link="/articles"
           color="bg-yellow-500"
         />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-          <ArticlesBox />
-          <ArticlesBox />
-          <ArticlesBox />
-          <ArticlesBox />
-        </div>
+        {blogsData.length ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            {blogsData.map((blog) => (
+              <ArticlesBox key={blog._id} {...blog} />
+            ))}
+          </div>
+        ) : (
+          "loading"
+        )}
       </div>
       <SvgIcons />
     </section>

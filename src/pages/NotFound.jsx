@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function NotFound() {
   const theme = localStorage.getItem("theme") === "dark";
-  console.log(theme);
+
   return (
     <main
       className={`flex items-center justify-center h-screen w-screen  ${

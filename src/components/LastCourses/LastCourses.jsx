@@ -14,7 +14,7 @@ export default function LastCourses() {
     const json = await fetchData.json();
     setAllCourses(json);
   };
-  console.log(allCourses);
+
   return (
     <section>
       <div className="container">
