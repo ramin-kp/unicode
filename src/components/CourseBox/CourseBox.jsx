@@ -1,34 +1,31 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function CourseBox() {
+export default function CourseBox(props) {
   return (
     <div className="bg-white dark:bg-black-400 rounded-xl overflow-hidden dark:border border-zinc-700 shadow-md">
       {/* img box */}
       <div>
         <img
           className="rounded-xl"
-          src="/images/react-course.png"
+          src={`http://localhost:4000/courses/covers/${props.cover}`}
           alt="courses-img"
         />
       </div>
       {/* main box */}
       <div className="px-2.5 py-2">
         <span className="w-[50px] h-6 px-2.5 py-px bg-sky-100 dark:bg-yellow-500/10 text-sky-500 dark:text-yellow-500 text-xs rounded-md text-center">
-          پایتون
+          {props.categoryID}
         </span>
-        <div className="mt-3 max-w-[250px]">
+        <div className="mt-3">
           <Link
-            className="h-[51px] font-danaMedium text-base text-zinc-700 dark:text-white line-clamp-2"
-            to="/course-info/:courseName"
+            className=" font-danaMedium text-base text-zinc-700 dark:text-white line-clamp-2"
+            to={`/course-info/${props.shortName}`}
           >
-            دوره کاربردی chatGPT برای برنامه نویس ها دوره کاربردی chatGPT برای
-            برنامه نویس ها دوره کاربردی chatGPT برای برنامه نویس ها
+            {props.name}
           </Link>
           <h3 className="mt-2.5 mb-5 font-danaLight text-sm text-slate-500 dark:text-secondary-600 text-right line-clamp-2">
-            هوش مصنوعی داره جهان رو در بر میگیره و به سرعت درحال پیشرفته و همین
-            پیشرفتش باعث وش مصنوعی داره جهان رو در بر میگیره و به سرعت درحال
-            پیشرفته و همین پیشرفتش باعث..
+            {props.description}
           </h3>
         </div>
         <div className="flex items-center justify-between child:text-slate-500 dark:child:text-secondary-600">
@@ -40,7 +37,7 @@ export default function CourseBox() {
               <svg className="w-5 h-5 ml-1.5">
                 <use href="#user-outline"></use>
               </svg>
-              <span>رامین کریم پور</span>
+              <span>{props.creator}</span>
             </Link>
             <div className="flex items-center mr-1.5">
               <svg className="w-5 h-5 ml-1.5">
@@ -62,16 +59,21 @@ export default function CourseBox() {
             <svg className="w-5 h-5 ml-1.5">
               <use href="#users"></use>
             </svg>
-            <span>220</span>
+            <span>{props.users}</span>
           </div>
           <div>
-            <p className="price-line relative ml-[46px] text-sm text-slate-500 dark:text-secondary-600">
-              1,500,000
-            </p>
-            <div className="flex items-center child:text-green-500">
-              <p className="text-left text-xl">900,000</p>
-              <span className="font-danaLight text-lg">تومان</span>
-            </div>
+            {props.price === 0 ? (
+              <div className="flex items-center child:text-green-500">
+                <p className="text-left text-xl">رایگان</p>
+              </div>
+            ) : (
+              <div className="flex items-center child:text-green-500">
+                <p className="text-left text-xl">
+                  {props.price.toLocaleString()}
+                </p>
+                <span className="font-danaLight text-lg">تومان</span>
+              </div>
+            )}
           </div>
         </div>
       </div>

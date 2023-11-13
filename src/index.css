@@ -41,7 +41,7 @@
 }
 @layer components {
   .sub-title {
-    @apply hidden absolute mr-0 top-7 min-w-[256px] py-5 px-6 child:my-4 bg-white text-base text-zinc-700 group-hover:inline-block child-hover:text-green-500 rounded-2xl shadow-xl transition-all delay-75;
+    @apply hidden absolute mr-0 top-7 min-w-[256px] py-2.5 px-6 child:my-4 bg-white text-base text-zinc-700 group-hover:inline-block child-hover:text-green-500 rounded-2xl shadow-xl transition-all delay-75;
   }
   .submenu-marker::before {
     content: "";
