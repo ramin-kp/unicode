@@ -13,7 +13,6 @@ export default function LastArticles() {
     const json = await data.json();
     setBlogsData(json);
   };
-  console.log(blogsData);
   return (
     <section>
       <div className="container">

@@ -14,6 +14,9 @@ export default function Login() {
         : window.document.documentElement.classList.remove("dark");
     };
   }, [theme]);
+  useEffect(() =>{
+    
+  },[])
   return (
     <main>
       <section className="flex justify-center items-center bg-gray-100 dark:bg-black-500 text-zinc-700 h-screen">

@@ -10,12 +10,21 @@ import SortCourses from "../components/SortCourses/SortCourses";
 export default function Courses() {
   const [isShowFilter, setIsShowFilter] = useState(false);
   const [isShowSortCorses, setIsShowSortCorses] = useState(false);
+  const [allCourses, setAllCourses] = useState([]);
   useEffect(() => {
     window.document.body.classList.toggle("overflow-hidden");
   }, [isShowFilter]);
   useEffect(() => {
     window.document.body.classList.toggle("overflow-hidden");
   }, [isShowSortCorses]);
+  useEffect(() => {
+    fetchCoursesData();
+  }, []);
+  const fetchCoursesData = async () => {
+    const fetchData = await fetch("http://localhost:4000/v1/courses");
+    const json = await fetchData.json();
+    setAllCourses(json);
+  };
   return (
     <div>
       <Header />
@@ -165,17 +174,15 @@ export default function Courses() {
                   <li>پرمخاطب‌ها</li>
                 </ul>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 mb-9">
-                <CourseBox />
-                <CourseBox />
-                <CourseBox />
-                <CourseBox />
-                <CourseBox />
-                <CourseBox />
-                <CourseBox />
-                <CourseBox />
-                <CourseBox />
-              </div>
+              {allCourses.length ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 mb-9">
+                  {allCourses.map((course) => (
+                    <CourseBox key={course._id} {...course} />
+                  ))}
+                </div>
+              ) : (
+                "Loading ..."
+              )}
               <div className="flex-center mx-auto my-5">
                 <span className="py-4 px-9 bg-gray-200 dark:bg-black-300 dark:hover:bg-black-200 hover:bg-gray-300 text-base text-center text-zinc-700 dark:text-white rounded-full cursor-pointer transition-colors">
                   مشاهده بیشتر دوره‌ها

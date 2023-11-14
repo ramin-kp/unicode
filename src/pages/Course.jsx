@@ -1,11 +1,27 @@
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import Breadcrumb from "../components/Breadcrumb/Breadcrumb";
-import { Link } from "react-router-dom";
+import { Link, json, useParams } from "react-router-dom";
 import SvgIcons from "../components/assets/icons/SvgIcons";
 import Accordion from "../components/Accordion/Accordion";
 import CommentBox from "../components/CommentBox/CommentBox";
+import { useEffect, useState } from "react";
 export default function Course() {
+  const { courseName } = useParams();
+  const [course, setCourse] = useState([]);
+  console.log(courseName)
+
+  useEffect(() => {
+    fetchCourse()
+  }, []);
+  const fetchCourse = async () => {
+    const courseData = await fetch(
+      `http://localhost:4000/v1/courses/related/${courseName}`
+    );
+    const json = await courseData.json();
+    setCourse(json);
+  };
+  console.log("ramin",course)
   return (
     <div>
       {/* <!--------------------------------  Course-Header  --------------------------------> */}
