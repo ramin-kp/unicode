@@ -15,8 +15,8 @@ export default function UserProfile() {
       </div>
       <div className="fixed top-25 left-10 flex flex-col p-6 bg-white dark:bg-black-300 rounded-2xl">
         <div className="flex items-center justify-normal pb-5 border-b border-gray-200 object-cover">
-          <div className="bg-gray-200 rounded-full ml-3">
-            <svg className="w-10 h-10 text-white">
+          <div className="flex items-end justify-center w-14 h-14 bg-gray-200 rounded-full ml-3">
+            <svg className="w-[50px] h-[50px] text-white">
               <use href="#user"></use>
             </svg>
           </div>
