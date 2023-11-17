@@ -4,8 +4,8 @@ import SvgIcons from "../components/assets/icons/SvgIcons";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function LoginByEmail() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("ramin.kp");
+  const [password, setPassword] = useState("123456789");
   const navigate = useNavigate();
   const theme = localStorage.getItem("theme") === "dark";
   useEffect(() => {
@@ -34,7 +34,6 @@ export default function LoginByEmail() {
       });
 
       const json = await postData.json();
-      console.log(json);
       if (postData.status === 200) {
         swal({
           title: "باموفقیت  وارد شدید",

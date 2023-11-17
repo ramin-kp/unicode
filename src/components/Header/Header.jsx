@@ -1,13 +1,17 @@
 import { Link } from "react-router-dom";
 import SvgIcons from "./../assets/icons/SvgIcons";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import HamburgerMenu from "./../HamburgerMenu/HamburgerMenu";
+import UserContext from "../../context/UserContext/UserContext";
+import UserProfile from "../UserProfile/UserProfile";
 
 export default function Header() {
   const [theme, setTheme] = useState(localStorage.getItem("theme") === "dark");
   const [isShowHamburgerMenu, setIsShowHamburgerMenu] = useState(false);
   const [isShowInput, setIsShowInput] = useState(false);
   const [category, setCategory] = useState([]);
+  const userContext = useContext(UserContext);
+  console.log(userContext);
   useEffect(() => {
     const darkModHandler = () => {
       const root = window.document.documentElement;
@@ -132,20 +136,24 @@ export default function Header() {
                 <use href="#sun"></use>
               </svg>
             </div>
-            <div className="relative flex items-center w-[161px] h-14 text-lg child:transition-colors child:delay-75">
-              <Link
-                className=" lg:w-[85%] 2xl:w-full h-full bg-sky-300 dark:bg-secondary-200 hover:bg-sky-400 dark:hover:bg-secondary-100 text-white rounded-full"
-                to="/login"
-              >
-                <span className="inline-block mt-4 pr-4">ورود</span>
-              </Link>
-              <Link
-                className="absolute z-10 lg:left-6 2xl:left-0 flex-center lg:w-20 2xl:w-25 h-full bg-sky-500 dark:bg-secondary-300 hover:bg-sky-600 dark:hover:bg-secondary-400 text-white rounded-full"
-                to="/register"
-              >
-                <span>عضویت</span>
-              </Link>
-            </div>
+            {userContext.isLoggedIn ? (
+              <UserProfile />
+            ) : (
+              <div className="relative flex items-center w-[161px] h-14 text-lg child:transition-colors child:delay-75">
+                <Link
+                  className=" lg:w-[85%] 2xl:w-full h-full bg-sky-300 dark:bg-secondary-200 hover:bg-sky-400 dark:hover:bg-secondary-100 text-white rounded-full"
+                  to="/login"
+                >
+                  <span className="inline-block mt-4 pr-4">ورود</span>
+                </Link>
+                <Link
+                  className="absolute z-10 lg:left-6 2xl:left-0 flex-center lg:w-20 2xl:w-25 h-full bg-sky-500 dark:bg-secondary-300 hover:bg-sky-600 dark:hover:bg-secondary-400 text-white rounded-full"
+                  to="/register"
+                >
+                  <span>عضویت</span>
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </header>

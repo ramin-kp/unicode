@@ -20,8 +20,8 @@ const routes = [
   { path: "/article-info/:articleName", element: <Blog /> },
   { path: "/:courseName/:sessionID", element: <Lesson /> },
   { path: "/orders", element: <Orders /> },
-  { path: "/login", element: <Login /> },
-  { path: "/login/email", element: <LoginByEmail /> },
+  // { path: "/login", element: <Login /> },
+  { path: "/login", element: <LoginByEmail /> },
   { path: "/register", element: <Register /> },
   { path: "/*", element: <NotFound /> },
 ];

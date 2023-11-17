@@ -9,7 +9,6 @@ import { useEffect, useState } from "react";
 export default function Course() {
   const { courseName } = useParams();
   const [course, setCourse] = useState([]);
-  console.log(courseName)
 
   useEffect(() => {
     fetchCourse()
@@ -21,7 +20,6 @@ export default function Course() {
     const json = await courseData.json();
     setCourse(json);
   };
-  console.log("ramin",course)
   return (
     <div>
       {/* <!--------------------------------  Course-Header  --------------------------------> */}
