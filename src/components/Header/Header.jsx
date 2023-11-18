@@ -11,7 +11,6 @@ export default function Header() {
   const [isShowInput, setIsShowInput] = useState(false);
   const [category, setCategory] = useState([]);
   const userContext = useContext(UserContext);
-  console.log(userContext);
   useEffect(() => {
     const darkModHandler = () => {
       const root = window.document.documentElement;
