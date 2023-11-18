@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import swal from "sweetalert";
 import SvgIcons from "../components/assets/icons/SvgIcons";
 import { Link, useNavigate } from "react-router-dom";
+import UserContext from "../context/UserContext/UserContext";
 
 export default function LoginByEmail() {
   const [email, setEmail] = useState("ramin.kp");
   const [password, setPassword] = useState("123456789");
   const navigate = useNavigate();
+  const userContext = useContext(UserContext);
   const theme = localStorage.getItem("theme") === "dark";
   useEffect(() => {
     theme
@@ -40,7 +42,7 @@ export default function LoginByEmail() {
           icon: "success",
           button: "تایید",
         }).then(() => navigate("/", { replace: true }));
-        localStorage.setItem("token", json.accessToken);
+        userContext.login(json.user, json.accessToken);
       } else if (postData.status === 401) {
         swal({
           title: "رمز عبور یا نام کاربری شما صحیح نمی باشد",
