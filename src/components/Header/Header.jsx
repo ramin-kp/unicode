@@ -31,7 +31,7 @@ export default function Header() {
   const fetchAllCategory = async () => {
     const categoryData = await fetch("http://localhost:4000/v1/menus");
     const json = await categoryData.json();
-    setCategory(json);
+    setCategory(json)
   };
 
   return (
@@ -57,7 +57,7 @@ export default function Header() {
                     <div className="flex-center">
                       <Link
                         className=" flex items-center group-hover:text-green-500"
-                        to="/category-info/:categoryName"
+                        to={item.href}
                       >
                         {item.title}
                       </Link>

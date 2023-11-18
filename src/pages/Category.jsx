@@ -5,16 +5,35 @@ import FilterCorses from "../components/FilterCorses/FilterCorses";
 import CourseBox from "../components/CourseBox/CourseBox";
 import FilterCorsesMobile from "../components/FilterCorsesMobile/FilterCorsesMobile";
 import SortCourses from "./../components/SortCourses/SortCourses";
+import { useParams } from "react-router-dom";
 
 export default function Category() {
   const [isShowFilter, setIsShowFilter] = useState(false);
   const [isShowSortCorses, setIsShowSortCorses] = useState(false);
+  const [coursesData, setCourseData] = useState([]);
+  const { categoryName } = useParams();
   useEffect(() => {
     window.document.body.classList.toggle("overflow-hidden");
   }, [isShowFilter]);
   useEffect(() => {
     window.document.body.classList.toggle("overflow-hidden");
   }, [isShowSortCorses]);
+  useEffect(() => {
+    getData();
+  }, []);
+  const getData = async () => {
+    const local = JSON.parse(localStorage.getItem("user"));
+    const fetchData = await fetch(
+      `localhost:4000/v1/courses/category-info/${categoryName}`,
+      {
+        headers: {
+          Authorization: `Bearer ${local.token}`,
+        },
+      }
+    );
+    const json = await fetchData.json();
+    setCourseData(json);
+  };
   return (
     <div>
       {/* <!--------------------------------  Category-Header  --------------------------------> */}
@@ -97,17 +116,15 @@ export default function Category() {
                   <li>پرمخاطب‌ها</li>
                 </ul>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 mb-9">
-                <CourseBox />
-                <CourseBox />
-                <CourseBox />
-                <CourseBox />
-                <CourseBox />
-                <CourseBox />
-                <CourseBox />
-                <CourseBox />
-                <CourseBox />
-              </div>
+              {coursesData.length ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 mb-9">
+                  {coursesData.map((course) => (
+                    <CourseBox key={course._id} {...coursesData} />
+                  ))}
+                </div>
+              ) : (
+                "loading"
+              )}
               <div className="flex-center mx-auto mb-10">
                 <span className="py-4 px-9 bg-gray-200 dark:bg-black-400 hover:bg-gray-300 text-xl text-center text-zinc-700 dark:text-white rounded-full cursor-pointer transition-colors">
                   مشاهده بیشتر دوره‌ها

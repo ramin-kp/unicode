@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 export default function UserProfile() {
   const [isShowProfile, setIsShowProfile] = useState(false);
   const userContext = useContext(UserContext);
-  console.log(userContext);
   useEffect(() => {
     if (isShowProfile) {
       window.document.body.classList.add("overflow-hidden");
