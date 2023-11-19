@@ -18,6 +18,7 @@ const Course = () => {
   const userContext = useContext(UserContext);
   const [isShowCommentTextarea, setIsShowCommentTextarea] = useState(false);
   const navigate = useNavigate();
+
   useEffect(() => {
     const localStorageData = JSON.parse(localStorage.getItem("user"));
     fetch(`http://localhost:4000/v1/courses/${courseName}`, {
@@ -31,7 +32,6 @@ const Course = () => {
       .then((res) => res.json())
       .then((data) => {
         setCourse(data);
-        console.log(data);
         setTeacherInfo(data.creator);
         setSessions(data.sessions);
         setComments(data.comments);
@@ -318,15 +318,17 @@ const Course = () => {
                     ایجاد نظر جدید
                   </button>
                 </div>
-                {isShowCommentTextarea && <CommentTextarea userInfo={userContext.userInfos} />}
+                {isShowCommentTextarea && (
+                  <CommentTextarea
+                    userInfo={userContext.userInfos}
+                    setIsShowCommentTextarea={setIsShowCommentTextarea}
+                    path={courseName}
+                  />
+                )}
                 {comments.length ? (
                   <>
                     {comments.map((comment) => (
-                      <CommentBox
-                        key={comment._id}
-                        commentData={comment}
-      
-                      />
+                      <CommentBox key={comment._id} commentData={comment} />
                     ))}
                     <div className="flex-center mx-auto my-5">
                       <span className="py-4 px-9 bg-gray-200 dark:bg-black-300 dark:hover:bg-black-200 hover:bg-gray-300 text-base text-center text-zinc-700 dark:text-white rounded-full cursor-pointer transition-colors">
