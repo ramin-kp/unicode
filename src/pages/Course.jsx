@@ -18,6 +18,7 @@ const Course = () => {
   const userContext = useContext(UserContext);
   const [isShowCommentTextarea, setIsShowCommentTextarea] = useState(false);
   const navigate = useNavigate();
+  console.log(teacherInfo);
 
   useEffect(() => {
     const localStorageData = JSON.parse(localStorage.getItem("user"));
@@ -249,12 +250,12 @@ const Course = () => {
                   <div className="w-[90px] h-[90px]">
                     <img
                       className="w-full h-full rounded-full object-cover"
-                      src="/images/teacher.jpg"
+                      src={teacherInfo.profile}
                       alt="teacher-avatar"
                     />
                   </div>
                   <h1 className="font-danaLight text-2xl text-zinc-700 dark:text-white text-center">
-                    رامین کریم پور
+                    {teacherInfo.name}
                   </h1>
                   <Link className="flex items-center justify-center gap-1 text-slate-500 dark:text-slate-400 text-center">
                     مدرس دوره
@@ -297,7 +298,7 @@ const Course = () => {
                     </h1>
                   </div>
                   <span className="text-base text-zinc-700 dark:text-white">
-                    {course.time}
+                    {course.time === "0"  ?"00:00": course.time}
                   </span>
                 </div>
                 {sessions && <Accordion accordionData={sessions} />}
@@ -386,12 +387,12 @@ const Course = () => {
                 <div className="w-[90px] h-[90px]">
                   <img
                     className="w-full h-full rounded-full object-cover"
-                    src="/images/teacher.jpg"
+                    src={teacherInfo.profile}
                     alt="teacher-avatar"
                   />
                 </div>
                 <h1 className="font-danaLight text-2xl text-zinc-700 dark:text-white text-center">
-                  رامین کریم پور
+                  {teacherInfo.name}
                 </h1>
                 <Link className="flex items-center justify-center gap-1 text-slate-500 dark:text-slate-400 text-center">
                   مدرس دوره
