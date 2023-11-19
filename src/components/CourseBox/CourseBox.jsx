@@ -7,7 +7,7 @@ export default function CourseBox(props) {
       {/* img box */}
       <div>
         <img
-          className="rounded-xl"
+          className="rounded-xl w-full"
           src={`http://localhost:4000/courses/covers/${props.cover}`}
           alt="courses-img"
         />

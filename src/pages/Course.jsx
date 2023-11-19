@@ -1,32 +1,55 @@
-import { useEffect, useState, memo } from "react";
+import { useEffect, useState, memo, useContext } from "react";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import Breadcrumb from "../components/Breadcrumb/Breadcrumb";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import SvgIcons from "../components/assets/icons/SvgIcons";
 import Accordion from "../components/Accordion/Accordion";
 import CommentBox from "../components/CommentBox/CommentBox";
+import UserContext from "../context/UserContext/UserContext";
+import swal from "sweetalert";
+import CommentTextarea from "../components/CommentTextarea/CommentTextarea";
 const Course = () => {
   const { courseName } = useParams();
   const [course, setCourse] = useState({});
   const [teacherInfo, setTeacherInfo] = useState([]);
-  console.log(course);
+  const [sessions, setSessions] = useState([]);
+  const [comments, setComments] = useState([]);
+  const userContext = useContext(UserContext);
+  const [isShowCommentTextarea, setIsShowCommentTextarea] = useState(false);
+  const navigate = useNavigate();
   useEffect(() => {
     const localStorageData = JSON.parse(localStorage.getItem("user"));
-    const token = localStorageData.token;
     fetch(`http://localhost:4000/v1/courses/${courseName}`, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${
+          localStorageData ? localStorageData.token : null
+        }`,
       },
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setCourse(data);
+        console.log(data);
         setTeacherInfo(data.creator);
+        setSessions(data.sessions);
+        setComments(data.comments);
       });
   }, []);
+  const createCommentHandler = () => {
+    if (userContext.isLoggedIn) {
+      setIsShowCommentTextarea(true);
+    } else {
+      swal({
+        title: "لطفا ابتدا وارد حساب کاربری خود شوید.",
+        icon: "error",
+        buttons: ["لغو", "ورود به حساب کاربری"],
+      }).then(() => {
+        navigate("/login");
+      });
+    }
+  };
   return (
     <div>
       {/* <!--------------------------------  Course-Header  --------------------------------> */}
@@ -126,6 +149,7 @@ const Course = () => {
                     </span>
                     <span className="text-center md:text-right font-danaLight text-slate-500 dark:text-slate-400">
                       {course.time}
+                      {" ساعت "}
                     </span>
                   </div>
                 </div>
@@ -152,7 +176,7 @@ const Course = () => {
                       روش پشتیبانی
                     </span>
                     <span className=" text-center md:text-right font-danaLight text-slate-500 dark:text-slate-400">
-                      آنلاین
+                      {course.support && course.support}
                     </span>
                   </div>
                 </div>
@@ -165,7 +189,7 @@ const Course = () => {
                       پیش نیاز
                     </span>
                     <span className="text-center md:text-right font-danaLight text-slate-500 dark:text-slate-400">
-                      js
+                      {course.prerequisite && course.prerequisite}
                     </span>
                   </div>
                 </div>
@@ -178,7 +202,7 @@ const Course = () => {
                       نوع مشاهده
                     </span>
                     <span className="text-center md:text-right font-danaLight text-slate-500 dark:text-slate-400">
-                      بصورت آنلاین
+                      بصورت {course.ViewType && course.ViewType}
                     </span>
                   </div>
                 </div>
@@ -192,7 +216,7 @@ const Course = () => {
                       </svg>
                       <div>
                         <p className="text-center text-zinc-700 dark:text-white font-danaBold text-2xl">
-                          12
+                          {course.courseStudentsCount}
                         </p>
                         <span className="text-center text-slate-500 dark:text-slate-400 text-sm">
                           دانشجو
@@ -241,27 +265,26 @@ const Course = () => {
                 </div>
               </aside>
               {/* Course-description */}
-              <div className="bg-white dark:bg-black-400 rounded-2xl px-5 py-6">
-                <div className="flex items-center ">
-                  <span className="inline-block w-2.5 h-10 bg-pink-500 rounded-sm"></span>
-                  <p className="mr-3 font-morabbaBold text-zinc-700 dark:text-white text-2xl lg:text-3xl">
-                    توضیحات
+              {course.content && (
+                <div className="bg-white dark:bg-black-400 rounded-2xl px-5 py-6">
+                  <div className="flex items-center ">
+                    <span className="inline-block w-2.5 h-10 bg-pink-500 rounded-sm"></span>
+                    <p className="mr-3 font-morabbaBold text-zinc-700 dark:text-white text-2xl lg:text-3xl">
+                      توضیحات
+                    </p>
+                  </div>
+                  <p className="font-danaLight text-xl/10 text-zinc-700 dark:text-white mt-9">
+                    {course.content && course.content}
                   </p>
+                  <div className="flex-center">
+                    <span className="inline-block px-11 py-3 mx-auto my-6 bg-green-500 hover:bg-green-600 dark:bg-primary dark:hover:bg-green-600 text-white font-danaBold text-xl rounded-full cursor-pointer">
+                      مشاهده بیشتر
+                    </span>
+                  </div>
                 </div>
-                <p className="font-danaLight text-xl text-red-500 mt-9">
-                  توجه! این دوره بصورت پیش فروش ارائه شده است و در تاریخ دی ماه
-                  ۱۴۰۲ بصورت قعطی برگزار میشود و قیمت پیش فروش شده بعد از شروع
-                  دوره چند ده درصد افزایش پیدا میکند و مطابق سیاست های سبزلرن.
-                  بعد از اتمام نیز افزایش قیمت خواهد داشت. فلذا خرید در شرایط
-                  پیش فروش بسیار پایین تر از قیمت اصلی تمام شده است
-                </p>
-                <div className="flex-center">
-                  <span className="inline-block px-11 py-3 mx-auto my-6 bg-green-500 hover:bg-green-600 dark:bg-primary dark:hover:bg-green-600 text-white font-danaBold text-xl rounded-full cursor-pointer">
-                    مشاهده بیشتر
-                  </span>
-                </div>
-              </div>
-              {/* Course-acadian */}
+              )}
+
+              {/* Course-sessions */}
               <div
                 className="bg-white dark:bg-black-400 rounded-xl py-6 px-5"
                 id="session"
@@ -274,11 +297,10 @@ const Course = () => {
                     </h1>
                   </div>
                   <span className="text-base text-zinc-700 dark:text-white">
-                    12:15
+                    {course.time}
                   </span>
                 </div>
-                <Accordion />
-                <Accordion />
+                {sessions && <Accordion accordionData={sessions} />}
               </div>
               {/* Course-comments */}
               <div className="bg-white dark:bg-black-400 rounded-xl py-6 px-5">
@@ -289,16 +311,34 @@ const Course = () => {
                       نظرات
                     </h1>
                   </div>
-                  <button className="px-4 py-2 text-base text-white bg-green-500 hover:bg-green-600 rounded-xl transition-all">
+                  <button
+                    className="px-4 py-2 text-base text-white bg-green-500 hover:bg-green-600 rounded-xl transition-all"
+                    onClick={createCommentHandler}
+                  >
                     ایجاد نظر جدید
                   </button>
                 </div>
-                <CommentBox />
-                <div className="flex-center mx-auto my-5">
-                  <span className="py-4 px-9 bg-gray-200 dark:bg-black-300 dark:hover:bg-black-200 hover:bg-gray-300 text-base text-center text-zinc-700 dark:text-white rounded-full cursor-pointer transition-colors">
-                    مشاهده بیشتر دوره‌ها
-                  </span>
-                </div>
+                {isShowCommentTextarea && <CommentTextarea userInfo={userContext.userInfos} />}
+                {comments.length ? (
+                  <>
+                    {comments.map((comment) => (
+                      <CommentBox
+                        key={comment._id}
+                        commentData={comment}
+      
+                      />
+                    ))}
+                    <div className="flex-center mx-auto my-5">
+                      <span className="py-4 px-9 bg-gray-200 dark:bg-black-300 dark:hover:bg-black-200 hover:bg-gray-300 text-base text-center text-zinc-700 dark:text-white rounded-full cursor-pointer transition-colors">
+                        مشاهده بیشتر دوره‌ها
+                      </span>
+                    </div>
+                  </>
+                ) : (
+                  <h1 className="text-lg font-danaMedium text-zinc-700 dark:text-white">
+                    فعلا کامنتی برای این دوره نوشته نشده است
+                  </h1>
+                )}
               </div>
             </div>
             {/* Course-aside */}
@@ -311,7 +351,7 @@ const Course = () => {
                     </svg>
                     <div>
                       <p className="text-center text-zinc-700 dark:text-white font-danaBold text-2xl">
-                        12
+                        {course.courseStudentsCount}
                       </p>
                       <span className="text-center text-slate-500 dark:text-slate-400 text-sm">
                         دانشجو
