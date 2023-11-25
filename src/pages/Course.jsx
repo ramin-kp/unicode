@@ -15,10 +15,10 @@ const Course = () => {
   const [teacherInfo, setTeacherInfo] = useState([]);
   const [sessions, setSessions] = useState([]);
   const [comments, setComments] = useState([]);
+  const [categoryData, setCategoryData] = useState([]);
   const userContext = useContext(UserContext);
   const [isShowCommentTextarea, setIsShowCommentTextarea] = useState(false);
   const navigate = useNavigate();
-  console.log(teacherInfo);
 
   useEffect(() => {
     const localStorageData = JSON.parse(localStorage.getItem("user"));
@@ -36,6 +36,7 @@ const Course = () => {
         setTeacherInfo(data.creator);
         setSessions(data.sessions);
         setComments(data.comments);
+        setCategoryData(data.categoryID);
       });
   }, []);
   const createCommentHandler = () => {
@@ -51,6 +52,7 @@ const Course = () => {
       });
     }
   };
+  console.log(course);
   return (
     <div>
       {/* <!--------------------------------  Course-Header  --------------------------------> */}
@@ -58,7 +60,22 @@ const Course = () => {
       {/* <!--------------------------------  Course-Main  --------------------------------> */}
       <main>
         <div className="container">
-          <Breadcrumb />
+          <Breadcrumb
+            courseData={[
+              {
+                id: 1,
+                path: categoryData.name,
+                name: categoryData.title,
+                right: 500,
+                left:500,
+              },
+              {
+                id: 2,
+                path: course.shortName,
+                name: course.name,
+              },
+            ]}
+          />
           <section className="flex flex-col-reverse  lg:flex-row items-start justify-between gap-x-10 lg:h-[356px] bg-white dark:bg-black-400 sm:bg-transparent sm:dark:bg-transparent p-4 sm:p-0 mt-5 sm:mt-0 rounded-2xl">
             <div className="flex flex-col items-start justify-between h-full grow">
               <div>
@@ -298,7 +315,7 @@ const Course = () => {
                     </h1>
                   </div>
                   <span className="text-base text-zinc-700 dark:text-white">
-                    {course.time === "0"  ?"00:00": course.time}
+                    {course.time === "0" ? "00:00" : course.time}
                   </span>
                 </div>
                 {sessions && <Accordion accordionData={sessions} />}
