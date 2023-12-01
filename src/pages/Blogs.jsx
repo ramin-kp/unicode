@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import ArticlesBox from "./../components/ArticlesBox/ArticlesBox";
@@ -8,6 +8,15 @@ import SortBlogs from "../components/SortBlogs/SortBlogs";
 
 export default function Blogs() {
   const [isShowSortBlogs, setIsShowSortBlogs] = useState(false);
+  const [allBlogs, setAllBlogs] = useState([]);
+  useEffect(() => {
+    fetchData();
+  }, []);
+  const fetchData = async () => {
+    const getBlogs = await fetch("http://localhost:4000/v1/articles");
+    const json = await getBlogs.json();
+    setAllBlogs(json);
+  };
   return (
     <div>
       {/* <!--------------------------------  Blogs-Header  --------------------------------> */}
@@ -125,20 +134,16 @@ export default function Blogs() {
                   <li>پرنظرها</li>
                 </ul>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 mb-9">
-                <ArticlesBox />
-                <ArticlesBox />
-                <ArticlesBox />
-                <ArticlesBox />
-                <ArticlesBox />
-                <ArticlesBox />
-                <ArticlesBox />
-                <ArticlesBox />
-                <ArticlesBox />
-                <ArticlesBox />
-                <ArticlesBox />
-                <ArticlesBox />
-              </div>
+              {allBlogs.length ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 mb-9">
+                  {allBlogs.map((blog) => (
+                    <ArticlesBox key={blog._id} {...blog} />
+                  ))}
+                </div>
+              ) : (
+                <h1>loading ...</h1>
+              )}
+
               <div className="flex-center mx-auto mb-10">
                 <span className="py-4 px-9 bg-gray-200 dark:bg-black-400 hover:bg-gray-300 text-xl text-center text-zinc-700 dark:text-white rounded-full cursor-pointer transition-colors">
                   مشاهده بیشتر

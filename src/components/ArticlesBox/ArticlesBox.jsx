@@ -3,6 +3,7 @@ import SvgIcons from "../assets/icons/SvgIcons";
 import { Link } from "react-router-dom";
 
 export default function ArticlesBox(props) {
+  console.log(props);
   return (
     <div className="dark:border border-zinc-700 overflow-hidden rounded-xl shadow-md">
       <div>
@@ -15,7 +16,7 @@ export default function ArticlesBox(props) {
       <div className="mx-2.5">
         <div className="mt-7 mb-9">
           <Link
-            className="mb-1.5 h-14 text-zinc-700 font-danaMedium text-xl dark:text-white line-clamp-2"
+            className="mb-1.5 h-14 text-zinc-700 font-danaMedium text-xl dark:text-white hover:text-green-500 transition-all line-clamp-2"
             to={`/article-info/${props.shortName}`}
           >
             {props.title}
@@ -33,13 +34,15 @@ export default function ArticlesBox(props) {
               <svg className="w-5 h-5 ml-1.5">
                 <use href="#user-outline"></use>
               </svg>
-              <span>{props.creator.name}</span>
+              <span>{props.creator && props.creator.name}</span>
             </Link>
             <div className="flex items-center mr-1.5">
               <svg className="w-5 h-5 ml-1.5">
                 <use href="#calendar"></use>
               </svg>
-              <span>{props.updatedAt.split("T").splice(0, 1)}</span>
+              <span>
+                {props.updatedAt && props.updatedAt.split("T").splice(0, 1)}
+              </span>
             </div>
           </div>
         </div>
