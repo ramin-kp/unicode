@@ -1,11 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import Breadcrumb from "../components/Breadcrumb/Breadcrumb";
 import SvgIcons from "../components/assets/icons/SvgIcons";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export default function Blog() {
+  const [blog, setBlog] = useState([]);
+  const { articleName } = useParams();
+
+  useEffect(() => {
+    getBlogData();
+  }, []);
+  const getBlogData = async () => {
+    const fetchData = await fetch(
+      `http://localhost:4000/v1/articles/${articleName}`
+    );
+    const json = await fetchData.json();
+    console.log(json);
+    setBlog(json);
+  };
   return (
     <>
       {/* <!--------------------------------  Blog-Header  --------------------------------> */}
@@ -13,11 +27,24 @@ export default function Blog() {
       {/* <!--------------------------------  Blog-Section  --------------------------------> */}
       <main>
         <div className="container">
-          <Breadcrumb />
+          <Breadcrumb
+            courseData={[
+              {
+                id: 1,
+                path: "/blog",
+                name: "وبلاگ",
+              },
+              {
+                id: 2,
+                path: blog.shortName,
+                name: blog.title,
+              },
+            ]}
+          />
           <section className="flex gap-x-10">
             <section className="p-5 bg-white dark:bg-black-400  rounded-2xl">
               <h1 className="pb-5 font-morabbaBold text-2xl/9 lg:text-4xl/[48px] text-zinc-700 dark:text-white border-b border-slate-200 dark:border-zinc-700">
-                ساخت ماشین حساب با پایتون – به صورت رابط گرافیکی
+                {blog.title}
               </h1>
               <div className="flex gap-x-5 my-5">
                 <span className="flex items-end gap-x-3">
@@ -26,7 +53,7 @@ export default function Blog() {
                   </svg>
 
                   <span className="font-danaMedium text-xs text-zinc-700 dark:text-white">
-                    نوشته شده از ramin-kp
+                    نوشته از {blog.creator && blog.creator.name}
                   </span>
                 </span>
                 <span className="flex items-end gap-x-3">
@@ -34,31 +61,17 @@ export default function Blog() {
                     <use href="#calendar-days"></use>
                   </svg>
                   <span className="font-danaMedium text-xs text-zinc-700 dark:text-white">
-                    1402/08/17
+                    {blog.updatedAt && blog.updatedAt.slice(0, 10)}
                   </span>
                 </span>
               </div>
               <img
                 className="rounded-2xl my-5"
-                src="/images/blog.jpg"
+                src={`http://localhost:4000/courses/covers/${blog.cover}`}
                 alt="blog-img"
               />
               <p className="font-danaLight text-xl text-zinc-700 dark:text-white">
-                ساخت ماشین حساب با پایتون معمولا از اولین پروژه‌هایی هست که
-                برنامه‌نویس‌های پایتون به سراغش میرن تا سطح و دانش خودشون رو محک
-                بزنن؛ یادگیری این پروژه، بخاطر چالش‌هایی که داره باعث می‌شه سطح
-                خودتون رو در برنامه‌نویسی ارتقا بدید و وارد مراحل بعدی بشید تا
-                پروژه‌های بزرگ‌تری رو توسعه بدید. در این مقاله ساخت ماشین حساب
-                با پایتون رو به‌صورت خط به خط بهتون آموزش میدم تا درک عمیق‌تری
-                از نوع فعالیت هر کد بدست بیارید؛ قطعا کدی که باهم روی اون کار
-                می‌کنیم تنها روش ساخت ماشین حساب با پایتون نیست، شما با یادگیری
-                ساختار این پروژه قادر خواهید بود طبق دانش خودتون اون رو توسعه و
-                تغییر بدید، پس در ادامه مقاله همراه من باشید تا ساخت ماشین حساب
-                رو شروع کنیم… شروع ساخت ماشین حساب با پایتون قبل از شروع خیلی
-                خوبه که بدونید ماشین حسابی که قراره بسازیم چه شکلی هست و چه
-                ویژگی‌هایی داره، که با ذهنیت کامل سراغ ساخت ماشین حساب با پایتون
-                بریم؛ ابتدا تصویر ماشین حساب رو نشونتون میدم، بعد از اون
-                ویژگی‌هایی که قراره براش قرار بدیم رو بهتون می‌گم.
+                {blog.body}
               </p>
               <div className="flex-center mx-auto my-5">
                 <span className="py-4 px-9 bg-green-500 hover:bg-green-600 text-lg text-center text-white rounded-full cursor-pointer transition-colors">
@@ -92,7 +105,9 @@ export default function Blog() {
                 </div>
                 <ul className="px-6 divide-y divide-dashed divide-slate-400">
                   <li className="py-4 font-danaLight text-xl text-zinc-700 dark:text-white">
-                    <Link className="inline-block w-[300px] leading-7" to="#">آموزش گام به گام ساخت ویروس با پایتون </Link>
+                    <Link className="inline-block w-[300px] leading-7" to="#">
+                      آموزش گام به گام ساخت ویروس با پایتون{" "}
+                    </Link>
                   </li>
                   <li className="py-4 font-danaLight text-xl text-zinc-700 dark:text-white">
                     <Link className="inline-block w-[300px] leading-7" to="#">
@@ -100,13 +115,19 @@ export default function Blog() {
                     </Link>
                   </li>
                   <li className="py-4 font-danaLight text-xl text-zinc-700 dark:text-white">
-                    <Link className="inline-block w-[300px] leading-7" to="#">آموزش گام به گام ساخت ویروس با پایتون </Link>
+                    <Link className="inline-block w-[300px] leading-7" to="#">
+                      آموزش گام به گام ساخت ویروس با پایتون{" "}
+                    </Link>
                   </li>
                   <li className="py-4 font-danaLight text-xl text-zinc-700 dark:text-white">
-                    <Link className="inline-block w-[300px] leading-7" to="#">زیر و بم لیست در پایتون + تمرین عملی </Link>
+                    <Link className="inline-block w-[300px] leading-7" to="#">
+                      زیر و بم لیست در پایتون + تمرین عملی{" "}
+                    </Link>
                   </li>
                   <li className="py-4 font-danaLight text-xl text-zinc-700 dark:text-white">
-                    <Link className="inline-block w-[300px] leading-7" to="#">آموزش گام به گام ساخت ویروس با پایتون </Link>
+                    <Link className="inline-block w-[300px] leading-7" to="#">
+                      آموزش گام به گام ساخت ویروس با پایتون{" "}
+                    </Link>
                   </li>
                 </ul>
               </div>

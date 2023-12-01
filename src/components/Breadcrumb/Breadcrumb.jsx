@@ -16,11 +16,11 @@ export default function Breadcrumb({ courseData }) {
             <div
               className={`
               breadcrumb-arrow before:right-[280px] after:right-[280px] dark:before:bg-black-500 dark:after:bg-black-500`}
+              key={item.id}
             >
               <Link
                 className="font-danaMedium"
                 to={`/course-info/${item.path}`}
-                key={item.id}
               >
                 {item.name && item.name}
               </Link>
