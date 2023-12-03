@@ -67,7 +67,7 @@ export default function Blog() {
                 </span>
               </div>
               <img
-                className="rounded-2xl my-5"
+                className="rounded-2xl my-5 mx-auto"
                 src={`http://localhost:4000/courses/covers/${blog.cover}`}
                 alt="blog-img"
               />

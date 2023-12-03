@@ -23,8 +23,9 @@ export default function Category() {
   }, []);
   const getData = async () => {
     const local = JSON.parse(localStorage.getItem("user"));
+    const { categoryName } = useParams();
     const fetchData = await fetch(
-      `localhost:4000/v1/courses/category-info/${categoryName}`,
+      `localhost:4000/v1/courses/category/${categoryName}`,
       {
         headers: {
           Authorization: `Bearer ${local.token}`,
@@ -44,7 +45,7 @@ export default function Category() {
           <div className="flex-center w-full mt-14 mb-9">
             <span className="inline-block w-10 h-2.5 bg-rose-500 rounded-sm"></span>
             <h1 className="mr-2.5 font-morabbaBold dark:text-white  text-4xl sm:text-6xl">
-              فرانت اند
+              {categoryName}
             </h1>
           </div>
           <div className="lg:flex items-start justify-between gap-5">

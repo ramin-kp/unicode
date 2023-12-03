@@ -20,7 +20,7 @@ export default function Breadcrumb({ courseData }) {
             >
               <Link
                 className="font-danaMedium"
-                to={`/course-info/${item.path}`}
+                to={`/category-info/${item.path}`}
               >
                 {item.name && item.name}
               </Link>
