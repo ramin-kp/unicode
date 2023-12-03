@@ -4,6 +4,7 @@ import Footer from "../components/Footer/Footer";
 import Breadcrumb from "../components/Breadcrumb/Breadcrumb";
 import SvgIcons from "../components/assets/icons/SvgIcons";
 import { Link, useParams } from "react-router-dom";
+import DOMPurify from "dompurify";
 
 export default function Blog() {
   const [blog, setBlog] = useState([]);
@@ -42,7 +43,7 @@ export default function Blog() {
             ]}
           />
           <section className="flex gap-x-10">
-            <section className="p-5 bg-white dark:bg-black-400  rounded-2xl">
+            <section className="grow p-5 bg-white dark:bg-black-400  rounded-2xl">
               <h1 className="pb-5 font-morabbaBold text-2xl/9 lg:text-4xl/[48px] text-zinc-700 dark:text-white border-b border-slate-200 dark:border-zinc-700">
                 {blog.title}
               </h1>
@@ -70,9 +71,12 @@ export default function Blog() {
                 src={`http://localhost:4000/courses/covers/${blog.cover}`}
                 alt="blog-img"
               />
-              <p className="font-danaLight text-xl text-zinc-700 dark:text-white">
-                {blog.body}
-              </p>
+              <div
+                className="blog__details font-danaLight text-xl text-zinc-700 dark:text-white"
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(blog.body),
+                }}
+              ></div>
               <div className="flex-center mx-auto my-5">
                 <span className="py-4 px-9 bg-green-500 hover:bg-green-600 text-lg text-center text-white rounded-full cursor-pointer transition-colors">
                   مشاهده بیشتر

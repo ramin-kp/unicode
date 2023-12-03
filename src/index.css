@@ -100,7 +100,7 @@
     border-radius: 50%;
   }
   .submenu-hover {
-    @apply  hover:submenu-marker hover:text-green-500 hover:mr-4 transition-all duration-200;
+    @apply hover:submenu-marker hover:text-green-500 hover:mr-4 transition-all duration-200;
   }
   .animation-open-menu {
     animation: openMenuAnim 0.1s linear 1 reverse backwards;
@@ -179,6 +179,12 @@
   input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
+  }
+  .blog__details h2 {
+    @apply font-danaDemiBold dark:text-white text-xl;
+  }
+  .blog__details p {
+    @apply font-danaLight text-zinc-700 dark:text-white text-xl;
   }
 }
 @layer utilities {
