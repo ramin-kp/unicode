@@ -25,6 +25,9 @@ export default function Footer() {
                 <Link>شرایط و قوانین</Link>
               </li>
               <li>
+                <Link to="/contact"> ارتباط با ما</Link>
+              </li>
+              <li>
                 <Link>ارسال تیکت</Link>
               </li>
               <li>

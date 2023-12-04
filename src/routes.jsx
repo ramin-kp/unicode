@@ -10,6 +10,8 @@ import LoginByEmail from "./pages/LoginByEmail";
 import NotFound from "./pages/NotFound";
 import Register from "./pages/Register";
 import Orders from "./pages/Orders";
+import Contact from "./pages/Contact";
+import Search from "./pages/Search";
 
 const routes = [
   { path: "/", element: <Home /> },
@@ -20,9 +22,11 @@ const routes = [
   { path: "/article-info/:articleName", element: <Blog /> },
   { path: "/:courseName/:sessionID", element: <Lesson /> },
   { path: "/orders", element: <Orders /> },
+  { path: "/search/:value", element: <Search /> },
   // { path: "/login", element: <Login /> },
   { path: "/login", element: <LoginByEmail /> },
   { path: "/register", element: <Register /> },
+  { path: "/contact", element: <Contact /> },
   { path: "/*", element: <NotFound /> },
 ];
 export default routes;

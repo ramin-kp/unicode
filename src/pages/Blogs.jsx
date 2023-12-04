@@ -28,7 +28,7 @@ export default function Blogs() {
     }
   }, [blogFilter]);
   return (
-    <div>
+    <main>
       {/* <!--------------------------------  Blogs-Header  --------------------------------> */}
       <Header />
       {/* <!--------------------------------  Blogs-Section  --------------------------------> */}
@@ -169,6 +169,6 @@ export default function Blogs() {
 
       <Footer />
       <SvgIcons />
-    </div>
+    </main>
   );
 }

@@ -5,7 +5,7 @@ import SvgIcons from "../assets/icons/SvgIcons";
 export default function SectionHeader({ title, description, link, color }) {
   return (
     <div className="container">
-      <div className="sm:flex items-center justify-between mt-28 mb-[38px]">
+      <div className="sm:flex items-center justify-between mt-10 mb-[38px]">
         <div>
           <div className="flex items-center">
             <span

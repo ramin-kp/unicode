@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from "react";
-import Header from "../components/Header/Header";
-import Footer from "../components/Footer/Footer";
 import SvgIcons from "../components/assets/icons/SvgIcons";
+import Footer from "../components/Footer/Footer";
 import CourseBox from "../components/CourseBox/CourseBox";
-import FilterCorses from "../components/FilterCorses/FilterCorses";
 import FilterCorsesMobile from "../components/FilterCorsesMobile/FilterCorsesMobile";
 import SortCourses from "../components/SortCourses/SortCourses";
+import FilterCorses from "../components/FilterCorses/FilterCorses";
+import Header from "./../components/Header/Header";
+import { useParams } from "react-router-dom";
+import SectionHeader from "../components/SectionHeader/SectionHeader";
+import ArticlesBox from "./../components/ArticlesBox/ArticlesBox";
 
-export default function Courses() {
+export default function Search() {
   const [isShowFilter, setIsShowFilter] = useState(false);
   const [isShowSortCorses, setIsShowSortCorses] = useState(false);
   const [allCourses, setAllCourses] = useState([]);
+  const [allBlogs, setAllBlogs] = useState([]);
+  const { value } = useParams();
   useEffect(() => {
     window.document.body.classList.toggle("overflow-hidden");
   }, [isShowFilter]);
@@ -21,9 +26,11 @@ export default function Courses() {
     fetchCoursesData();
   }, []);
   const fetchCoursesData = async () => {
-    const fetchData = await fetch("http://localhost:4000/v1/courses");
+    const fetchData = await fetch(`http://localhost:4000/v1/search/${value}`);
     const json = await fetchData.json();
-    setAllCourses(json);
+    setAllCourses(json.allResultCourses);
+    setAllBlogs(json.allResultArticles);
+    console.log(json);
   };
   return (
     <main>
@@ -34,7 +41,7 @@ export default function Courses() {
           <div className="flex-center w-full mt-14 mb-9">
             <span className="inline-block w-10 h-2.5 bg-rose-500 rounded-sm"></span>
             <h1 className="mr-2.5 font-morabbaBold dark:text-white  text-4xl sm:text-6xl">
-              دوره‌ها
+              جستو جو:{value}
             </h1>
           </div>
           <div className="lg:flex items-start justify-between gap-5">
@@ -159,7 +166,7 @@ export default function Courses() {
               />
             </aside>
             {/* courses-gridBox */}
-            <div className="">
+            <div className="grow">
               <div className="hidden sm:flex items-center flex-grow h-[68px] px-6 mb-5 bg-white dark:bg-black-400 dark:text-white rounded-2xl">
                 <div className="flex items-center ml-3 text-sm">
                   <svg className="w-5 h-5 ml-3">
@@ -174,6 +181,12 @@ export default function Courses() {
                   <li>پرمخاطب‌ها</li>
                 </ul>
               </div>
+              <SectionHeader
+                title="دوره‌ها"
+                description="تمامی دوره‌های جستوجو شده"
+                link={false}
+                color="bg-pink-500"
+              />
               {allCourses.length ? (
                 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 mb-9">
                   {allCourses.map((course) => (
@@ -181,7 +194,30 @@ export default function Courses() {
                   ))}
                 </div>
               ) : (
-                "Loading ..."
+                <div className="p-10 mx-auto bg-pink-500 dark:bg-pink-700 rounded-xl">
+                  <h1 className="font-danaMedium text-center text-xl text-white">
+                    این آرشیو یا فیلتر ها هیچ دوره‌ای ندارند.
+                  </h1>
+                </div>
+              )}
+              <SectionHeader
+                title="بلاگ‌ها"
+                description="تمامی بلاگ‌های جستوجو شده"
+                link={false}
+                color="bg-sky-500"
+              />
+              {allBlogs.length ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 mb-9">
+                  {allBlogs.map((blog) => (
+                    <ArticlesBox key={blog._id} {...blog} />
+                  ))}
+                </div>
+              ) : (
+                <div className="p-10 mx-auto bg-violet-500 dark:bg-violet-700 rounded-xl">
+                  <h1 className="font-danaMedium text-center text-xl text-white">
+                    این آرشیو یا فیلتر ها هیچ مقاله‌ای ندارند.
+                  </h1>
+                </div>
               )}
               <div className="flex-center mx-auto my-5">
                 <span className="py-4 px-9 bg-gray-200 dark:bg-black-300 dark:hover:bg-black-200 hover:bg-gray-300 text-base text-center text-zinc-700 dark:text-white rounded-full cursor-pointer transition-colors">

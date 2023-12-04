@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SvgIcons from "./../assets/icons/SvgIcons";
 import { useContext, useEffect, useState } from "react";
 import HamburgerMenu from "./../HamburgerMenu/HamburgerMenu";
@@ -10,7 +10,9 @@ export default function Header() {
   const [isShowHamburgerMenu, setIsShowHamburgerMenu] = useState(false);
   const [isShowInput, setIsShowInput] = useState(false);
   const [category, setCategory] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
   const userContext = useContext(UserContext);
+  const navigate = useNavigate();
   useEffect(() => {
     const darkModHandler = () => {
       const root = window.document.documentElement;
@@ -31,7 +33,7 @@ export default function Header() {
   const fetchAllCategory = async () => {
     const categoryData = await fetch("http://localhost:4000/v1/menus");
     const json = await categoryData.json();
-    setCategory(json)
+    setCategory(json);
   };
 
   return (
@@ -100,10 +102,14 @@ export default function Header() {
                 lg:w-[150px] 2xl:w-auto h-full bg-transparent outline-none placeholder:font-danaLight"
                 type="text"
                 placeholder="جستجو"
+                onChange={(e) => setSearchInput(e.target.value)}
               />
               <svg
                 className=" w-6 h-6 cursor-pointer "
-                onClick={() => setIsShowInput(!isShowInput)}
+                onClick={() => {
+                  setIsShowInput(!isShowInput);
+                  navigate(`/search/${searchInput}`);
+                }}
               >
                 <use href="#search"></use>
               </svg>
