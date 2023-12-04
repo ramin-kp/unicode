@@ -12,6 +12,7 @@ import Register from "./pages/Register";
 import Orders from "./pages/Orders";
 import Contact from "./pages/Contact";
 import Search from "./pages/Search";
+import Rules from "./pages/Rules";
 
 const routes = [
   { path: "/", element: <Home /> },
@@ -27,6 +28,7 @@ const routes = [
   { path: "/login", element: <LoginByEmail /> },
   { path: "/register", element: <Register /> },
   { path: "/contact", element: <Contact /> },
+  { path: "/terms-rules", element: <Rules /> },
   { path: "/*", element: <NotFound /> },
 ];
 export default routes;
