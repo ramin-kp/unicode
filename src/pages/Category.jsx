@@ -102,7 +102,7 @@ export default function Category() {
               </div>
             </aside>
             {/* courses-gridBox */}
-            <div className="">
+            <div className="grow">
               <div className="hidden sm:flex items-center flex-grow h-[68px] px-6 mb-5 bg-white dark:bg-black-400 dark:text-white rounded-2xl">
                 <div className="flex items-center ml-3 text-sm">
                   <svg className="w-5 h-5 ml-3">
@@ -124,13 +124,15 @@ export default function Category() {
                   ))}
                 </div>
               ) : (
-                "loading"
+                <div className="p-5 mb-2.5 bg-pink-500 dark:bg-pink-600 rounded-2xl ">
+                  <h1 className="font-morabbaBold text-white text-xl/10 -tracking-tighter">اطلاعات دوره‌ها به علت مشکل در بک اند ارائه نمی‌شود❕</h1>
+                </div>
               )}
-              <div className="flex-center mx-auto mb-10">
+              {/* <div className="flex-center mx-auto mb-10">
                 <span className="py-4 px-9 bg-gray-200 dark:bg-black-400 hover:bg-gray-300 text-xl text-center text-zinc-700 dark:text-white rounded-full cursor-pointer transition-colors">
                   مشاهده بیشتر دوره‌ها
                 </span>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

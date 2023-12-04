@@ -21,7 +21,7 @@ export default function ArticlesBox(props) {
           >
             {props.title}
           </Link>
-          <h4 className="mt-1.5 text-slate-500 dark:text-slate-400 font-danaLight text-sm line-clamp-3">
+          <h4 className="h-10 mt-1.5 text-slate-500 dark:text-slate-400 font-danaLight text-sm line-clamp-3">
             {props.description}
           </h4>
         </div>

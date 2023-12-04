@@ -90,7 +90,7 @@ export default function CommentBox({ commentData }) {
       </div>
 
       {/* Comment-mobile */}
-      <div className="flex flex-col lg:hidden items-start gap-5 px-2 py-3 bg-gray-100 dark:bg-black-300 rounded-2xl">
+      <div className="flex flex-col lg:hidden items-start gap-5 px-3.5 py-5 mt-5 bg-gray-100 dark:bg-black-300 rounded-2xl">
         {/* user-avatar */}
         <div className="shrink-0 flex items-center justify-between w-full">
           <div className="flex gap-x-2.5">

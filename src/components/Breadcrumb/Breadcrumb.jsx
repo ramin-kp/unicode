@@ -15,7 +15,10 @@ export default function Breadcrumb({ courseData }) {
         ? courseData.map((item) => (
             <div
               className={`
-              breadcrumb-arrow before:right-[280px] after:right-[280px] dark:before:bg-black-500 dark:after:bg-black-500`}
+              ${
+                item.size > 0 &&
+                `breadcrumb-arrow before:right-[${item.size}px] after:right-[${item.size}px]   dark:before:bg-black-500 dark:after:bg-black-500`
+              }`}
               key={item.id}
             >
               <Link

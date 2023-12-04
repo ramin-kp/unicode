@@ -34,11 +34,13 @@ export default function Blog() {
                 id: 1,
                 path: "/blog",
                 name: "وبلاگ",
+                size: 180,
               },
               {
                 id: 2,
                 path: blog.shortName,
                 name: blog.title,
+                size: 0,
               },
             ]}
           />

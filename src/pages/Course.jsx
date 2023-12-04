@@ -65,13 +65,13 @@ const Course = () => {
                 id: 1,
                 path: categoryData.name,
                 name: categoryData.title,
-                right: 500,
-                left:500,
+                size: 280,
               },
               {
                 id: 2,
                 path: course.shortName,
                 name: course.name,
+                size: 0,
               },
             ]}
           />
@@ -349,7 +349,7 @@ const Course = () => {
                     ))}
                     <div className="flex-center mx-auto my-5">
                       <span className="py-4 px-9 bg-gray-200 dark:bg-black-300 dark:hover:bg-black-200 hover:bg-gray-300 text-base text-center text-zinc-700 dark:text-white rounded-full cursor-pointer transition-colors">
-                        مشاهده بیشتر دوره‌ها
+                        مشاهده بیشتر
                       </span>
                     </div>
                   </>
