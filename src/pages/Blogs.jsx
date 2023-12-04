@@ -9,6 +9,7 @@ import SortBlogs from "../components/SortBlogs/SortBlogs";
 export default function Blogs() {
   const [isShowSortBlogs, setIsShowSortBlogs] = useState(false);
   const [allBlogs, setAllBlogs] = useState([]);
+  const [blogFilter, setBlogFilter] = useState("");
   useEffect(() => {
     fetchData();
   }, []);
@@ -17,6 +18,15 @@ export default function Blogs() {
     const json = await getBlogs.json();
     setAllBlogs(json);
   };
+  useEffect(() => {
+    if (blogFilter === "old") {
+      allBlogs.reverse();
+    } else if (blogFilter === "mostComments") {
+      allBlogs.sort();
+    } else {
+      fetchData();
+    }
+  }, [blogFilter]);
   return (
     <div>
       {/* <!--------------------------------  Blogs-Header  --------------------------------> */}
@@ -128,10 +138,12 @@ export default function Blogs() {
                   <span>مرتب سازی :</span>
                 </div>
                 <ul className="flex items-center gap-x-2  child:px-4 child:py-2.5 child:text-sm text-slate-500 dark:text-slate-400 child:rounded-lg child:cursor-pointer">
-                  <li className="selected">عادی</li>
-                  <li className="">جدیدترین</li>
-                  <li>قدیمی ترین</li>
-                  <li>پرنظرها</li>
+                  <li className="selected" onClick={() => setBlogFilter("")}>
+                    عادی
+                  </li>
+                  <li onClick={() => setBlogFilter("")}>جدیدترین</li>
+                  <li onClick={() => setBlogFilter("old")}>قدیمی ترین</li>
+                  <li onClick={() => setBlogFilter("mostComments")}>پرنظرها</li>
                 </ul>
               </div>
               {allBlogs.length ? (

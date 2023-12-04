@@ -28,28 +28,30 @@ export default function Footer() {
                 <Link>ارسال تیکت</Link>
               </li>
               <li>
-                <Link>همه دوره‌ها</Link>
+                <Link to="/courses">همه دوره‌ها</Link>
               </li>
             </ul>
           </div>
-          <div className="">
+          <div>
             <h1 className="font-danaMedium text-2xl text-zinc-700 dark:text-white">
               لینک های مفید
             </h1>
             <ul className="child:my-[15px] font-danaMedium text-lg text-slate-500 dark:text-slate-400 child-hover:text-green-500 child:transition-all">
               <li>
-                <Link>آموزش جاوا اسکریپت</Link>
+                <Link to="/course-info/js-20-lib">
+                 آموزش 20 کتابخانه جاوا اسکریپت
+                </Link>
               </li>
               <li>
-                <Link>آموزش تلویند</Link>
-              </li>
-
-              <li>
-                <Link>آموزش پایتون</Link>
+                <Link to="/course-info/bootstrap">آموزش بوت استرپ</Link>
               </li>
 
               <li>
-                <Link>آموزش ری اکت</Link>
+                <Link to="/course-info/node-expert">آموزش Nodejds </Link>
+              </li>
+
+              <li>
+                <Link to="/course-info/vuejs">آموزش Vuejs </Link>
               </li>
             </ul>
           </div>
@@ -64,8 +66,11 @@ export default function Footer() {
                   src="/images/instagram.png"
                   alt="instagram-icon"
                 />
-                <Link className="text-direction" to="https://www.instagram.com/ramin._kp/">
-                  <span >@unicode</span>
+                <Link
+                  className="text-direction"
+                  to="https://www.instagram.com/ramin._kp/"
+                >
+                  <span>@unicode</span>
                 </Link>
               </div>
               <div className="flex items-center">
@@ -74,10 +79,7 @@ export default function Footer() {
                   src="/images/telegram.png"
                   alt="instagram-icon"
                 />
-                <Link
-                  className="text-direction"
-                  to="https://t.me/ramin_kp81"
-                >
+                <Link className="text-direction" to="https://t.me/ramin_kp81">
                   <span>@unicode</span>
                 </Link>
               </div>
