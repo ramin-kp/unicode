@@ -5,7 +5,14 @@ import { Link } from "react-router-dom";
 
 export default function UserProfile() {
   const [isShowProfile, setIsShowProfile] = useState(false);
+  const [userRole, setUserRole] = useState("");
   const userContext = useContext(UserContext);
+  console.log(userRole);
+  useEffect(() => {
+    if (userContext) {
+      setUserRole(userContext.userInfos.role);
+    }
+  }, []);
   useEffect(() => {
     if (isShowProfile) {
       window.document.body.classList.add("overflow-hidden");
@@ -49,6 +56,19 @@ export default function UserProfile() {
               </div>
             </div>
             <ul className="pb-1.5 child:mt-1.5 child:p-3 hover:child:bg-gray-200 dark:hover:child:bg-black-100 child:rounded-xl border-b border-gray-200 dark:border-zinc-700 child:cursor-pointer child:transition-all">
+              {userRole === "ADMIN" && (
+                <li>
+                  <Link
+                    className="flex items-center text-base text-zinc-700 dark:text-white"
+                    to="/p-admin"
+                  >
+                    <svg className="w-5 h-5 ml-2.5 ">
+                      <use href="#seting"></use>
+                    </svg>
+                    پنل ادمین
+                  </Link>
+                </li>
+              )}
               <li>
                 <Link
                   className="flex items-center text-base text-zinc-700 dark:text-white"

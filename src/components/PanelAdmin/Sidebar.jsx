@@ -1,8 +1,23 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import SvgIcons from "../assets/icons/SvgIcons";
+import UserContext from "./../../context/UserContext/UserContext";
+import swal from "sweetalert";
 
 export default function Sidebar() {
+  const userContext = useContext(UserContext);
+  const navigate = useNavigate();
+  const logoutHandler = (e) => {
+    e.preventDefault();
+    swal({
+      title: "با موفقیت از پنل خود خارج شدید",
+      icon: "success",
+      button: "باشه",
+    }).then(() => {
+      userContext.logout();
+      navigate("/");
+    });
+  };
   return (
     <aside className="w-64 mt-20 mr-32">
       <Link className="flex items-center gap-x-3" to="/">
@@ -19,43 +34,65 @@ export default function Sidebar() {
           <svg className="w-6 h-5 ml-2.5 text-zinc-700 dark:text-white">
             <use href="#home"></use>
           </svg>
-          <Link className="text-zinc-700 dark:text-white" to="/">صفحه‌اصلی</Link>
+          <Link className="text-zinc-700 dark:text-white" to="">
+            صفحه‌اصلی
+          </Link>
+        </li>
+        <li>
+          <svg className="w-6 h-5 ml-2.5 text-zinc-700 dark:text-white">
+            <use href="#video-camera"></use>
+          </svg>
+          <Link className="text-zinc-700 dark:text-white" to="courses">
+            دوره‌ها
+          </Link>
         </li>
         <li>
           <svg className="w-6 h-5 ml-2.5 text-zinc-700 dark:text-white">
             <use href="#folder"></use>
           </svg>
-          <Link className="text-zinc-700 dark:text-white" to="courses">دوره‌ها</Link>
+          <Link className="text-zinc-700 dark:text-white" to="menus">
+            منوها
+          </Link>
         </li>
         <li>
           <svg className="w-6 h-5 ml-2.5 text-zinc-700 dark:text-white">
-            <use href="#chat"></use>
+            <use href="#book"></use>
           </svg>
-          <Link className="text-zinc-700 dark:text-white" to="menus">منوها</Link>
+          <Link className="text-zinc-700 dark:text-white" to="blogs">
+            مقاله‌ها
+          </Link>
         </li>
         <li>
           <svg className="w-6 h-5 ml-2.5 text-zinc-700 dark:text-white">
-            <use href="#user-outline"></use>
+            <use href="#users"></use>
           </svg>
-          <Link className="text-zinc-700 dark:text-white" to="blogs">مقاله‌ها</Link>
+          <Link className="text-zinc-700 dark:text-white" to="users">
+            کاربران
+          </Link>
         </li>
         <li>
+          <svg className="w-6 h-5 ml-2.5 text-zinc-700 dark:text-white">
+            <use href="#ticket"></use>
+          </svg>
+          <Link className="text-zinc-700 dark:text-white" to="offs">
+            کدهای تخفیف
+          </Link>
+        </li>
+        <li>
+          <svg className="w-6 h-5 ml-2.5 text-zinc-700 dark:text-white">
+            <use href="#category"></use>
+          </svg>
+          <Link className="text-zinc-700 dark:text-white" to="category">
+            دسته بندی‌ها
+          </Link>
+        </li>
+        <li onClick={logoutHandler}>
           <svg className="w-6 h-5 ml-2.5 text-zinc-700 dark:text-white">
             <use href="#logout"></use>
           </svg>
-          <Link className="text-zinc-700 dark:text-white" to="users">کاربران</Link>
-        </li>
-        <li>
-          <svg className="w-6 h-5 ml-2.5 text-zinc-700 dark:text-white">
-            <use href="#logout"></use>
-          </svg>
-          <Link className="text-zinc-700 dark:text-white" to="offs">کدهای تخفیف</Link>
-        </li>
-        <li>
-          <svg className="w-6 h-5 ml-2.5 text-zinc-700 dark:text-white">
-            <use href="#logout"></use>
-          </svg>
-          <Link className="text-zinc-700 dark:text-white" to="category">دسته بندی‌ها</Link>
+          <Link className="text-zinc-700 dark:text-white" to="category">
+            خروج
+          </Link>
         </li>
       </ul>
       <SvgIcons />
