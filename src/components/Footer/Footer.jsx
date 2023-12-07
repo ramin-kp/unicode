@@ -22,7 +22,7 @@ export default function Footer() {
             </h1>
             <ul className="child:my-[15px] font-danaMedium text-lg text-slate-500 dark:text-slate-400 child-hover:text-green-500 child:transition-all">
               <li>
-                <Link>شرایط و قوانین</Link>
+                <Link to="/terms-rules">شرایط و قوانین</Link>
               </li>
               <li>
                 <Link to="/contact"> ارتباط با ما</Link>
@@ -42,7 +42,7 @@ export default function Footer() {
             <ul className="child:my-[15px] font-danaMedium text-lg text-slate-500 dark:text-slate-400 child-hover:text-green-500 child:transition-all">
               <li>
                 <Link to="/course-info/js-20-lib">
-                 آموزش 20 کتابخانه جاوا اسکریپت
+                  آموزش 20 کتابخانه جاوا اسکریپت
                 </Link>
               </li>
               <li>

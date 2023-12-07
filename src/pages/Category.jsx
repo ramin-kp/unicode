@@ -125,7 +125,12 @@ export default function Category() {
                 </div>
               ) : (
                 <div className="p-5 mb-2.5 bg-pink-500 dark:bg-pink-600 rounded-2xl ">
-                  <h1 className="font-morabbaBold text-white text-xl/10 -tracking-tighter">اطلاعات دوره‌ها به علت مشکل در بک اند ارائه نمی‌شود❕</h1>
+                  <h1 className="font-morabbaBold text-white text-xl/10 -tracking-tighter">
+                اطلاعات دوره‌ها بر اساس{" "}
+                    <span className="text-sky-500/80">کتگوری</span> به علت مشکل
+                    در <span className="text-sky-500/80">بک اند</span> ارائه
+                    نمی‌شود❕
+                  </h1>
                 </div>
               )}
               {/* <div className="flex-center mx-auto mb-10">

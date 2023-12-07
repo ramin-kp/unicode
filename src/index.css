@@ -186,6 +186,13 @@
   .blog__details p {
     @apply font-danaLight text-zinc-700 dark:text-white text-xl;
   }
+  .sidebar__active {
+    @apply py-2.5 px-3 bg-green-500 dark:bg-green-400 child:!text-white rounded-lg;
+  }
+  .sidebar__active svg{
+    @apply text-white
+  }
+
 }
 @layer utilities {
   .flex-center {

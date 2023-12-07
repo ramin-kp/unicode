@@ -13,7 +13,14 @@ import Orders from "./pages/Orders";
 import Contact from "./pages/Contact";
 import Search from "./pages/Search";
 import Rules from "./pages/Rules";
-
+import AdminPanel from "./pages/AdminPanel/AdminPanel";
+import AdminMenus from "./pages/AdminPanel/AdminMenus";
+import AdminCategory from "./pages/AdminPanel/AdminCategory";
+import AdminCourses from "./pages/AdminPanel/AdminCourses";
+import AdminMain from "./pages/AdminPanel/AdminMain";
+import AdminBlogs from './pages/AdminPanel/AdminBlogs';
+import AdminOffs from './pages/AdminPanel/AdminOffs';
+import AdminUsers from './pages/AdminPanel/AdminUsers';
 const routes = [
   { path: "/", element: <Home /> },
   { path: "/courses", element: <Courses /> },
@@ -29,6 +36,19 @@ const routes = [
   { path: "/register", element: <Register /> },
   { path: "/contact", element: <Contact /> },
   { path: "/terms-rules", element: <Rules /> },
+  {
+    path: "/p-admin/*",
+    element: <AdminPanel />,
+    children: [
+      { path: "", element: <AdminMain /> },
+      { path: "menus", element: <AdminMenus /> },
+      { path: "category", element: <AdminCategory /> },
+      { path: "courses", element: <AdminCourses /> },
+      { path: "blogs", element: <AdminBlogs /> },
+      { path: "users", element: <AdminUsers /> },
+      { path: "offs", element: <AdminOffs /> },
+    ],
+  },
   { path: "/*", element: <NotFound /> },
 ];
 export default routes;
