@@ -7,7 +7,6 @@ export default function UserProfile() {
   const [isShowProfile, setIsShowProfile] = useState(false);
   const [userRole, setUserRole] = useState("");
   const userContext = useContext(UserContext);
-  console.log(userRole);
   useEffect(() => {
     if (userContext) {
       setUserRole(userContext.userInfos.role);

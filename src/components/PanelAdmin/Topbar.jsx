@@ -20,7 +20,6 @@ export default function Topbar() {
           },
         }
       );
-      console.log(fetchSeeNotification);
       if (!fetchSeeNotification.status === 200) {
         throw new Error();
       }
@@ -31,22 +30,12 @@ export default function Topbar() {
         button: "باشه",
       });
     }
-  },[])
+    getAdminData();
+  }, []);
 
   useEffect(() => {
-    const localeStorageData = JSON.parse(localStorage.getItem("user"));
-    fetch("http://localhost:4000/v1/auth/me", {
-      headers: {
-        Authorization: `Bearer ${localeStorageData.token}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setAdminData(data);
-        setNotifications(data.notifications);
-      });
-  }, [seeNotification]);
-  console.log(adminData);
+    getAdminData();
+  }, []);
   useEffect(() => {
     if (theme === "dark") {
       window.document.documentElement.classList.add("dark");
@@ -62,17 +51,17 @@ export default function Topbar() {
     steTheme("light");
     localStorage.setItem("theme", "light");
   };
-  // const getAdminData = async () => {
-  //   const localeStorageData = JSON.parse(localStorage.getItem("user"));
-  //   const fetchData = await fetch("http://localhost:4000/v1/auth/me", {
-  //     headers: {
-  //       Authorization: `Bearer ${localeStorageData.token}`,
-  //     },
-  //   });
-  //   const json = await fetchData.json();
-  //   setAdminData(json);
-  //   setNotifications(json.notifications);
-  // };
+  const getAdminData = async () => {
+    const localeStorageData = JSON.parse(localStorage.getItem("user"));
+    const fetchData = await fetch("http://localhost:4000/v1/auth/me", {
+      headers: {
+        Authorization: `Bearer ${localeStorageData.token}`,
+      },
+    });
+    const json = await fetchData.json();
+    setAdminData(json);
+    setNotifications(json.notifications);
+  };
 
   return (
     <div className="flex items-center justify-between mb-8">
@@ -82,7 +71,7 @@ export default function Topbar() {
       <div className="flex gap-x-6">
         <span
           className="relative flex-center bg-white dark:bg-black-400 w-14 h-14 rounded-full cursor-pointer"
-          onMouseEnter={() => setIsShowNotification(true)}
+          onClick={() => setIsShowNotification((prevData) => !prevData)}
         >
           {notifications.length ? (
             <span className="absolute -top-1 right-0 flex-center w-6 h-6 bg-red-600 dark:bg-red-500 text-white rounded-full">
@@ -100,18 +89,10 @@ export default function Topbar() {
             } absolute top-16 left-1/4 w-[300px] p-2.5 bg-white dark:bg-black-400 rounded-2xl`}
             onMouseLeave={() => setIsShowNotification(false)}
           >
-            <div className="flex items-center justify-between pb-2 mb-2 border-b border-gray-200 dark:border-zinc-600">
-              <h1 className="font-danaMedium text-lg text-zinc-700 dark:text-white">
+            <div className="pb-2 mb-2 border-b border-gray-200 dark:border-zinc-600">
+              <h1 className="font-danaMedium text-xl text-zinc-700 dark:text-white">
                 اعلان‌ها
               </h1>
-              <span
-                className="inline-block mb-0.5"
-                onClick={() => setIsShowNotification(!isShowNotification)}
-              >
-                <svg className="w-5 h-5 bg-red-500 text-white text-center rounded-full">
-                  <use href="#x-mark"></use>
-                </svg>
-              </span>
             </div>
             {notifications.length ? (
               notifications.map((notification) => (

@@ -30,7 +30,6 @@ export default function Search() {
     const json = await fetchData.json();
     setAllCourses(json.allResultCourses);
     setAllBlogs(json.allResultArticles);
-    console.log(json);
   };
   return (
     <main>

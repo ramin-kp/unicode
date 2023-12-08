@@ -3,7 +3,6 @@ import SvgIcons from "../assets/icons/SvgIcons";
 import { Link } from "react-router-dom";
 
 export default function ArticlesBox(props) {
-  console.log(props);
   return (
     <div className="dark:border border-zinc-700 overflow-hidden rounded-xl shadow-md">
       <div>

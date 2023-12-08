@@ -18,7 +18,6 @@ export default function Blog() {
       `http://localhost:4000/v1/articles/${articleName}`
     );
     const json = await fetchData.json();
-    console.log(json);
     setBlog(json);
   };
   return (
