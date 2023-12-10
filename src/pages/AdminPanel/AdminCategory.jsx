@@ -16,7 +16,6 @@ export default function AdminCategory() {
       "http://localhost:4000/v1/category"
     );
     const json = await fetchCategoriesInfo.json();
-    console.log(json);
     setCategories(json);
   };
   const changeHandler = (e) => {
@@ -44,6 +43,10 @@ export default function AdminCategory() {
           button: "باشه",
         }).then(() => {
           getCategoriesInfo();
+          setNewCategory(() => ({
+            title: "",
+            name: "",
+          }));
         });
       } else {
         throw new Error();
@@ -55,6 +58,78 @@ export default function AdminCategory() {
         button: "باشه",
       });
     }
+  };
+  const removeCategoryHandler = (categoryId) => {
+    const localStorageData = JSON.parse(localStorage.getItem("user"));
+    try {
+      swal({
+        title: "آیا از حذف دسته بندی مورد نظز مطمئن هستید؟",
+        icon: "warning",
+        buttons: ["خیر", "بله"],
+      }).then(async (res) => {
+        if (res) {
+          const removeCategory = await fetch(
+            `http://localhost:4000/v1/category/${categoryId}`,
+            {
+              method: "DELETE",
+              headers: {
+                Authorization: `Bearer ${localStorageData.token}`,
+              },
+            }
+          );
+          if (removeCategory.status === 200) {
+            swal({
+              title: " دسته بندی مورد نظر حذف شد",
+              icon: "success",
+              button: "باشه",
+            });
+            getCategoriesInfo();
+          }
+        }
+      });
+    } catch (error) {
+      swal({
+        title: "مشکلی پیش آمده لطفا بعدا دوباره امتحان کنید",
+        icon: "error",
+        button: "باشه",
+      });
+    }
+  };
+  const updateCategoryHandler = (categoryId) => {
+    const localStorageData = JSON.parse(localStorage.getItem("user"));
+    swal({
+      title: "عنوان جدید را بنویسید",
+      content: "input",
+      button: "ثبت عنوان جدید",
+    }).then(async (result) => {
+      if (result.trim().length) {
+        const updateCategory = await fetch(
+          `http://localhost:4000/v1/category/${categoryId}`,
+          {
+            method: "PUT",
+            body: JSON.stringify({ title: result }),
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${localStorageData.token}`,
+            },
+          }
+        );
+        if (updateCategory.status === 200) {
+          swal({
+            title: "دسته‌بندی آپدیت شد",
+            icon: "success",
+            button: "تایید",
+          });
+          getCategoriesInfo();
+        } else {
+          swal({
+            title: "مشکلی پیش آمده",
+            icon: "error",
+            button: "تایید",
+          });
+        }
+      }
+    });
   };
   return (
     <section>
@@ -118,14 +193,17 @@ export default function AdminCategory() {
                   </td>
 
                   <td className="text-center dark:text-white">
-                    <button className="py-2 px-2.5 bg-blue-500 rounded-lg hover:bg-blue-600 text-white text-base">
+                    <button
+                      className="py-2 px-2.5 bg-blue-500 rounded-lg hover:bg-blue-600 text-white text-base"
+                      onClick={() => updateCategoryHandler(category._id)}
+                    >
                       ویرایش
                     </button>
                   </td>
                   <td className="text-center">
                     <button
                       className="py-2 px-2.5 bg-red-500 rounded-lg hover:bg-red-600 text-white text-base"
-                      // onClick={() => removeUserHandler(user._id)}
+                      onClick={() => removeCategoryHandler(category._id)}
                     >
                       حذف
                     </button>

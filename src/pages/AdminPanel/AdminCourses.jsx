@@ -10,7 +10,6 @@ export default function AdminCourses() {
     const fetchCoursesData = await fetch("http://localhost:4000/v1/courses");
     const json = await fetchCoursesData.json();
     setCourses(json);
-    console.log(json);
   };
   return (
     <section>
