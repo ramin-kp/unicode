@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import DataTable from "./../../components/PanelAdmin/DataTable/DataTable";
+import swal from "sweetalert";
 
 export default function AdminCourses() {
   const [courses, setCourses] = useState([]);
@@ -10,6 +11,39 @@ export default function AdminCourses() {
     const fetchCoursesData = await fetch("http://localhost:4000/v1/courses");
     const json = await fetchCoursesData.json();
     setCourses(json);
+  };
+  const removeUserHandler = (courseId) => {
+    swal({
+      title: "آیا از حذف دوره مطمئن هستید؟",
+      icon: "warning",
+      buttons: ["خیر", "بله"],
+    }).then(async (res) => {
+      if (res) {
+        const localStorageData = localStorage.getItem("user");
+        const removeCourse = await fetch(
+          `http://localhost:4000/v1/courses/${courseId}`,
+          {
+            method: "DELETE",
+            headers: {
+              Authorization: `Bearer ${localStorageData.token}`,
+            },
+          }
+        );
+        if (removeCourse.status === 200) {
+          swal({
+            title: " دوره مورد نظر با موفقیت حذف شد",
+            icon: "success",
+            buttons: "تایید",
+          }).then(() => getCoursesInfo());
+        } else {
+          swal({
+            title: "مشکلی پیش آمده لطفا دوباره امتحان کنید",
+            icon: "error",
+            buttons: "تایید",
+          });
+        }
+      }
+    });
   };
   return (
     <section>
@@ -61,7 +95,7 @@ export default function AdminCourses() {
                   <td className="text-center">
                     <button
                       className="py-2 px-2.5 bg-red-500 rounded-lg hover:bg-red-600 text-white text-base"
-                      // onClick={() => removeUserHandler(user._id)}
+                      onClick={() => removeUserHandler(course._id)}
                     >
                       حذف
                     </button>
