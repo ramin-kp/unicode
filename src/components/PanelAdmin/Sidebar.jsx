@@ -48,6 +48,14 @@ export default function Sidebar() {
         </li>
         <li>
           <svg className="w-6 h-5 ml-2.5 text-zinc-700 dark:text-white">
+            <use href="#film"></use>
+          </svg>
+          <Link className="text-zinc-700 dark:text-white" to="session">
+            جلسات
+          </Link>
+        </li>
+        <li>
+          <svg className="w-6 h-5 ml-2.5 text-zinc-700 dark:text-white">
             <use href="#folder"></use>
           </svg>
           <Link className="text-zinc-700 dark:text-white" to="menus">

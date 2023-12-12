@@ -8,7 +8,7 @@ export default function CommentBox({ commentData }) {
       <div className="hidden lg:flex items-start justify-start gap-5 px-5 py-6 my-5 bg-gray-100 dark:bg-black-300 rounded-2xl">
         {/* user-avatar */}
         <div className="shrink-0 flex flex-col items-center gap-y-2">
-          {commentData.creator.profile ? (
+          {commentData.creator?.profile ? (
             <img
               className="shrink-0 w-[63px] h-[63px] rounded-full object-cover"
               src={commentData.creator.profile}
@@ -22,7 +22,7 @@ export default function CommentBox({ commentData }) {
             />
           )}
 
-          {commentData.creator.role === "USER" ? (
+          {commentData.creator?.role === "USER" ? (
             <span className="inline-block px-3 bg-slate-500 dark:bg-black-200 text-white dark:text-slate-400 text-xs rounded">
               کاربر
             </span>
@@ -37,7 +37,7 @@ export default function CommentBox({ commentData }) {
           <div className="flex items-end justify-between w-full">
             <div>
               <h1 className="font-danaMedium text-xl dark:text-white">
-                {commentData.creator.username}
+                {commentData.creator?.username}
               </h1>
               <span className="font-danaLight text-slate-500 dark:text-slate-400">
                 {commentData.createdAt.slice(0, 10)}

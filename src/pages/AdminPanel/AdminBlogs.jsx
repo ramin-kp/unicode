@@ -96,7 +96,7 @@ export default function AdminBlogs() {
           title: "بلاگ مورد نظر با موفقیت اضافه شد",
           icon: "success",
           button: "تایید",
-        }).then(getCategory());
+        }).then(getAllBlogs());
       }
     }
   };
