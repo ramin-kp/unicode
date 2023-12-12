@@ -6,7 +6,7 @@ export default function AdminCourses() {
   const [courses, setCourses] = useState([]);
   const [categories, setCategories] = useState([]);
   const [courseStatus, setCourseStatus] = useState("presell");
-  const [courseCategory, setCourseCategory] = useState("");
+  const [courseCategory, setCourseCategory] = useState("-1");
   const [courseCover, setCourseCover] = useState({});
   const [newCourse, setNewCourse] = useState({
     name: "",
@@ -89,36 +89,44 @@ export default function AdminCourses() {
     formData.append("categoryID", courseCategory);
     formData.append("status", courseStatus);
     formData.append("cover", courseCover);
-    const createCourse = await fetch("http://localhost:4000/v1/courses", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${localStorageData.token}`,
-      },
-      body: formData,
-    });
-    console.log(createCourse);
-    if (createCourse.ok) {
+    if (courseCategory === "-1") {
       swal({
-        title: "دوره مورد نظر با موفقیت ایجاد شد",
-        icon: "success",
-        button: "تایید",
-      }).then(() => {
-        getCoursesInfo();
-        setCourseCover({});
-        setNewCourse({
-          name: "",
-          description: "",
-          shortName: "",
-          price: "",
-          support: "",
-        });
-      });
-    } else {
-      swal({
-        title: "مشکلی پیش آمده لطفا دوباره امتحان کنید",
+        title: "لطفا دسته بندی خود را انتخاب کنید",
         icon: "error",
         button: "تایید",
       });
+    } else {
+      const createCourse = await fetch("http://localhost:4000/v1/courses", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${localStorageData.token}`,
+        },
+        body: formData,
+      });
+      console.log(createCourse);
+      if (createCourse.ok) {
+        swal({
+          title: "دوره مورد نظر با موفقیت ایجاد شد",
+          icon: "success",
+          button: "تایید",
+        }).then(() => {
+          getCoursesInfo();
+          setCourseCover({});
+          setNewCourse({
+            name: "",
+            description: "",
+            shortName: "",
+            price: "",
+            support: "",
+          });
+        });
+      } else {
+        swal({
+          title: "مشکلی پیش آمده لطفا دوباره امتحان کنید",
+          icon: "error",
+          button: "تایید",
+        });
+      }
     }
   };
   return (
@@ -198,6 +206,9 @@ export default function AdminCourses() {
               className="w-2/3 px-2 py-2 text-zinc-700 font-danaMedium text-lg rounded outline-none"
               onChange={courseCategoryHandler}
             >
+              <option value="-1">
+                لطفا دسته بندی خودر را انتخاب کنید
+              </option>
               {categories.map((category) => (
                 <option key={category._id} value={category._id}>
                   {category.title}

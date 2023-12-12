@@ -12,7 +12,6 @@ export default function AdminContactUs() {
     const json = await fetchAllContact.json();
     setContacts(json);
   };
-  console.log(contacts);
   const showMessageHandler = (text) => {
     swal({
       title: text,
@@ -46,6 +45,38 @@ export default function AdminContactUs() {
             icon: "success",
             button: "تایید",
           });
+        }
+      });
+  };
+  const removeContactHandler = (contactID) => {
+    const localStorageData = JSON.parse(localStorage.getItem("user"));
+    swal({
+      title: "آیا از حذف پیام مسمئن هستید؟",
+      icon: "warning",
+      buttons: ["خیر", "بله"],
+    })
+      .then(async (res) => {
+        if (res) {
+          const answer = await fetch(
+            `http://localhost:4000/v1/contact/${contactID}`,
+            {
+              method: "DELETE",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorageData.token}`,
+              },
+            }
+          );
+          return answer;
+        }
+      })
+      .then((res) => {
+        if (res.ok) {
+          swal({
+            title: "پیام شما با موفقیت حذف شد",
+            icon: "success",
+            button: "تایید",
+          }).then(() => getAllContact());
         }
       });
   };
@@ -99,7 +130,7 @@ export default function AdminContactUs() {
                   <td className="text-center">
                     <button
                       className="py-2 px-2.5 bg-red-500 rounded-lg hover:bg-red-600 text-white text-base"
-                      //   onClick={() => removeUserHandler(contact._id)}
+                      onClick={() => removeContactHandler(contact._id)}
                     >
                       حذف
                     </button>
