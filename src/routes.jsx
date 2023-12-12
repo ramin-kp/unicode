@@ -18,9 +18,11 @@ import AdminMenus from "./pages/AdminPanel/AdminMenus";
 import AdminCategory from "./pages/AdminPanel/AdminCategory";
 import AdminCourses from "./pages/AdminPanel/AdminCourses";
 import AdminMain from "./pages/AdminPanel/AdminMain";
-import AdminBlogs from './pages/AdminPanel/AdminBlogs';
-import AdminOffs from './pages/AdminPanel/AdminOffs';
-import AdminUsers from './pages/AdminPanel/AdminUsers';
+import AdminBlogs from "./pages/AdminPanel/AdminBlogs";
+import AdminOffs from "./pages/AdminPanel/AdminOffs";
+import AdminUsers from "./pages/AdminPanel/AdminUsers";
+import AdminContactUs from "./pages/AdminPanel/AdminContactUs";
+
 const routes = [
   { path: "/", element: <Home /> },
   { path: "/courses", element: <Courses /> },
@@ -46,6 +48,7 @@ const routes = [
       { path: "courses", element: <AdminCourses /> },
       { path: "blogs", element: <AdminBlogs /> },
       { path: "users", element: <AdminUsers /> },
+      { path: "contact-us", element: <AdminContactUs /> },
       { path: "offs", element: <AdminOffs /> },
     ],
   },
