@@ -86,9 +86,11 @@ export default function Lesson() {
                   controls
                 />
                 <div className="flex items-center my-5 pb-16 border-b border-gray-200 dark:border-zinc-700">
-                  <span className="font-danaDemiBold text-2xl text-slate-500 dark:text-slate-400 pl-3.5 border-l border-gray-200 dark:border-zinc-700">
+                  {/* <span className="font-danaDemiBold text-2xl text-slate-500 dark:text-slate-400 pl-3.5 border-l border-gray-200 dark:border-zinc-700">
                     3
-                  </span>
+                  </span> */}{" "}
+                  {/*no response data for index */}
+                  <span className="w-5 h-5 bg-pink-600 dark:bg-pink-500 rounded-md"></span>
                   <h3 className="mr-3.5 font-danaDemiBold text-xl text-slate-500 dark:text-white">
                     {session.title}
                   </h3>
