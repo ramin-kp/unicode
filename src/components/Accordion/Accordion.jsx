@@ -1,10 +1,10 @@
 import { Disclosure } from "@headlessui/react";
-import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/20/solid";
-import { Link } from "react-router-dom";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import { Link, useParams } from "react-router-dom";
 import SvgIcons from "../assets/icons/SvgIcons";
 
 export default function Example(props) {
-
+  const { courseName} = useParams();
   return (
     <div className="pb-1.5">
       <Disclosure>
@@ -31,11 +31,11 @@ export default function Example(props) {
                   className="flex items-center justify-between px-4 py-5 bg-gray-100
               dark:bg-black-300 text-zinc-700 dark:text-white text-lg border-b border-gray-200 dark:border-slate-700"
                 >
-                  {item.free === 1 ? (
+                  {item.free === 1 || props.userRegister ? (
                     <div className="flex flex-col gap-2.5 w-full group ">
                       <Link
                         className="flex items-center gap-2.5 group-hover:text-green-500 transition-all"
-                        to="/:courseName/:sessionID"
+                        to={`/${courseName}/${item._id}`}
                       >
                         <div className="flex items-center justify-center shrink-0 w-7 h-7 bg-white dark:bg-black-500 font-danaBold text-lg text-zinc-700 dark:text-white rounded-md group-hover:bg-green-400 group-hover:text-white transition-all">
                           {index + 1}

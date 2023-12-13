@@ -7,7 +7,7 @@ export default function AdminSession() {
   const [allCourses, setAllCourses] = useState([]);
   const [sessionVideo, setSessionVideo] = useState({});
   const [courseCategory, setCourseCategory] = useState("-1");
-  const [sessionStatus, setSessionStatus] = useState("1");
+  const [sessionStatus, setSessionStatus] = useState(1);
   const [newSession, setNewSession] = useState({
     title: "",
     time: "",

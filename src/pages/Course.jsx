@@ -317,7 +317,12 @@ const Course = () => {
                     {course.time === "0" ? "00:00" : course.time}
                   </span>
                 </div>
-                {sessions && <Accordion accordionData={sessions} />}
+                {sessions && (
+                  <Accordion
+                    accordionData={sessions}
+                    userRegister={course.isUserRegisteredToThisCourse}
+                  />
+                )}
               </div>
               {/* Course-comments */}
               <div className="bg-white dark:bg-black-400 rounded-xl py-6 px-5">
