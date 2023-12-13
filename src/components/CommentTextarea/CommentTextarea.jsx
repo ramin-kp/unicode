@@ -16,7 +16,7 @@ export default function CommentTextarea({
         body: JSON.stringify({
           body: commentText,
           courseShortName: path,
-          score: "5",
+          // score: 1,
         }),
         headers: {
           "Content-Type": "application/json",

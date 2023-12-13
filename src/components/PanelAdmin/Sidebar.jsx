@@ -64,6 +64,14 @@ export default function Sidebar() {
         </li>
         <li>
           <svg className="w-6 h-5 ml-2.5 text-zinc-700 dark:text-white">
+            <use href="#category"></use>
+          </svg>
+          <Link className="text-zinc-700 dark:text-white" to="category">
+            دسته بندی‌ها
+          </Link>
+        </li>
+        <li>
+          <svg className="w-6 h-5 ml-2.5 text-zinc-700 dark:text-white">
             <use href="#book"></use>
           </svg>
           <Link className="text-zinc-700 dark:text-white" to="blogs">
@@ -76,6 +84,14 @@ export default function Sidebar() {
           </svg>
           <Link className="text-zinc-700 dark:text-white" to="users">
             کاربران
+          </Link>
+        </li>
+        <li>
+          <svg className="w-6 h-5 ml-2.5 text-zinc-700 dark:text-white">
+            <use href="#comments"></use>
+          </svg>
+          <Link className="text-zinc-700 dark:text-white" to="comments">
+            کامنت‌ها
           </Link>
         </li>
         <li>
@@ -93,14 +109,6 @@ export default function Sidebar() {
           </svg>
           <Link className="text-zinc-700 dark:text-white" to="offs">
             کدهای تخفیف
-          </Link>
-        </li>
-        <li>
-          <svg className="w-6 h-5 ml-2.5 text-zinc-700 dark:text-white">
-            <use href="#category"></use>
-          </svg>
-          <Link className="text-zinc-700 dark:text-white" to="category">
-            دسته بندی‌ها
           </Link>
         </li>
         <li onClick={logoutHandler}>
