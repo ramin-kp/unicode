@@ -24,6 +24,7 @@ import AdminUsers from "./pages/AdminPanel/AdminUsers";
 import AdminContactUs from "./pages/AdminPanel/AdminContactUs";
 import AdminSession from "./pages/AdminPanel/AdminSession";
 import AdminComments from "./pages/AdminPanel/AdminComments";
+import AdminDraft from "./pages/AdminPanel/AdminDraft";
 
 const routes = [
   { path: "/", element: <Home /> },
@@ -50,6 +51,7 @@ const routes = [
       { path: "courses", element: <AdminCourses /> },
       { path: "session", element: <AdminSession /> },
       { path: "blogs", element: <AdminBlogs /> },
+      { path: "blogs/draft/:shortName", element: <AdminDraft /> },
       { path: "users", element: <AdminUsers /> },
       { path: "comments", element: <AdminComments /> },
       { path: "contact-us", element: <AdminContactUs /> },

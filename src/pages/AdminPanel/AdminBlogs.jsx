@@ -3,6 +3,7 @@ import DataTable from "./../../components/PanelAdmin/DataTable/DataTable";
 import swal from "sweetalert";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { Link } from "react-router-dom";
 
 export default function AdminBlogs() {
   const [blogs, setBlogs] = useState([]);
@@ -100,6 +101,39 @@ export default function AdminBlogs() {
       }
     }
   };
+  const addNewBlogAssDraftHandler = async (e) => {
+    e.preventDefault();
+    const localStorageData = JSON.parse(localStorage.getItem("user"));
+    let formData = new FormData();
+    formData.append("title", newBlog.title);
+    formData.append("description", newBlog.description);
+    formData.append("body", blogContent);
+    formData.append("shortName", newBlog.shortName);
+    formData.append("categoryID", blogCategory);
+    formData.append("cover", blogCover);
+    if (blogCategory === "-1") {
+      swal({
+        title: "لطفا دسته بندی خود را انتخاب کنید",
+        icon: "error",
+        button: "تایید",
+      });
+    } else {
+      const addBlog = await fetch("http://localhost:4000/v1/articles/draft", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Authorization: `Bearer ${localStorageData.token}`,
+        },
+      });
+      if (addBlog.ok) {
+        swal({
+          title: "بلاگ مورد نظر با موفقیت پیش نویس شد",
+          icon: "success",
+          button: "تایید",
+        }).then(getAllBlogs());
+      }
+    }
+  };
   return (
     <section>
       <form className="grid grid-cols-2 gap-2 mb-5 child:flex child:flex-col child:my-2 ">
@@ -139,7 +173,6 @@ export default function AdminBlogs() {
         <div className="col-start-1 col-end-3">
           <CKEditor
             editor={ClassicEditor}
-            
             data={blogContent}
             onChange={(event, editor) => {
               const data = editor.getData();
@@ -168,13 +201,20 @@ export default function AdminBlogs() {
             ))}
           </select>
         </div>
-        <div>
+        <div className="flex !flex-row w-full gap-x-5">
           <button
             type="submit"
             className="w-1/3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md "
             onClick={addNewBlogHandler}
           >
-            افزودن بلاگ
+            انتشار بلاگ
+          </button>
+          <button
+            type="submit"
+            className="w-1/3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md "
+            onClick={addNewBlogAssDraftHandler}
+          >
+            پیش نویس بلاگ
           </button>
         </div>
       </form>
@@ -185,6 +225,8 @@ export default function AdminBlogs() {
             <th>عنوان</th>
             <th>لینک</th>
             <th>نویسنده</th>
+            <th>وضعیت</th>
+            <th>مشاهده</th>
             <th>ویرایش</th>
             <th>حذف</th>
           </tr>
@@ -205,7 +247,20 @@ export default function AdminBlogs() {
                   <td className="text-center dark:text-white">
                     {blog.creator.name}
                   </td>
-
+                  <td className="text-center dark:text-white">
+                    {blog.publish === 1 ?"منتشر شده":"پیش نویس"}
+                  </td>
+                  <td className="text-center dark:text-white">
+                    {blog.publish === 1 ? (
+                      <svg className="w-7 h-7 mx-auto text-green-700">
+                        <use href="#check"></use>
+                      </svg>
+                    ) : (
+                      <Link className="py-2 px-2.5 bg-blue-500 rounded-lg hover:bg-blue-600 text-white text-base" to="draft/ddd">
+                        ادامه نوشتن
+                      </Link>
+                    )}
+                  </td>
                   <td className="text-center dark:text-white">
                     <button className="py-2 px-2.5 bg-blue-500 rounded-lg hover:bg-blue-600 text-white text-base">
                       ویرایش

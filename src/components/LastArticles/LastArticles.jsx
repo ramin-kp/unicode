@@ -24,9 +24,11 @@ export default function LastArticles() {
         />
         {blogsData.length ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-            {blogsData.map((blog) => (
-              <ArticlesBox key={blog._id} {...blog} />
-            ))}
+            {blogsData
+              .filter((blogsData) => blogsData.publish === 1)
+              .map((blog) => (
+                <ArticlesBox key={blog._id} {...blog} />
+              ))}
           </div>
         ) : (
           "loading"
