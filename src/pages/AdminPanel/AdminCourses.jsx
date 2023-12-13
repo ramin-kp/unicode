@@ -39,7 +39,7 @@ export default function AdminCourses() {
       buttons: ["خیر", "بله"],
     }).then(async (res) => {
       if (res) {
-        const localStorageData = localStorage.getItem("user");
+        const localStorageData = JSON.parse(localStorage.getItem("user"));
         const removeCourse = await fetch(
           `http://localhost:4000/v1/courses/${courseId}`,
           {
