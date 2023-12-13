@@ -44,7 +44,7 @@ export default function AdminContactUs() {
             title: "پیام شما با موفقیت ارسال شد",
             icon: "success",
             button: "تایید",
-          });
+          }).then(() => getAllContact());
         }
       });
   };
@@ -101,7 +101,13 @@ export default function AdminContactUs() {
                   className="child:p-2.5 child:text-lg dark:text-white odd:bg-white dark:odd:bg-black-100 even:bg-slate-50 dark:even:bg-black-200 "
                   key={contact._id}
                 >
-                  <td className="text-center dark:text-white">{index + 1}</td>
+                  <td
+                    className={`text-center dark:text-white ${
+                      contact.answer === 1 ? "bg-green-500 text-white" : ""
+                    }`}
+                  >
+                    {index + 1}
+                  </td>
                   <td className="text-center dark:text-white">
                     {contact.name}
                   </td>
