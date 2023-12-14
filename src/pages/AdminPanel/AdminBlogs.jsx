@@ -248,7 +248,7 @@ export default function AdminBlogs() {
                     {blog.creator.name}
                   </td>
                   <td className="text-center dark:text-white">
-                    {blog.publish === 1 ?"منتشر شده":"پیش نویس"}
+                    {blog.publish === 1 ? "منتشر شده" : "پیش نویس"}
                   </td>
                   <td className="text-center dark:text-white">
                     {blog.publish === 1 ? (
@@ -256,7 +256,10 @@ export default function AdminBlogs() {
                         <use href="#check"></use>
                       </svg>
                     ) : (
-                      <Link className="py-2 px-2.5 bg-blue-500 rounded-lg hover:bg-blue-600 text-white text-base" to="draft/ddd">
+                      <Link
+                        className="py-2 px-2.5 bg-blue-500 rounded-lg hover:bg-blue-600 text-white text-base"
+                        to={`draft/${blog.shortName}`}
+                      >
                         ادامه نوشتن
                       </Link>
                     )}
