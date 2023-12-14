@@ -19,8 +19,10 @@ const Course = () => {
   const userContext = useContext(UserContext);
   const [isShowCommentTextarea, setIsShowCommentTextarea] = useState(false);
   const navigate = useNavigate();
-
   useEffect(() => {
+    getCorses();
+  }, []);
+  const getCorses = () => {
     const localStorageData = JSON.parse(localStorage.getItem("user"));
     fetch(`http://localhost:4000/v1/courses/${courseName}`, {
       method: "POST",
@@ -38,7 +40,7 @@ const Course = () => {
         setComments(data.comments);
         setCategoryData(data.categoryID);
       });
-  }, []);
+  };
   const createCommentHandler = () => {
     if (userContext.isLoggedIn) {
       setIsShowCommentTextarea(true);
@@ -49,6 +51,134 @@ const Course = () => {
         buttons: ["لغو", "ورود به حساب کاربری"],
       }).then(() => {
         navigate("/login");
+      });
+    }
+  };
+  const courseRegisterHandler = (courseID) => {
+    if (course.price === 0) {
+      swal({
+        title: "آیا از ثبت نام در دوره مطمئن هستید؟",
+        icon: "warning",
+        buttons: ["خیر", "بله"],
+      }).then(async (result) => {
+        if (result) {
+          const localStorageData = JSON.parse(localStorage.getItem("user"));
+          const courseRegister = await fetch(
+            `http://localhost:4000/v1/courses/${courseID}/register`,
+            {
+              method: "POST",
+              body: JSON.stringify({ price: course.price }),
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorageData.token}`,
+              },
+            }
+          );
+          if (courseRegister.ok) {
+            swal({
+              title: "با موفقیت توی دوره مورد نظر ثبت نام شدید",
+              icon: "success",
+              button: "تایید",
+            }).then(() => getCorses());
+          } else {
+            swal({
+              title: "میشکلی پیش آمده لطفا دوباره تلاش کنید",
+              icon: "error",
+              button: "تایید",
+            });
+          }
+        }
+      });
+    } else {
+      swal({
+        title: "اعمال کد تخفیف",
+        content: "input",
+        buttons: ["کد تخفیف ندارم", "اعمال کد تخفیف"],
+      }).then(async (result) => {
+        if (result === null) {
+          const localStorageData = JSON.parse(localStorage.getItem("user"));
+          const courseRegister = await fetch(
+            `http://localhost:4000/v1/courses/${courseID}/register`,
+            {
+              method: "POST",
+              body: JSON.stringify({ price: course.price }),
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorageData.token}`,
+              },
+            }
+          );
+          if (courseRegister.ok) {
+            swal({
+              title: "با موفقیت توی دوره مورد نظر ثبت نام شدید",
+              icon: "success",
+              button: "تایید",
+            }).then(() => getCorses());
+          } else {
+            swal({
+              title: "مشکلی پیش آمده لطفا دوباره تلاش کنید",
+              icon: "error",
+              button: "تایید",
+            });
+          }
+        } else {
+          const localStorageData = JSON.parse(localStorage.getItem("user"));
+          const courseRegister = await fetch(
+            `http://localhost:4000/v1/offs/${result}`,
+            {
+              method: "POST",
+              body: JSON.stringify({ course: course._id }),
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorageData.token}`,
+              },
+            }
+          );
+          const json = await courseRegister.json();
+          if (courseRegister.status === 409) {
+            swal({
+              title: "کد تخفیف قبلا استفاده شده است",
+              icon: "error",
+              button: "تایید",
+            });
+          } else if (courseRegister.status === 404) {
+            swal({
+              title: "کد تخفیف معتبر نمی باشد",
+              icon: "error",
+              button: "تایید",
+            });
+          } else if (courseRegister.status === 200) {
+            swal({
+              title: "با موفقیت توی دوره مورد نظر ثبت نام شدید",
+              icon: "success",
+              button: "تایید",
+            }).then(async () => {
+              const localStorageData = JSON.parse(localStorage.getItem("user"));
+              const courseRegister = await fetch(
+                `http://localhost:4000/v1/courses/${course._id}/register`,
+                {
+                  method: "POST",
+                  body: JSON.stringify({
+                    price: course.price - (course.price * json.percent) / 100,
+                  }),
+                  headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${localStorageData.token}`,
+                  },
+                }
+              );
+              if (courseRegister.ok) {
+                getCorses();
+              }
+            });
+          } else {
+            swal({
+              title: "مشکلی پیش آمده لطفا دوباره تلاش کنید",
+              icon: "error",
+              button: "تایید",
+            });
+          }
+        }
       });
     }
   };
@@ -97,12 +227,15 @@ const Course = () => {
                     مشاهده دوره
                   </a>
                 ) : (
-                  <Link className="flex-center p-4 w-full sm:w-auto bg-green-500  dark:bg-primary hover:bg-green-600 dark:hover:bg-green-500 text-white font-danaBold text-xl transition-all rounded-xl">
+                  <button
+                    className="flex-center p-4 w-full sm:w-auto bg-green-500  dark:bg-primary hover:bg-green-600 dark:hover:bg-green-500 text-white font-danaBold text-xl transition-all rounded-xl"
+                    onClick={() => courseRegisterHandler(course._id)}
+                  >
                     <svg className="w-8 h-8 ml-2.5">
                       <use href="#play-outline"></use>
                     </svg>
                     ثبت نام در دوره
-                  </Link>
+                  </button>
                 )}
 
                 {course.price === 0 ? (

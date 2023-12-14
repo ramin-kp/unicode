@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default function CourseBox(props) {
+  console.log(props);
   return (
     <div className="bg-white dark:bg-black-400 rounded-xl overflow-hidden dark:border border-zinc-700 shadow-md">
       {/* img box */}
@@ -39,12 +40,13 @@ export default function CourseBox(props) {
               </svg>
               <span>{props.creator}</span>
             </Link>
-            <div className="flex items-center mr-1.5">
+            {/* <div className="flex items-center mr-1.5">
               <svg className="w-5 h-5 ml-1.5">
                 <use href="#clock"></use>
               </svg>
-              <span>12:28</span>
-            </div>
+              <span>{props.time}</span>
+            </div> */}
+            {/* no response data*/}
           </div>
           <div className="flex items-start child:text-amber-400">
             <span>4.2</span>
@@ -59,7 +61,7 @@ export default function CourseBox(props) {
             <svg className="w-5 h-5 ml-1.5">
               <use href="#users"></use>
             </svg>
-            <span>{props.users}</span>
+            <span>{props.registers}</span>
           </div>
           <div>
             {props.price === 0 ? (
