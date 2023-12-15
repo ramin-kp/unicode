@@ -28,7 +28,8 @@ import AdminDraft from "./pages/AdminPanel/AdminDraft";
 import UserPanel from "./pages/UserPanel/UserPanel";
 import UPanelIndex from "./pages/UserPanel/UPanelIndex";
 import UPanelOrder from "./pages/UserPanel/UPanelOrder";
-import UPanelCourses from "./pages/UserPanel/UPanelOrders";
+import UPanelOrders from "./pages/UserPanel/UPanelOrders";
+import UPanelCourses from "./pages/UserPanel/UPanelCourses";
 
 const routes = [
   { path: "/", element: <Home /> },
@@ -67,8 +68,9 @@ const routes = [
     element: <UserPanel />,
     children: [
       { path: "", element: <UPanelIndex /> },
-      { path: "orders", element: <UPanelCourses /> },
+      { path: "orders", element: <UPanelOrders /> },
       { path: "orders/:id", element: <UPanelOrder /> },
+      { path: "courses", element: <UPanelCourses /> },
     ],
   },
   { path: "/*", element: <NotFound /> },
