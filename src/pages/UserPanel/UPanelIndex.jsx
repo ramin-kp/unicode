@@ -1,7 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export default function UPanelIndex() {
-  return (
-    <div>UPanelIndex</div>
-  )
+  return <div>UPanelIndex</div>;
 }

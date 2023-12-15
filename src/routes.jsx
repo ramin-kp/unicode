@@ -27,6 +27,8 @@ import AdminComments from "./pages/AdminPanel/AdminComments";
 import AdminDraft from "./pages/AdminPanel/AdminDraft";
 import UserPanel from "./pages/UserPanel/UserPanel";
 import UPanelIndex from "./pages/UserPanel/UPanelIndex";
+import UPanelOrder from "./pages/UserPanel/UPanelOrder";
+import UPanelCourses from "./pages/UserPanel/UPanelOrders";
 
 const routes = [
   { path: "/", element: <Home /> },
@@ -61,9 +63,13 @@ const routes = [
     ],
   },
   {
-    path: "my-account/*",
+    path: "/my-account/*",
     element: <UserPanel />,
-    children: [{ path: "", element: <UPanelIndex /> }],
+    children: [
+      { path: "", element: <UPanelIndex /> },
+      { path: "orders", element: <UPanelCourses /> },
+      { path: "orders/:id", element: <UPanelOrder /> },
+    ],
   },
   { path: "/*", element: <NotFound /> },
 ];

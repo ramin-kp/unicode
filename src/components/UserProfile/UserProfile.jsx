@@ -60,6 +60,7 @@ export default function UserProfile() {
                   <Link
                     className="flex items-center text-base text-zinc-700 dark:text-white"
                     to="/p-admin"
+                    onClick={() => setIsShowProfile((prev) => !prev)}
                   >
                     <svg className="w-5 h-5 ml-2.5 ">
                       <use href="#seting"></use>
@@ -71,7 +72,8 @@ export default function UserProfile() {
               <li>
                 <Link
                   className="flex items-center text-base text-zinc-700 dark:text-white"
-                  to="my-account"
+                  to="/my-account"
+                  onClick={() => setIsShowProfile((prev) => !prev)}
                 >
                   <svg className="w-5 h-5 ml-2.5 ">
                     <use href="#home"></use>
@@ -82,7 +84,8 @@ export default function UserProfile() {
               <li>
                 <Link
                   className="flex items-center text-base text-zinc-700 dark:text-white"
-                  to="#"
+                  to="/my-account/courses"
+                  onClick={() => setIsShowProfile((prev) => !prev)}
                 >
                   <svg className="w-5 h-5 ml-2.5 ">
                     <use href="#folder"></use>
@@ -94,6 +97,7 @@ export default function UserProfile() {
                 <Link
                   className="flex items-center text-base text-zinc-700 dark:text-white"
                   to="#"
+                  onClick={() => setIsShowProfile((prev) => !prev)}
                 >
                   <svg className="w-5 h-5 ml-2.5 ">
                     <use href="#chat"></use>

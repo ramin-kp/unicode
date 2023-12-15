@@ -115,7 +115,7 @@ export default function Sidebar() {
           <svg className="w-6 h-5 ml-2.5 text-zinc-700 dark:text-white">
             <use href="#logout"></use>
           </svg>
-          <Link className="text-zinc-700 dark:text-white" to="category">
+          <Link className="text-zinc-700 dark:text-white" to="#">
             خروج
           </Link>
         </li>
