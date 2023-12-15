@@ -1,7 +1,8 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import SvgIcons from "../assets/icons/SvgIcons";
-import { Link, json } from "react-router-dom";
+import { Link } from "react-router-dom";
 import swal from "sweetalert";
+import UserContext from "../../context/UserContext/UserContext";
 import UserProfile from "../UserProfile/UserProfile";
 
 export default function Topbar() {
@@ -9,34 +10,40 @@ export default function Topbar() {
   const [adminData, setAdminData] = useState([]);
   const [notifications, setNotifications] = useState([]);
   const [isShowNotification, setIsShowNotification] = useState(false);
-  const seeNotification = useCallback(async (notificationId) => {
-    const localStorageData = JSON.parse(localStorage.getItem("user"));
-    try {
-      const fetchSeeNotification = await fetch(
-        `http://localhost:4000/v1/notifications/see/${notificationId}`,
-        {
-          method: "PUT",
-          headers: {
-            Authorization: `Bearer ${localStorageData.token}`,
-          },
-        }
-      );
-      if (!fetchSeeNotification.status === 200) {
-        throw new Error();
-      }
-    } catch (error) {
-      swal({
-        icon: "error",
-        title: "مشکلی پیش آمده",
-        button: "باشه",
-      });
-    }
-    getAdminData();
-  }, []);
-
+  const [userData, setUserData] = useState({});
+  const userContext = useContext(UserContext);
   useEffect(() => {
-    getAdminData();
-  }, []);
+    setUserData(() => userContext.userInfos);
+  }, [userContext]);
+
+  //   const seeNotification = useCallback(async (notificationId) => {
+  //     const localStorageData = JSON.parse(localStorage.getItem("user"));
+  //     try {
+  //       const fetchSeeNotification = await fetch(
+  //         `http://localhost:4000/v1/notifications/see/${notificationId}`,
+  //         {
+  //           method: "PUT",
+  //           headers: {
+  //             Authorization: `Bearer ${localStorageData.token}`,
+  //           },
+  //         }
+  //       );
+  //       if (!fetchSeeNotification.status === 200) {
+  //         throw new Error();
+  //       }
+  //     } catch (error) {
+  //       swal({
+  //         icon: "error",
+  //         title: "مشکلی پیش آمده",
+  //         button: "باشه",
+  //       });
+  //     }
+  //     getAdminData();
+  //   }, []);
+
+  //   useEffect(() => {
+  //     getAdminData();
+  //   }, []);
   useEffect(() => {
     if (theme === "dark") {
       window.document.documentElement.classList.add("dark");
@@ -52,35 +59,35 @@ export default function Topbar() {
     steTheme("light");
     localStorage.setItem("theme", "light");
   };
-  const getAdminData = async () => {
-    const localeStorageData = JSON.parse(localStorage.getItem("user"));
-    const fetchData = await fetch("http://localhost:4000/v1/auth/me", {
-      headers: {
-        Authorization: `Bearer ${localeStorageData.token}`,
-      },
-    });
-    const json = await fetchData.json();
-    setAdminData(json);
-    setNotifications(json.notifications);
-  };
+  //   const getAdminData = async () => {
+  //     const localeStorageData = JSON.parse(localStorage.getItem("user"));
+  //     const fetchData = await fetch("http://localhost:4000/v1/auth/me", {
+  //       headers: {
+  //         Authorization: `Bearer ${localeStorageData.token}`,
+  //       },
+  //     });
+  //     const json = await fetchData.json();
+  //     setAdminData(json);
+  //     setNotifications(json.notifications);
+  //   };
 
   return (
     <div className="flex items-center justify-between mb-8">
       <h1 className="font-danaDemiBold text-zinc-700 dark:text-white text-2xl">
-        {adminData.name} عزیز؛ خوش اومدی 🙌
+        {userData && userData.name} عزیز؛ خوش اومدی 🙌
       </h1>
       <div className="flex gap-x-6">
         <span
           className="relative flex-center bg-white dark:bg-black-400 w-14 h-14 rounded-full cursor-pointer"
           onClick={() => setIsShowNotification((prevData) => !prevData)}
         >
-          {notifications.length ? (
+          {/* {notifications.length ? (
             <span className="absolute -top-1 right-0 flex-center w-6 h-6 bg-red-600 dark:bg-red-500 text-white rounded-full">
               {notifications.length}
             </span>
           ) : (
             ""
-          )}
+          )} */}
           <svg className="w-6 h-6 text-slate-500 dark:text-gray-600">
             <use href="#bell"></use>
           </svg>

@@ -103,7 +103,6 @@ export default function AdminCourses() {
         },
         body: formData,
       });
-      console.log(createCourse);
       if (createCourse.ok) {
         swal({
           title: "دوره مورد نظر با موفقیت ایجاد شد",

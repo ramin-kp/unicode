@@ -44,7 +44,6 @@ export default function Lesson() {
     );
     const json = await getSessions.json();
     setCourse(json);
-    console.log(json);
   };
   return (
     <>

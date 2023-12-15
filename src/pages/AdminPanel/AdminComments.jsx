@@ -66,7 +66,6 @@ export default function AdminComments() {
       button: "تایید",
     }).then(async (result) => {
       if (result) {
-        console.log(result);
         const commentAnswer = { body: result };
         const getComments = await fetch(
           `http://localhost:4000/v1/comments/answer/${commentID}`,
@@ -117,7 +116,6 @@ export default function AdminComments() {
       buttons: ["خیر", "بله"],
     }).then(async (result) => {
       if (result) {
-        console.log(result);
         const getComments = await fetch(
           `http://localhost:4000/v1/users/ban/${userID}`,
           {
@@ -137,7 +135,6 @@ export default function AdminComments() {
       }
     });
   };
-  console.log(allComments);
   return (
     <section>
       <DataTable title="کامنت‌ها">

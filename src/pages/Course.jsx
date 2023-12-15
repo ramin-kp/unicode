@@ -182,7 +182,6 @@ const Course = () => {
       });
     }
   };
-  console.log(course)
   return (
     <div>
       {/* <!--------------------------------  Course-Header  --------------------------------> */}

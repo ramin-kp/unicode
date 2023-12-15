@@ -34,8 +34,6 @@ function App() {
       const userData = await fetchData.json();
       setIsLoggedIn(true);
       setUserInfos(userData);
-    } else {
-      setIsLoggedIn(false);
     }
   };
   return (

@@ -84,7 +84,6 @@ export default function AdminOffs() {
           max: newOffs.max,
         }),
       });
-      console.log(createOffsCode);
       if (createOffsCode.ok) {
         swal({
           title: "کد تخفیف مورد نظر با موفقیت ایجاد شد",

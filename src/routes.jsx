@@ -25,6 +25,8 @@ import AdminContactUs from "./pages/AdminPanel/AdminContactUs";
 import AdminSession from "./pages/AdminPanel/AdminSession";
 import AdminComments from "./pages/AdminPanel/AdminComments";
 import AdminDraft from "./pages/AdminPanel/AdminDraft";
+import UserPanel from "./pages/UserPanel/UserPanel";
+import UPanelIndex from "./pages/UserPanel/UPanelIndex";
 
 const routes = [
   { path: "/", element: <Home /> },
@@ -57,6 +59,11 @@ const routes = [
       { path: "contact-us", element: <AdminContactUs /> },
       { path: "offs", element: <AdminOffs /> },
     ],
+  },
+  {
+    path: "my-account/*",
+    element: <UserPanel />,
+    children: [{ path: "", element: <UPanelIndex /> }],
   },
   { path: "/*", element: <NotFound /> },
 ];

@@ -23,7 +23,6 @@ export default function AdminMain() {
     setInfos(json.infos);
     setLastUsers(json.lastUsers);
   };
-  console.log(infos);
   return (
     <section>
       <div className="grid grid-cols-3 gap-5 py-10">

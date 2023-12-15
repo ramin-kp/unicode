@@ -37,7 +37,6 @@ export default function AdminDraft() {
     setBlogBody(json.body);
     setBlogID(json._id);
     setBlogCategory(json.categoryID._id);
-    console.log(json);
   };
 
   const getCategory = async () => {
@@ -94,7 +93,6 @@ export default function AdminDraft() {
             }
           );
           if (removeBlog.ok) {
-            console.log("remove");
             navigate("/p-admin/blogs", { replace: true });
           }
         });

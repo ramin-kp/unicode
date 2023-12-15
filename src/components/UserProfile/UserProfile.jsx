@@ -35,7 +35,7 @@ export default function UserProfile() {
         {/* profile-box */}
         {isShowProfile && (
           <div
-            className={`absolute top-25 left-10 flex flex-col p-6 bg-white dark:bg-black-300 rounded-2xl  ${
+            className={`absolute top-30 left-20 flex flex-col p-6 bg-white dark:bg-black-300 rounded-2xl  ${
               isShowProfile && "z-50"
             }`}
           >
@@ -71,7 +71,7 @@ export default function UserProfile() {
               <li>
                 <Link
                   className="flex items-center text-base text-zinc-700 dark:text-white"
-                  to="#"
+                  to="my-account"
                 >
                   <svg className="w-5 h-5 ml-2.5 ">
                     <use href="#home"></use>
