@@ -25,7 +25,6 @@ export default function UPanelCourses() {
     );
     const json = await fetchAllUserCorses.json();
     setAllCourses(json);
-    console.log(json);
   };
   return (
     <section>

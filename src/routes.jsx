@@ -34,6 +34,7 @@ import UPanelTickets from "./pages/UserPanel/UPanelTickets";
 import UPanelViewTicket from "./pages/UserPanel/UPanelViewTicket";
 import UPanelNewTicket from "./pages/UserPanel/UPanelNewTicket";
 import UPanelUserInfo from "./pages/UserPanel/UPanelUserInfo";
+import PAdminRoute from "./components/PAdminRoute/PAdminRoute";
 
 const routes = [
   { path: "/", element: <Home /> },
@@ -52,7 +53,11 @@ const routes = [
   { path: "/terms-rules", element: <Rules /> },
   {
     path: "/p-admin/*",
-    element: <AdminPanel />,
+    element: (
+      <PAdminRoute>
+        <AdminPanel />
+      </PAdminRoute>
+    ),
     children: [
       { path: "", element: <AdminMain /> },
       { path: "menus", element: <AdminMenus /> },

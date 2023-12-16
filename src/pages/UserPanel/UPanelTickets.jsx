@@ -20,7 +20,6 @@ export default function UPanelTickets() {
     const data = await fetchAllTickets.json();
     setAllTickets(data);
   };
-  console.log(allTickets);
   return (
     <section>
       <div className="container">

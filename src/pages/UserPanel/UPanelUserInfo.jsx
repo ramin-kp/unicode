@@ -9,7 +9,7 @@ export default function UPanelUserInfo() {
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
   const userInfo = useContext(UserContext);
-  console.log(userInfo);
+  console.log(userInfo)
   useEffect(() => {
     setName(userInfo.userInfos.name);
     setUsername(userInfo.userInfos.username);
@@ -44,7 +44,6 @@ export default function UPanelUserInfo() {
           },
         }
       );
-      console.log(fetchUpdateAccount);
       if (fetchUpdateAccount.ok) {
         swal({
           title: "اطلاعات حساب کاربری شما با موفقیت آپدیت شد",
@@ -54,7 +53,6 @@ export default function UPanelUserInfo() {
       }
     }
   };
-  console.log(name, username, email, password, phone);
   return (
     <section>
       <div className="container">
