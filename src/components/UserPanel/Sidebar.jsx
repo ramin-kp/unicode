@@ -43,7 +43,7 @@ export default function Sidebar() {
             <use href="#shopping"></use>
           </svg>
           <Link className="text-zinc-700 dark:text-white" to="orders">
-            سفارشات
+            سفارش ها
           </Link>
         </li>
         <li>
