@@ -5,10 +5,10 @@ import CourseInfoBox from "../../components/UserPanel/courseInfoBox";
 export default function UPanelCourses() {
   const [allCorses, setAllCourses] = useState([]);
   const freeCorses = allCorses.filter(
-    (userCourse) => userCourse.course.price === 0
+    (userCourse) => userCourse.course && userCourse.course.price === 0
   );
   const monetary = allCorses.filter(
-    (userCourse) => userCourse.course.price !== 0
+    (userCourse) => userCourse.course && userCourse.course.price !== 0
   );
   useEffect(() => {
     getUserCorses();
@@ -56,7 +56,7 @@ export default function UPanelCourses() {
         ) : (
           <div className="bg-red-500 p-5 text-white text-center font-morabbaBold text-lg rounded-xl">
             دوره برای نمایش وجود ندارد
-           </div>
+          </div>
         )}
       </div>
     </section>

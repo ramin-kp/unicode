@@ -62,6 +62,14 @@ export default function Sidebar() {
             تیکت‌ها
           </Link>
         </li>
+        <li>
+          <svg className="w-6 h-5 ml-2.5 text-zinc-700 dark:text-white">
+            <use href="#user-outline"></use>
+          </svg>
+          <Link className="text-zinc-700 dark:text-white" to="edit-account">
+            جزئیات حساب کاربری
+          </Link>
+        </li>
         <li onClick={logoutHandler}>
           <svg className="w-6 h-5 ml-2.5 text-zinc-700 dark:text-white">
             <use href="#logout"></use>

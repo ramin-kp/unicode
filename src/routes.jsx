@@ -33,6 +33,7 @@ import UPanelCourses from "./pages/UserPanel/UPanelCourses";
 import UPanelTickets from "./pages/UserPanel/UPanelTickets";
 import UPanelViewTicket from "./pages/UserPanel/UPanelViewTicket";
 import UPanelNewTicket from "./pages/UserPanel/UPanelNewTicket";
+import UPanelUserInfo from "./pages/UserPanel/UPanelUserInfo";
 
 const routes = [
   { path: "/", element: <Home /> },
@@ -75,8 +76,9 @@ const routes = [
       { path: "orders/:id", element: <UPanelOrder /> },
       { path: "courses", element: <UPanelCourses /> },
       { path: "tickets", element: <UPanelTickets /> },
-      { path: "view-ticket/:id", element: <UPanelViewTicket/> },
-      { path: "tickets/new-ticket", element: <UPanelNewTicket/> },
+      { path: "view-ticket/:id", element: <UPanelViewTicket /> },
+      { path: "tickets/new-ticket", element: <UPanelNewTicket /> },
+      { path: "edit-account", element: <UPanelUserInfo /> },
     ],
   },
   { path: "/*", element: <NotFound /> },
