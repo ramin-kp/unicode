@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default function CourseBox(props) {
-  console.log(props)
+  console.log(props);
   return (
-    <div className="bg-white dark:bg-black-400 rounded-xl overflow-hidden dark:border border-zinc-700 shadow-md">
+    <div className="relative bg-white dark:bg-black-400 rounded-xl overflow-hidden dark:border border-zinc-700 shadow-md">
       {/* img box */}
       <div>
         <img
@@ -13,6 +13,11 @@ export default function CourseBox(props) {
           alt="courses-img"
         />
       </div>
+      {props.discount && (
+        <span className="inline-block absolute inset-0 top-2 right-2 flex-center w-12 h-3 px-2.5 py-3 bg-green-500 text-white text-center rounded-xl">
+          {props.discount}%
+        </span>
+      )}
       {/* main box */}
       <div className="px-2.5 py-2">
         <span className="w-[50px] h-6 px-2.5 py-px bg-sky-100 dark:bg-yellow-500/10 text-sky-500 dark:text-yellow-500 text-xs rounded-md text-center">
@@ -20,12 +25,12 @@ export default function CourseBox(props) {
         </span>
         <div className="mt-3">
           <Link
-            className=" font-danaMedium text-base text-zinc-700 dark:text-white line-clamp-2"
+            className="h-12 my-auto font-danaMedium text-base text-zinc-700 dark:text-white line-clamp-2"
             to={`/course-info/${props.shortName}`}
           >
             {props.name}
           </Link>
-          <h3 className="mt-2.5 mb-5 font-danaLight text-sm text-slate-500 dark:text-secondary-600 text-right line-clamp-2">
+          <h3 className="h-10 mt-2.5 mb-5 font-danaLight text-sm text-slate-500 dark:text-secondary-600 text-right line-clamp-2">
             {props.description}
           </h3>
         </div>
@@ -64,17 +69,44 @@ export default function CourseBox(props) {
             <span>{props.registers}</span>
           </div>
           <div>
-            {props.price === 0 ? (
-              <div className="flex items-center child:text-green-500">
-                <p className="text-left text-xl">رایگان</p>
-              </div>
+            {props.discount ? (
+              <>
+                {props.price === 0 ? (
+                  <div className="flex items-center child:text-green-500">
+                    <p className="text-left text-xl">رایگان</p>
+                  </div>
+                ) : (
+                  <div className="flex items-center child:text-green-500">
+                    <p className="flex flex-col text-left text-xl">
+                      <span className="text-sm text-slate-500 dark:text-slate-400 line-through">
+                        {props.price}
+                      </span>
+                      <span>
+                        {(
+                          props.price -
+                          (props.price * props.discount) / 100
+                        ).toLocaleString()}
+                        <span className="font-danaLight text-lg">تومان</span>
+                      </span>
+                    </p>
+                  </div>
+                )}
+              </>
             ) : (
-              <div className="flex items-center child:text-green-500">
-                <p className="text-left text-xl">
-                  {props.price.toLocaleString()}
-                </p>
-                <span className="font-danaLight text-lg">تومان</span>
-              </div>
+              <>
+                {props.price === 0 ? (
+                  <div className="flex items-center child:text-green-500">
+                    <p className="text-left text-xl">رایگان</p>
+                  </div>
+                ) : (
+                  <div className="flex items-center child:text-green-500">
+                    <p className="text-left text-xl">
+                      {props.price.toLocaleString()}
+                    </p>
+                    <span className="font-danaLight text-lg">تومان</span>
+                  </div>
+                )}
+              </>
             )}
           </div>
         </div>
