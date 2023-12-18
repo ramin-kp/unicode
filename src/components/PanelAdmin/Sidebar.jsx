@@ -96,6 +96,14 @@ export default function Sidebar() {
         </li>
         <li>
           <svg className="w-6 h-5 ml-2.5 text-zinc-700 dark:text-white">
+            <use href="#ticket"></use>
+          </svg>
+          <Link className="text-zinc-700 dark:text-white" to="tickets">
+            تیکت ها
+          </Link>
+        </li>
+        <li>
+          <svg className="w-6 h-5 ml-2.5 text-zinc-700 dark:text-white">
             <use href="#chat"></use>
           </svg>
           <Link className="text-zinc-700 dark:text-white" to="contact-us">
@@ -105,7 +113,7 @@ export default function Sidebar() {
 
         <li>
           <svg className="w-6 h-5 ml-2.5 text-zinc-700 dark:text-white">
-            <use href="#ticket"></use>
+            <use href="#gift"></use>
           </svg>
           <Link className="text-zinc-700 dark:text-white" to="offs">
             کدهای تخفیف

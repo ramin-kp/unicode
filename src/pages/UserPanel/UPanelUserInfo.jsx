@@ -9,7 +9,6 @@ export default function UPanelUserInfo() {
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
   const userInfo = useContext(UserContext);
-  console.log(userInfo)
   useEffect(() => {
     setName(userInfo.userInfos.name);
     setUsername(userInfo.userInfos.username);

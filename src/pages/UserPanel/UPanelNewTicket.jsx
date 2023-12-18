@@ -11,7 +11,7 @@ export default function UPanelNewTicket() {
   const [priority, setPriority] = useState("-1");
   const [ticketBody, setTicketBody] = useState("");
   const [courses, setCourses] = useState([]);
-  const [courseId, setCourseId] = useState("");
+  const [courseId, setCourseId] = useState("-1");
   const [fileData, setFileData] = useState({});
   const navigate = useNavigate();
 
@@ -70,7 +70,7 @@ export default function UPanelNewTicket() {
           title: ticketTitle,
           priority,
           body: ticketBody,
-          course: courseId ? courseId : undefined,
+          course: courseId === "-1" ? undefined : courseId,
         }),
         headers: {
           "Content-Type": "application/json",
@@ -159,7 +159,9 @@ export default function UPanelNewTicket() {
                   className="w-2/3 bg-gray-200 outline-none p-2.5 rounded"
                   onChange={(e) => setCourseId(e.target.value)}
                 >
-                  <option>لطفا یک مورد را انتخاب کنید</option>
+                  <option value="-1">
+                    لطفا یک مورد از دوره‌ها را انتخاب کنید
+                  </option>
                   {courses.map((item) => (
                     <option value={item._id} key={item._id}>
                       {item.course.name}

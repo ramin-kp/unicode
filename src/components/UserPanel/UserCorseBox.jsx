@@ -12,7 +12,7 @@ export default function UserCorseBox({ data }) {
           src={`http://localhost:4000/courses/covers/${data.course.cover}`}
         />
       </div>
-      <h1 className="p-2.5 font-danaMedium text-lg text-zinc-700 dark:text-white group-hover:text-green-500 transition-colors duration-0">
+      <h1 className="h-10 p-2.5 font-danaMedium text-lg text-zinc-700 dark:text-white group-hover:text-green-500 transition-colors duration-0 line-clamp-1">
         {data.course.name}
       </h1>
       <div className="flex flex-col gap-y-2 mx-2 p-5 border-t border-gray-300 dark:border-zinc-700 ">
