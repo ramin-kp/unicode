@@ -110,13 +110,20 @@ export default function Sidebar() {
             پیغام‌ها
           </Link>
         </li>
-
         <li>
           <svg className="w-6 h-5 ml-2.5 text-zinc-700 dark:text-white">
             <use href="#gift"></use>
           </svg>
           <Link className="text-zinc-700 dark:text-white" to="offs">
             کدهای تخفیف
+          </Link>
+        </li>
+        <li>
+          <svg className="w-6 h-5 ml-2.5 text-zinc-700 dark:text-white">
+            <use href="#cake"></use>
+          </svg>
+          <Link className="text-zinc-700 dark:text-white" to="discounts">
+             تخفیف همگانی
           </Link>
         </li>
         <li onClick={logoutHandler}>

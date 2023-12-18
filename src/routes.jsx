@@ -36,6 +36,7 @@ import UPanelNewTicket from "./pages/UserPanel/UPanelNewTicket";
 import UPanelUserInfo from "./pages/UserPanel/UPanelUserInfo";
 import PAdminRoute from "./components/PAdminRoute/PAdminRoute";
 import AdminTickets from "./pages/AdminPanel/AdminTickets";
+import AdminDiscounts from "./pages/AdminPanel/AdminDiscounts";
 
 const routes = [
   { path: "/", element: <Home /> },
@@ -72,6 +73,7 @@ const routes = [
       { path: "tickets", element: <AdminTickets /> },
       { path: "contact-us", element: <AdminContactUs /> },
       { path: "offs", element: <AdminOffs /> },
+      { path: "discounts", element: <AdminDiscounts /> },
     ],
   },
   {
